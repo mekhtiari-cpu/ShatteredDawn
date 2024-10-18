@@ -5,10 +5,14 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
     [SerializeField] protected string objectName;
-    [SerializeField] protected LayerMask playerLayer;
 
     public virtual void Interact()
     {
         Debug.Log("Interacting with player");
+    }
+
+    public virtual void StopInteracting()
+    {
+        Debug.Log("No longer interacting with player");
     }
 }

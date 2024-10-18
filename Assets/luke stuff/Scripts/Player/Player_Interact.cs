@@ -8,6 +8,8 @@ public class Player_Interact : MonoBehaviour
     [SerializeField] float interactionRadius;
     [SerializeField] LayerMask interactableLayer;
 
+    private HashSet<Interactable> currentlyInteracting = new HashSet<Interactable>();
+
     void Update()
     {
         DetectNearbyInteractables();
@@ -16,10 +18,31 @@ public class Player_Interact : MonoBehaviour
     void DetectNearbyInteractables()
     {
         Collider[] nearbyInteractables = Physics.OverlapSphere(transform.position, interactionRadius, interactableLayer);
-        foreach(Collider obj in nearbyInteractables)
+
+        HashSet<Interactable> interactablesThisFrame = new HashSet<Interactable>();
+
+        foreach (Collider obj in nearbyInteractables)
         {
-            obj.GetComponent<Interactable>().Interact();
+            Interactable interactable = obj.GetComponent<Interactable>();
+            if (interactable != null)
+            {
+                interactablesThisFrame.Add(interactable);
+
+                if (!currentlyInteracting.Contains(interactable))
+                {
+                    interactable.Interact();
+                }
+            }
         }
+
+        foreach (var interactable in currentlyInteracting)
+        {
+            if (!interactablesThisFrame.Contains(interactable))
+            {
+                interactable.StopInteracting();
+            }
+        }
+        currentlyInteracting = interactablesThisFrame;
     }
 
     private void OnDrawGizmosSelected()

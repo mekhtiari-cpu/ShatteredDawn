@@ -7,7 +7,7 @@ public class TemperatureBar : MonoBehaviour
 {
     [SerializeField] Slider healthSlider;
 
-    public void DecreaseValue(float percentage)
+    public void SetValue(float percentage)
     {
         healthSlider.value = percentage;
     }

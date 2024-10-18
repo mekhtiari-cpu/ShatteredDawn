@@ -21,8 +21,8 @@ public class Player_Movement : MonoBehaviour
 
     [SerializeField] LayerMask groundMask;
 
-    bool isGrounded = true;
-    bool isJumping = false;
+    [SerializeField] bool isGrounded = true;
+    [SerializeField] bool isJumping = false;
 
     [SerializeField] CharacterController cc;
 
@@ -95,5 +95,10 @@ public class Player_Movement : MonoBehaviour
     {
         cc = GetComponent<CharacterController>();
         pc = GetComponent<Player_Controls>();
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
     }
 }
