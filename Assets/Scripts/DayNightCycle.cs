@@ -74,7 +74,9 @@ public class DayNightCycle : MonoBehaviour
     }
     void Start()
     {
-        BroadcastMessage("UpdateText", daysPassed + 1);
+        GameManager.instance.dayNightScript = this;
+
+        UpdateDayText();
 
         rotationSpeed = 360f / dayDuration;
 
@@ -122,7 +124,7 @@ public class DayNightCycle : MonoBehaviour
             timeOfDay = 0f;
             daysPassed++;
 
-            BroadcastMessage("UpdateText", daysPassed + 1);
+            UpdateDayText();
         }
 
         if (timeOfDay < dayDuration * 0.5f)
@@ -165,6 +167,10 @@ public class DayNightCycle : MonoBehaviour
         skyboxMaterial.SetColor("_MiddleColor", currentGradient.middleColor);
         skyboxMaterial.SetColor("_BottomColor", currentGradient.bottomColor);
     }
+    void UpdateDayText()
+    {
+        BroadcastMessage("UpdateText", daysPassed + 1);
+    }
 
     SkyboxGradient LerpGradient(SkyboxGradient a, SkyboxGradient b, float t)
     {
@@ -191,7 +197,11 @@ public class DayNightCycle : MonoBehaviour
 #if UNITY_EDITOR
     public void IncrementDay(int val)
     {
-        daysPassed += val;
+        if(daysPassed + val >= 0 )
+        {
+            daysPassed += val;
+        }
+        UpdateDayText();
     }
 
     private float SetTimeOfDay(float val)
