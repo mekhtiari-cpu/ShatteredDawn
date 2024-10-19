@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -537,7 +537,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8865371237698158708, guid: 4a9b8f6b4172453448a7dddca71afe13, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -719,7 +719,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8865371237698158708, guid: 4a9b8f6b4172453448a7dddca71afe13, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1232,7 +1232,7 @@ GameObject:
   - component: {fileID: 653743585}
   - component: {fileID: 653743584}
   - component: {fileID: 653743583}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1495,7 +1495,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8865371237698158708, guid: 4a9b8f6b4172453448a7dddca71afe13, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2117,7 +2117,9 @@ MonoBehaviour:
   cameraTransform: {fileID: 963194228}
   groundMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 64
+  isGrounded: 1
+  isJumping: 0
   cc: {fileID: 0}
 --- !u!114 &2071669672
 MonoBehaviour:
@@ -2268,7 +2270,7 @@ MonoBehaviour:
   interactionRadius: 2.45
   interactableLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 8
 --- !u!114 &2071669677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2284,7 +2286,9 @@ MonoBehaviour:
   tempBar: {fileID: 636551275}
   temperature: 1
   tempDivisor: 1.01
+  tempScalar: 0
   waitInterval: 1.5
+  isNearWarmth: 0
 --- !u!1 &2088623876
 GameObject:
   m_ObjectHideFlags: 0
@@ -2486,6 +2490,10 @@ PrefabInstance:
     - target: {fileID: 8865371237698158708, guid: 4a9b8f6b4172453448a7dddca71afe13, type: 3}
       propertyPath: m_Name
       value: pickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 8865371237698158708, guid: 4a9b8f6b4172453448a7dddca71afe13, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
