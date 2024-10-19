@@ -180,6 +180,8 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
+  isGrounded: 1
+  isJumping: 0
   cc: {fileID: 0}
 --- !u!114 &211525455236232758
 MonoBehaviour:
@@ -261,7 +263,9 @@ MonoBehaviour:
   tempBar: {fileID: 0}
   temperature: 1
   tempDivisor: 1.01
+  tempScalar: 0
   waitInterval: 1.5
+  isNearWarmth: 0
 --- !u!1 &5660817331235302589
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,7 +308,7 @@ Camera:
   m_GameObject: {fileID: 5660817331235302589}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.08770915, g: 0.107099526, b: 0.254717, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
