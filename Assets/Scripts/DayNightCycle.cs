@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.UIElements;
-
 public class DayNightCycle : MonoBehaviour
 {
     [System.Serializable]
@@ -56,6 +54,15 @@ public class DayNightCycle : MonoBehaviour
             }
         }
 
+        if(!directionalLight)
+        {
+            Transform possibleObj = transform.GetChild(0);
+            if(possibleObj.name == "Sun")
+            {
+                directionalLight = possibleObj.GetComponent<Light>();
+            } 
+        }
+
         if(directionalLight)
         {
             if(RenderSettings.sun != directionalLight)
@@ -67,6 +74,8 @@ public class DayNightCycle : MonoBehaviour
     }
     void Start()
     {
+        BroadcastMessage("UpdateText", daysPassed + 1);
+
         rotationSpeed = 360f / dayDuration;
 
         directionalLight.transform.rotation = Quaternion.Euler(15, 0, 0);
@@ -112,6 +121,8 @@ public class DayNightCycle : MonoBehaviour
             // Reset timer as we enter the next day
             timeOfDay = 0f;
             daysPassed++;
+
+            BroadcastMessage("UpdateText", daysPassed + 1);
         }
 
         if (timeOfDay < dayDuration * 0.5f)
@@ -173,4 +184,40 @@ public class DayNightCycle : MonoBehaviour
     {
         return isDaytime;
     }
+
+/* -------------------------------------------------
+ * DEBUG FUNCTIONS
+------------------------------------------------- */
+#if UNITY_EDITOR
+    public void IncrementDay(int val)
+    {
+        daysPassed += val;
+    }
+
+    private float SetTimeOfDay(float val)
+    {
+        timeOfDay = val;
+        return timeOfDay;
+    }
+
+    public float GetMorningTime()
+    {
+        return SetTimeOfDay(0);
+    }
+
+    public float GetAfternoonTime()
+    {
+        return SetTimeOfDay(dayDuration * 0.25f);
+    }
+
+    public float GetEveningTime()
+    {
+        return SetTimeOfDay(dayDuration * 0.5f);
+    }
+
+    public float GetNightTime()
+    {
+        return SetTimeOfDay(dayDuration * 0.75f);
+    }
+#endif
 }
