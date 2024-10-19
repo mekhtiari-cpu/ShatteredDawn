@@ -16,6 +16,8 @@ public class Player_Mouse_Look : MonoBehaviour
     [SerializeField] Transform playerTransform;
     [SerializeField] Transform cameraTransform;
 
+    private INPC currentNPC;
+    [SerializeField] private int interactionDistance = 10;
     private void Update()
     {
 #if UNITY_EDITOR
@@ -26,6 +28,7 @@ public class Player_Mouse_Look : MonoBehaviour
 #endif
 
         CameraControls();
+        RaycastForNPC();
     }
 
     void CameraControls()
@@ -45,4 +48,30 @@ public class Player_Mouse_Look : MonoBehaviour
         pc = GetComponent<Player_Controls>();
         Cursor.lockState = CursorLockMode.Locked;
     }
+
+    // Perform a raycast to detect NPCs
+    private void RaycastForNPC()
+    {
+        RaycastHit hit;
+        // Cast a ray from the camera's position, pointing forward
+        if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, interactionDistance))
+        {
+            INPC npc = hit.collider.GetComponent<INPC>();
+            if (npc != null)
+            {
+                currentNPC = npc;
+                // Display a prompt to the player
+                Debug.Log("Press E to interact with " + npc.GetNPCType());
+            }
+            else
+            {
+                currentNPC = null;
+            }
+        }
+        else
+        {
+            currentNPC = null;
+        }
+    }
+
 }
