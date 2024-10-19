@@ -53,4 +53,16 @@ public class Player_Controls : MonoBehaviour
         ui_Manager = FindFirstObjectByType<UI_Manager>();
         playerControls = new PlayerControls();
     }
+
+#if UNITY_EDITOR
+    void OnDebug(InputValue value)
+    {
+        if(value.isPressed)
+        {
+            GameManager.instance.inDebug = !GameManager.instance.inDebug;
+            DebugManager.instance.gameObject.SetActive(GameManager.instance.inDebug);
+            Cursor.lockState = GameManager.instance.inDebug ? CursorLockMode.None : CursorLockMode.Locked;
+        }
+    }
+#endif
 }

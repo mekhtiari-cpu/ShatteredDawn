@@ -7,6 +7,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
 
+    public DayNightCycle dayNightScript;
+
+#if UNITY_EDITOR
+    public bool inDebug;
+#endif
+
     private void Awake()
     {
         //Limit FPS + VSync
@@ -23,6 +29,5 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-
     }
 }

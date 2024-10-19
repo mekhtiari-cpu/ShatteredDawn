@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.UIElements;
-
 public class DayNightCycle : MonoBehaviour
 {
     [System.Serializable]
@@ -56,6 +54,15 @@ public class DayNightCycle : MonoBehaviour
             }
         }
 
+        if(!directionalLight)
+        {
+            Transform possibleObj = transform.GetChild(0);
+            if(possibleObj.name == "Sun")
+            {
+                directionalLight = possibleObj.GetComponent<Light>();
+            } 
+        }
+
         if(directionalLight)
         {
             if(RenderSettings.sun != directionalLight)
@@ -67,6 +74,10 @@ public class DayNightCycle : MonoBehaviour
     }
     void Start()
     {
+        GameManager.instance.dayNightScript = this;
+
+        UpdateDayText();
+
         rotationSpeed = 360f / dayDuration;
 
         directionalLight.transform.rotation = Quaternion.Euler(15, 0, 0);
@@ -112,6 +123,8 @@ public class DayNightCycle : MonoBehaviour
             // Reset timer as we enter the next day
             timeOfDay = 0f;
             daysPassed++;
+
+            UpdateDayText();
         }
 
         if (timeOfDay < dayDuration * 0.5f)
@@ -154,6 +167,10 @@ public class DayNightCycle : MonoBehaviour
         skyboxMaterial.SetColor("_MiddleColor", currentGradient.middleColor);
         skyboxMaterial.SetColor("_BottomColor", currentGradient.bottomColor);
     }
+    void UpdateDayText()
+    {
+        BroadcastMessage("UpdateText", daysPassed + 1);
+    }
 
     SkyboxGradient LerpGradient(SkyboxGradient a, SkyboxGradient b, float t)
     {
@@ -173,4 +190,44 @@ public class DayNightCycle : MonoBehaviour
     {
         return isDaytime;
     }
+
+/* -------------------------------------------------
+ * DEBUG FUNCTIONS
+------------------------------------------------- */
+#if UNITY_EDITOR
+    public void IncrementDay(int val)
+    {
+        if(daysPassed + val >= 0 )
+        {
+            daysPassed += val;
+        }
+        UpdateDayText();
+    }
+
+    private float SetTimeOfDay(float val)
+    {
+        timeOfDay = val;
+        return timeOfDay;
+    }
+
+    public float GetMorningTime()
+    {
+        return SetTimeOfDay(0);
+    }
+
+    public float GetAfternoonTime()
+    {
+        return SetTimeOfDay(dayDuration * 0.25f);
+    }
+
+    public float GetEveningTime()
+    {
+        return SetTimeOfDay(dayDuration * 0.5f);
+    }
+
+    public float GetNightTime()
+    {
+        return SetTimeOfDay(dayDuration * 0.75f);
+    }
+#endif
 }
