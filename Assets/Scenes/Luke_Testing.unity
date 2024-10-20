@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 388083253}
-  m_IndirectSpecularColor: {r: 0.16114731, g: 0.2914334, b: 0.3774014, a: 1}
+  m_IndirectSpecularColor: {r: 0.1379993, g: 0.26123327, b: 0.29426467, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12107,6 +12107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8147d028b9271c145aafbc39fb5fc008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcName: 
 --- !u!1 &1275975471
 GameObject:
   m_ObjectHideFlags: 0
@@ -14215,7 +14216,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1479150550}
   serializedVersion: 8
-  lengthInSec: 5
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -14290,7 +14291,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 3
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -14343,7 +14344,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 70.7
+      scalar: 10
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -14395,9 +14396,9 @@ ParticleSystem:
         m_RotationOrder: 4
     startColor:
       serializedVersion: 2
-      minMaxState: 3
+      minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.5682497, b: 0, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 0.4738788, b: 0, a: 1}
@@ -14778,7 +14779,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 1116
+    maxNumParticles: 90
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -14925,7 +14926,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 4.71
+      value: 2
       mode: 0
       spread: 0
       speed:
@@ -15044,7 +15045,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 91.1
+      scalar: 30
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -15162,21 +15163,21 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 1
+          inSlope: -2
+          outSlope: -2
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 0
           inSlope: 0
           outSlope: 0
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 0.14111155
-          value: 0
-          inSlope: 1
-          outSlope: 1
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
+          inWeight: 0
+          outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
@@ -15482,25 +15483,25 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.5445682, b: 0, a: 1}
-        key1: {r: 0.4245283, g: 0, b: 0, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
+        key0: {r: 1, g: 0.6212978, b: 0.027450979, a: 1}
+        key1: {r: 0.9511576, g: 0.5037357, b: 0.0417075, a: 1}
+        key2: {r: 0.8745098, g: 0.2723981, b: 0.06274507, a: 0.5882353}
+        key3: {r: 0.0915984, g: 0.0954058, b: 0.11698109, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
+        ctime1: 3932
+        ctime2: 19815
+        ctime3: 54047
         ctime4: 0
         ctime5: 0
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 65535
-        atime2: 0
+        atime1: 60524
+        atime2: 65535
         atime3: 0
         atime4: 0
         atime5: 0
@@ -15508,29 +15509,29 @@ ParticleSystem:
         atime7: 0
         m_Mode: 0
         m_ColorSpace: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
+        m_NumColorKeys: 4
+        m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
+        key0: {r: 1, g: 0.6212978, b: 0.027450979, a: 1}
+        key1: {r: 0, g: 0.34151316, b: 1, a: 1}
+        key2: {r: 0.8745098, g: 0.2723981, b: 0.06274507, a: 0.5882353}
+        key3: {r: 0.0915984, g: 0.0954058, b: 0.11698109, a: 0}
+        key4: {r: 0.0915984, g: 0.0954058, b: 0.11698109, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
+        ctime1: 6554
+        ctime2: 19815
+        ctime3: 54047
+        ctime4: 54047
         ctime5: 0
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 65535
-        atime2: 0
+        atime1: 60524
+        atime2: 65535
         atime3: 0
         atime4: 0
         atime5: 0
@@ -15538,8 +15539,8 @@ ParticleSystem:
         atime7: 0
         m_Mode: 0
         m_ColorSpace: -1
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
+        m_NumColorKeys: 4
+        m_NumAlphaKeys: 3
   UVModule:
     serializedVersion: 2
     enabled: 0
@@ -16859,7 +16860,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   NoiseModule:
-    enabled: 0
+    enabled: 1
     strength:
       serializedVersion: 2
       minMaxState: 0
@@ -22563,10 +22564,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 211525455236232758, guid: 153b8e03f3d6faf44833df23c86d14f3, type: 3}
-      propertyPath: interactionDistance
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 3475770185717028300, guid: 153b8e03f3d6faf44833df23c86d14f3, type: 3}
       propertyPath: m_LocalPosition.y
       value: -7.651
@@ -24838,6 +24835,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c5f87d5671b35f409f62c32b5a7c9f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcName: Standard Test NPC
+  dialogueLines: []
 --- !u!136 &2095651986
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -25581,6 +25580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 904c3ebde07bb3d47b3c79e33d471ddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcName: 
 --- !u!136 &2136983315
 CapsuleCollider:
   m_ObjectHideFlags: 0

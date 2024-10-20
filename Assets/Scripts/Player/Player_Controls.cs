@@ -55,16 +55,13 @@ public class Player_Controls : MonoBehaviour
     }
 
 #if UNITY_EDITOR
-    void OnDebug(InputValue value)
+    void OnDebug()
     {
         if(DebugManager.instance)
         {
-            if (value.isPressed)
-            {
-                GameManager.instance.inDebug = !GameManager.instance.inDebug;
-                DebugManager.instance.gameObject.SetActive(GameManager.instance.inDebug);
-                Cursor.lockState = GameManager.instance.inDebug ? CursorLockMode.None : CursorLockMode.Locked;
-            }
+            GameManager.instance.inDebug = !GameManager.instance.inDebug;
+            DebugManager.instance.gameObject.SetActive(GameManager.instance.inDebug);
+            Cursor.lockState = GameManager.instance.inDebug ? CursorLockMode.None : CursorLockMode.Locked;
         }
     }
 #endif

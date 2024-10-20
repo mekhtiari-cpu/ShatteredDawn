@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Shopkeeper : MonoBehaviour, INPC
+public class Shopkeeper : BaseNPC, INPC
 {
     private bool hasGreeted = false;
 

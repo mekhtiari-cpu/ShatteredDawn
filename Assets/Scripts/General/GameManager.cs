@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
 
+    [Header("Gameplay Elements")]
+    public UIHandler UIHandler;
+    [Space]
     public DayNightCycle dayNightScript;
 
 #if UNITY_EDITOR

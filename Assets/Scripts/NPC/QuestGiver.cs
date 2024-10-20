@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class QuestGiver : MonoBehaviour, INPC
+public class QuestGiver : BaseNPC, INPC
 {
     public void Interact()
     {

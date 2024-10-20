@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class Player_Mouse_Look : MonoBehaviour
 {
+    GameManager gm;
+    PromptUIHandler promptUI;
+
     [SerializeField] float sensX, sensY;
     [SerializeField] float mouseX, mouseY;
     [SerializeField] float x_rot_limit = 90f;
@@ -45,6 +48,15 @@ public class Player_Mouse_Look : MonoBehaviour
 
     private void Start()
     {
+        gm = GameManager.instance;
+        if( gm )
+        {
+            if(gm.UIHandler)
+            {
+                promptUI = gm.UIHandler.promptUI;
+            }
+        }
+        
         pc = GetComponent<Player_Controls>();
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -61,16 +73,35 @@ public class Player_Mouse_Look : MonoBehaviour
             {
                 currentNPC = npc;
                 // Display a prompt to the player
-                Debug.Log("Press E to interact with " + npc.GetNPCType());
+                if(promptUI)
+                {
+                    promptUI.SetDisplayText("Press E to interact with " + npc.GetNPCType());
+                }
             }
             else
             {
                 currentNPC = null;
+                if (promptUI)
+                {
+                    promptUI.HideDisplay();
+                }
             }
         }
         else
         {
             currentNPC = null;
+            if (promptUI)
+            {
+                promptUI.HideDisplay();
+            }
+        }
+    }
+
+    void OnInteract()
+    {
+        if (currentNPC != null)
+        {
+            currentNPC.Interact();
         }
     }
 
