@@ -58,7 +58,7 @@ public class Player_Mouse_Look : MonoBehaviour
         }
         
         pc = GetComponent<Player_Controls>();
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Perform a raycast to detect NPCs
