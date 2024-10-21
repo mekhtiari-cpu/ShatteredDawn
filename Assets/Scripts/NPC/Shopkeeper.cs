@@ -1,24 +1,47 @@
 using UnityEngine;
 
-public class Shopkeeper : BaseNPC, INPC
+public class ShopKeeper : BaseNPC
 {
-    private bool hasGreeted = false;
-
-    public void Interact()
+    public override void Interact(PlayerQuestHandler questHandler)
     {
-        if (!hasGreeted)
+        // Update the currently assigned quest before interaction
+        UpdateAssignedQuest();
+
+        if (assignedQuest != null && !questGiven)
         {
-            Debug.Log("Welcome to my shop!");
-            hasGreeted = true;
+            if (assignedQuest.isConfirmationRequired)
+            {
+                PromptQuestConfirmation(questHandler);
+            }
+            else
+            {
+                GiveQuest(questHandler);
+            } 
+        }
+        else if (assignedQuest != null && questGiven && !assignedQuest.isCompleted)
+        {
+            ShowQuestInProgressDialogue();
+            OpenShop();
+        }
+        else if (assignedQuest != null && assignedQuest.isCompleted && !assignedQuest.turnedIn)
+        {
+            ShowQuestTurnInDialogue();
+            questHandler.TurnInQuest(assignedQuest, this);
         }
         else
         {
-            Debug.Log("What would you like to buy?");
+            OpenShop();
         }
     }
 
-    public string GetNPCType()
+    private void OpenShop()
     {
-        return "Shopkeeper";
+        // Open shop interface, allowing player to buy/sell items
+        Debug.Log("Opening shop interface.");
+    }
+
+    public override string GetNPCType()
+    {
+        return "ShopKeeper";
     }
 }

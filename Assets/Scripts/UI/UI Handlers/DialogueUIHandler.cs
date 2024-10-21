@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class DialogueUIHandler : MonoBehaviour
+public class DialogueUIHandler : UIHandler
 {
     private BaseNPC speaker;
     public TextMeshProUGUI dialogueText;
-
-    CanvasGroup canvasGroup;
 
     [SerializeField] private float dialogueDisplayTime = 3f;
     private Coroutine hideDialogueCoroutine;
@@ -36,7 +34,7 @@ public class DialogueUIHandler : MonoBehaviour
         {
             StopCoroutine(hideDialogueCoroutine);
         }
-        canvasGroup.alpha = 1;
+        HideUI(false);
 
         speaker = nPC;
         string prefix = speaker != null ? $"{speaker.npcName}: ": string.Empty;
@@ -47,7 +45,7 @@ public class DialogueUIHandler : MonoBehaviour
 
     public void HideDialogue()
     {
-        canvasGroup.alpha = 0;
+        HideUI();
     }
 
     private IEnumerator HideAfterTime()

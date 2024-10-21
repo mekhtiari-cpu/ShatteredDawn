@@ -4,11 +4,9 @@ using TMPro;
 using UnityEngine;
 
 // Could possibly make a base class and have all UIHandler inherit from there as there is many simialr functions
-public class PromptUIHandler : MonoBehaviour
+public class PromptUIHandler : UIHandler
 {
     public TextMeshProUGUI displayText;
-
-    CanvasGroup canvasGroup;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,11 +33,11 @@ public class PromptUIHandler : MonoBehaviour
 
     public void HideDisplay()
     {
-        canvasGroup.alpha = 0;
+        HideUI();
     }
 
     public void ShowDisplay()
     {
-        canvasGroup.alpha = 1;
+        HideUI(false);
     }
 }

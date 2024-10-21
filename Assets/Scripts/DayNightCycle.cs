@@ -170,6 +170,10 @@ public class DayNightCycle : MonoBehaviour
     void UpdateDayText()
     {
         BroadcastMessage("UpdateText", daysPassed + 1);
+        if(GameManager.instance.playerQuest)
+        {
+            GameManager.instance.playerQuest.CheckQuestCompletionConditions();
+        }
     }
 
     SkyboxGradient LerpGradient(SkyboxGradient a, SkyboxGradient b, float t)

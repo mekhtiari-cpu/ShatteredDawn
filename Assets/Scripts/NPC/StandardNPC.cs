@@ -1,12 +1,13 @@
 using UnityEngine;
 
-public class StandardNPC : BaseNPC, INPC
+public class StandardNPC : BaseNPC
 {
     [SerializeField] private string[] dialogueLines;
     private int currentLine = 0;
+
     private void Start()
     {
-        // Initialize with some sample dialogue
+        // Initialize default dialogue
         if (dialogueLines.Length == 0)
         {
             dialogueLines = new string[]
@@ -17,24 +18,50 @@ public class StandardNPC : BaseNPC, INPC
             };
         }
     }
-    public void Interact()
-    {
-        if (dialogueLines.Length == 0)
-        { 
-            return; 
-        }
 
-        UIHandler uIHandler = GameManager.instance.UIHandler;
+    public override void Interact(PlayerQuestHandler questHandler)
+    {
+        UpdateAssignedQuest();
+
+        if (assignedQuest != null && !questGiven)
+        {
+            if (assignedQuest.isConfirmationRequired)
+            {
+                PromptQuestConfirmation(questHandler);
+            }
+            else
+            {
+                GiveQuest(questHandler);
+            }
+        }
+        else if (assignedQuest != null && questGiven && !assignedQuest.isCompleted)
+        {
+            ShowQuestInProgressDialogue();
+        }
+        else if (assignedQuest != null && assignedQuest.isCompleted && !assignedQuest.turnedIn)
+        {
+            ShowQuestTurnInDialogue();
+            questHandler.TurnInQuest(assignedQuest, this);
+            questGiven = false;
+        }
+        else
+        {
+            ShowStandardDialogue();
+        }
+    }
+
+    private void ShowStandardDialogue()
+    {
+        UIHandlerManager uIHandler = GameManager.instance.UIHandler;
         DialogueUIHandler dialogueUI = uIHandler.dialogueUI;
 
         string displayText = dialogueLines[currentLine];
         dialogueUI.SetDialogueText(displayText, this);
-        //Debug.Log(dialogueLines[currentLine]);
 
         currentLine = (currentLine + 1) % dialogueLines.Length;
     }
 
-    public string GetNPCType()
+    public override string GetNPCType()
     {
         return "StandardNPC";
     }

@@ -101,7 +101,7 @@ public class Player_Mouse_Look : MonoBehaviour
     {
         if (currentNPC != null)
         {
-            currentNPC.Interact();
+            currentNPC.Interact(GetComponent<PlayerQuestHandler>());
         }
     }
 
