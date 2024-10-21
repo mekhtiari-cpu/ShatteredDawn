@@ -59,4 +59,10 @@ public class DebugManager : MonoBehaviour
         DayNightCycle script = GameManager.instance.dayNightScript;
         script.GetNightTime();
     }
+
+    public void CompleteAllQuests()
+    {
+        PlayerQuestHandler questHandler = GameManager.instance.playerQuest;
+        questHandler.CompleteAllActiveQuests();
+    }
 }

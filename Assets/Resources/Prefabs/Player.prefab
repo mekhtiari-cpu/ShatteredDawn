@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 4136067040077637364}
   - component: {fileID: 6482146671676332926}
   - component: {fileID: 3801411727346241221}
+  - component: {fileID: 7197351655440284392}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -70,7 +71,7 @@ Transform:
   - {fileID: 3475770185717028300}
   - {fileID: 4127898625129362586}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &8977392379539551453
 CharacterController:
@@ -202,6 +203,7 @@ MonoBehaviour:
   x_rot_limit: 80
   playerTransform: {fileID: 6722377596937347483}
   cameraTransform: {fileID: 7995498300906303171}
+  interactionDistance: 25
 --- !u!114 &4136067040077637364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,7 +249,7 @@ MonoBehaviour:
   interactionRadius: 2.45
   interactableLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
 --- !u!114 &3801411727346241221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,6 +268,19 @@ MonoBehaviour:
   tempScalar: 0
   waitInterval: 1.5
   isNearWarmth: 0
+--- !u!114 &7197351655440284392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5470818463489808218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31718bb7f33516c48b833a7b1b413343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeQuests: []
 --- !u!1 &5660817331235302589
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class Player_Mouse_Look : MonoBehaviour
 {
+    GameManager gm;
+    PromptUIHandler promptUI;
+
     [SerializeField] float sensX, sensY;
     [SerializeField] float mouseX, mouseY;
     [SerializeField] float x_rot_limit = 90f;
@@ -16,6 +19,8 @@ public class Player_Mouse_Look : MonoBehaviour
     [SerializeField] Transform playerTransform;
     [SerializeField] Transform cameraTransform;
 
+    private INPC currentNPC;
+    [SerializeField] private int interactionDistance = 10;
     private void Update()
     {
 #if UNITY_EDITOR
@@ -26,6 +31,7 @@ public class Player_Mouse_Look : MonoBehaviour
 #endif
 
         CameraControls();
+        RaycastForNPC();
     }
 
     void CameraControls()
@@ -42,7 +48,61 @@ public class Player_Mouse_Look : MonoBehaviour
 
     private void Start()
     {
+        gm = GameManager.instance;
+        if( gm )
+        {
+            if(gm.UIHandler)
+            {
+                promptUI = gm.UIHandler.promptUI;
+            }
+        }
+        
         pc = GetComponent<Player_Controls>();
         Cursor.lockState = CursorLockMode.Locked;
     }
+
+    // Perform a raycast to detect NPCs
+    private void RaycastForNPC()
+    {
+        RaycastHit hit;
+        // Cast a ray from the camera's position, pointing forward
+        if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, interactionDistance))
+        {
+            INPC npc = hit.collider.GetComponent<INPC>();
+            if (npc != null)
+            {
+                currentNPC = npc;
+                // Display a prompt to the player
+                if(promptUI)
+                {
+                    promptUI.SetDisplayText("Press E to interact with " + npc.GetNPCType());
+                }
+            }
+            else
+            {
+                currentNPC = null;
+                if (promptUI)
+                {
+                    promptUI.HideDisplay();
+                }
+            }
+        }
+        else
+        {
+            currentNPC = null;
+            if (promptUI)
+            {
+                promptUI.HideDisplay();
+            }
+        }
+    }
+
+    void OnInteract()
+    {
+        if (currentNPC != null)
+        {
+            currentNPC.Interact(GetComponent<PlayerQuestHandler>());
+        }
+    }
+
 }

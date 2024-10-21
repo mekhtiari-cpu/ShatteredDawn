@@ -55,7 +55,7 @@ public class Player_Controls : MonoBehaviour
     }
 
 #if UNITY_EDITOR
-    void OnDebug(InputValue value)
+    void OnDebug()
     {
         if(DebugManager.instance)
         {
