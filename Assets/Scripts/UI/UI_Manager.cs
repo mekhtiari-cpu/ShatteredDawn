@@ -11,6 +11,7 @@ public class UI_Manager : MonoBehaviour
 
     [SerializeField] GameObject inventory;
     [SerializeField] SelectedItemPanel selectedItemPanel;
+    Item selectedItem;
 
     private void Awake()
     {
@@ -29,11 +30,16 @@ public class UI_Manager : MonoBehaviour
     public void ToggleInventory(InputAction.CallbackContext context)
     {
         inventory.SetActive(!inventory.activeSelf);
+
+        if (inventory.activeSelf)
+            Cursor.lockState = CursorLockMode.None;
+        else
+            Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void SelectItem(Item item)
     {
-        if (selectedItemPanel.gameObject.activeSelf == true)
+        if (selectedItemPanel.gameObject.activeSelf == true && item == selectedItem)
         {
             selectedItemPanel.gameObject.SetActive(false);
         }
@@ -41,6 +47,7 @@ public class UI_Manager : MonoBehaviour
         {
             selectedItemPanel.gameObject.SetActive(true);
             selectedItemPanel.UpdateUIForNewItem(item);
+            selectedItem = item;
         }
     }
 }
