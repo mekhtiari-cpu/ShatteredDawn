@@ -14,23 +14,23 @@ public class GameManager : MonoBehaviour
     public UIHandlerManager UIHandler;
     [Space]
     public DayNightCycle dayNightScript;
+    
+    #if UNITY_EDITOR
+        public bool inDebug;
+        public const string QUESTFILEPATH = "QuestData";
 
-#if UNITY_EDITOR
-    public bool inDebug;
-    public const string QUESTFILEPATH = "QuestData";
-
-    [MenuItem("Shattered Down/Quest Data/Reset All Quest Data")]
-    private static void ResetAllQuestData()
-    {
-        Quest[] allQuests = Resources.LoadAll(QUESTFILEPATH).Cast<Quest>().ToArray();
-
-        foreach (Quest item in allQuests) 
+        [MenuItem("Shattered Down/Quest Data/Reset All Quest Data")]
+        private static void ResetAllQuestData()
         {
-            item.isCompleted = false;
-            item.turnedIn = false;
+            Quest[] allQuests = Resources.LoadAll(QUESTFILEPATH).Cast<Quest>().ToArray();
+
+            foreach (Quest item in allQuests) 
+            {
+                item.isCompleted = false;
+                item.turnedIn = false;
+            }
         }
-    }
-#endif
+    #endif
 
     private void Awake()
     {

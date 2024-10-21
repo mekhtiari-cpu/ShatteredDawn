@@ -35,13 +35,13 @@ public class Player_Movement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {/*
 #if UNITY_EDITOR
         if (GameManager.instance.inDebug)
         {
             return;
         }
-#endif
+#endif*/
 
         LinkInputsToVariables();
         ApplyMovement();
