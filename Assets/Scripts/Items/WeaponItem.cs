@@ -6,8 +6,11 @@ using UnityEngine;
 public class WeaponItem : EquipableItem
 {
     public int damage;
+    public GameObject weaponPrefab;
     public override void EquipItem()
     {
         Debug.Log("Now wielding " + itemName);
+        PlayerEquipment.instance.SetWeapon(this);
+        UI_Manager.instance.UpdateEquippedItems();
     }
 }

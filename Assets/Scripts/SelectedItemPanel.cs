@@ -5,25 +5,9 @@ using TMPro;
 
 public class SelectedItemPanel : MonoBehaviour
 {
-    public static SelectedItemPanel instance { get; private set; }
-
     [SerializeField] TMP_Text selectedItemName;
     [SerializeField] TMP_Text selectedItemDescription;
     Item selectedItem; 
-
-    void Awake()
-    {
-        //Singleton
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-    }
 
     public void UpdateUIForNewItem(Item item)
     {
@@ -35,6 +19,7 @@ public class SelectedItemPanel : MonoBehaviour
     public void UseItem()
     {
         selectedItem.UseItem();
+        DeselectItem();
     }
 
     public void RemoveItem()
@@ -42,8 +27,13 @@ public class SelectedItemPanel : MonoBehaviour
         bool itemStillExists = Inventory.instance.RemoveItem(selectedItem);
         if(!itemStillExists)
         {
-            selectedItem = null;
-            gameObject.SetActive(false);
+            DeselectItem();
         }
+    }
+
+    void DeselectItem()
+    {
+        selectedItem = null;
+        gameObject.SetActive(false);
     }
 }

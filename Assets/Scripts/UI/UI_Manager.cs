@@ -7,10 +7,11 @@ public class UI_Manager : MonoBehaviour
 {
     public static UI_Manager instance { get; private set; }
 
-    [SerializeField] Player_Controls pc;
-
     [SerializeField] GameObject inventory;
     [SerializeField] SelectedItemPanel selectedItemPanel;
+    [SerializeField] EquippedItemsUI equippedItemsUI;
+    [SerializeField] InfoUI infoUI;
+
     Item selectedItem;
 
     private void Awake()
@@ -49,5 +50,17 @@ public class UI_Manager : MonoBehaviour
             selectedItemPanel.UpdateUIForNewItem(item);
             selectedItem = item;
         }
+    }
+
+    public void UpdateEquippedItems()
+    {
+        equippedItemsUI.SetEquipmentUI();
+    }
+
+    public void ReadInfo()
+    {
+        inventory.SetActive(false);
+        infoUI.gameObject.SetActive(true);
+        infoUI.DisplayInfo(selectedItem);
     }
 }

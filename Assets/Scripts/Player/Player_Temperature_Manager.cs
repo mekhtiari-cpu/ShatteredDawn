@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player_Temperature_Manager : MonoBehaviour
 {
     [SerializeField] TemperatureBar tempBar;
     [SerializeField] float temperature;
-    [SerializeField] float tempDivisor;
+    [SerializeField] float temperatureDecayRate;
     [SerializeField] float tempScalar;
     [SerializeField] float waitInterval;
     [SerializeField] bool isNearWarmth;
@@ -27,12 +28,12 @@ public class Player_Temperature_Manager : MonoBehaviour
 
     IEnumerator ManageTemperature()
     {
-        float newTemp = temperature;
         while (true)
         {
+            float newTemp;
             if (!isNearWarmth)
             {
-                newTemp = temperature / tempDivisor;
+                newTemp = temperature - temperatureDecayRate;
             }
             else
             {
@@ -41,14 +42,27 @@ public class Player_Temperature_Manager : MonoBehaviour
 
             temperature = newTemp;
 
-            if (temperature < 0)
+            if (temperature <= 0)
+            {
                 temperature = 0;
+                break;
+            }
             if (temperature > 1)
+            {
                 temperature = 1;
+            }
 
             tempBar.SetValue(newTemp);
 
             yield return new WaitForSeconds(waitInterval);
         }
+
+        if(temperature <= 0)
+            Die();
+    }
+
+    public void Die()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

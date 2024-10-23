@@ -16,4 +16,6 @@ MonoBehaviour:
   itemDescription: Final note from someone who died
   isStackable: 0
   count: 0
+  infoTitle: Note Near Car
+  infoDate: 00/00/0000
   info: Testing note #1 - This will display lore in the final game.

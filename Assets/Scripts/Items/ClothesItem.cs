@@ -9,5 +9,7 @@ public class ClothesItem : EquipableItem
     public override void EquipItem()
     {
         Debug.Log("Now wearing " + itemName + " and negating effects of temperature by " + temperatureNegation);
+        PlayerEquipment.instance.SetClothing(this);
+        UI_Manager.instance.UpdateEquippedItems();
     }
 }

@@ -40,6 +40,7 @@ public class Inventory : MonoBehaviour
         //Check if item already exists within inventory and is stackable.
         if (existingItem == null || !existingItem.item.isStackable)
         {
+            Debug.Log("Adding to inventory");
             inventory.Add(CreateNewInventoryItem(newItem));
         }
         else
