@@ -26,6 +26,8 @@ public class PlayerEquipment : MonoBehaviour
 
     public void SetWeapon(WeaponItem newWeapon)
     {
+        if (equippedWeapon != null)
+            Inventory.instance.AddItem(equippedWeapon);
         equippedWeapon = newWeapon;
         Inventory.instance.RemoveItem(equippedWeapon);
     }
@@ -36,6 +38,8 @@ public class PlayerEquipment : MonoBehaviour
     }
     public void SetClothing(ClothesItem newClothing)
     {
+        if (equippedClothing != null)
+            Inventory.instance.AddItem(equippedClothing);
         equippedClothing = newClothing;
         Inventory.instance.RemoveItem(equippedClothing);
     }
@@ -71,6 +75,5 @@ public class PlayerEquipment : MonoBehaviour
         Inventory.instance.AddItem(equippedClothing);
         equippedClothing = null;
         UI_Manager.instance.UpdateEquippedItems();
-
     }
 }

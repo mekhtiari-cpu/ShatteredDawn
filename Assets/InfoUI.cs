@@ -22,5 +22,6 @@ public class InfoUI : MonoBehaviour
     public void CloseInfo()
     {
         gameObject.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
