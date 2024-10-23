@@ -35,26 +35,16 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(Item newItem)
     {
-        bool foundItem = false;
+        InventoryItem existingItem = FindItem(newItem);
 
         //Check if item already exists within inventory and is stackable.
-        if (newItem.isStackable && inventory.Count > 0)
-        {
-            foreach (InventoryItem existingItem in inventory)
-            {
-                if(existingItem.item == newItem)
-                {
-                    foundItem = true;
-                    existingItem.count++;
-                    Debug.Log(existingItem.count);
-                    break;
-                }
-            }
-        }
-
-        if(!foundItem)
+        if (existingItem == null || !existingItem.item.isStackable)
         {
             inventory.Add(CreateNewInventoryItem(newItem));
+        }
+        else
+        {
+            existingItem.count++;
         }
 
         Debug.Log("Added " + newItem + " to inventory.");
@@ -68,8 +58,39 @@ public class Inventory : MonoBehaviour
         return newInventoryItem;
     }
 
-    public void RemoveItem()
+    //Search for a specific item in the inventory.
+    public InventoryItem FindItem(Item itemToFind)
     {
+        foreach (InventoryItem existingItem in inventory)
+        {
+            if (existingItem.item == itemToFind)
+            {
+                return existingItem;
+            }
+        }
+        return null;
+    }
 
+    //Remove an item from the inventory
+    public bool RemoveItem(Item itemToRemove)
+    {
+        InventoryItem existingItem = FindItem(itemToRemove);
+
+        if(existingItem == null)
+        {
+            return false;
+        }
+
+        existingItem.count--;
+
+        if(existingItem.count <= 0)
+        {
+            inventory.Remove(existingItem);
+            ui.GenerateInventorySlots();
+            return false;
+        }
+
+        ui.GenerateInventorySlots();
+        return true;
     }
 }

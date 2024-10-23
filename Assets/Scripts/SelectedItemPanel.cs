@@ -8,6 +8,7 @@ public class SelectedItemPanel : MonoBehaviour
     public static SelectedItemPanel instance { get; private set; }
 
     [SerializeField] TMP_Text selectedItemName;
+    [SerializeField] TMP_Text selectedItemDescription;
     Item selectedItem; 
 
     void Awake()
@@ -28,5 +29,21 @@ public class SelectedItemPanel : MonoBehaviour
     {
         selectedItem = item;
         selectedItemName.text = selectedItem.itemName;
+        selectedItemDescription.text = selectedItem.itemDescription;
+    }
+
+    public void UseItem()
+    {
+        selectedItem.UseItem();
+    }
+
+    public void RemoveItem()
+    {
+        bool itemStillExists = Inventory.instance.RemoveItem(selectedItem);
+        if(!itemStillExists)
+        {
+            selectedItem = null;
+            gameObject.SetActive(false);
+        }
     }
 }

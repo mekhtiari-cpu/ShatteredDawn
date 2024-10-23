@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71818edb0f6c0a946b6ad30937fe2f22, type: 3}
-  m_Name: ClothItem
+  m_Script: {fileID: 11500000, guid: 671398b982950a9448fe4ddfb22571e9, type: 3}
+  m_Name: Pistol
   m_EditorClassIdentifier: 
-  itemName: Cloth
-  itemDescription: Used to craft clothing
-  isStackable: 1
-  count: 1
-  itemType: 0
+  itemName: Pistol
+  itemDescription: Simple, reliable pistol.
+  isStackable: 0
+  count: 0
+  damage: 3

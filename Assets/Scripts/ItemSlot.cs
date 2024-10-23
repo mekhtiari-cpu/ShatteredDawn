@@ -18,9 +18,8 @@ public class ItemSlot : MonoBehaviour
         countText.text = count.ToString();
     }
 
-    public void UseItem()
+    public void SelectItem()
     {
-        Debug.Log("Using " + item.itemName);
         UI_Manager.instance.SelectItem(item);
     }
 }

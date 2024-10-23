@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71818edb0f6c0a946b6ad30937fe2f22, type: 3}
-  m_Name: NoteItem
+  m_Script: {fileID: 11500000, guid: d56cf478124ebbc49b8596c94f19ad29, type: 3}
+  m_Name: Hidden Note
   m_EditorClassIdentifier: 
-  itemName: Note #1
-  itemDescription: Note from survivor
+  itemName: Hidden Note
+  itemDescription: Note hidden, likely where the survivor wrote it
   isStackable: 0
-  count: 1
-  itemType: 1
+  count: 0
+  info: Note #2 - Will also display lore in the final game.
