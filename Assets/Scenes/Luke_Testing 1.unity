@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 388083253}
-  m_IndirectSpecularColor: {r: 0.16238478, g: 0.29305577, b: 0.38171774, a: 1}
+  m_IndirectSpecularColor: {r: 0.19548139, g: 0.33646026, b: 0.49389976, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -23223,7 +23223,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3801411727346241221, guid: 153b8e03f3d6faf44833df23c86d14f3, type: 3}
       propertyPath: temperatureDecayRate
-      value: 0.0125
+      value: 0.027
       objectReference: {fileID: 0}
     - target: {fileID: 5470818463489808218, guid: 153b8e03f3d6faf44833df23c86d14f3, type: 3}
       propertyPath: m_Name
