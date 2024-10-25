@@ -23,13 +23,13 @@ public class Player_Mouse_Look : MonoBehaviour
     [SerializeField] private int interactionDistance = 10;
     private void Update()
     {
-        /*
+        
         #if UNITY_EDITOR
                 if (GameManager.instance.inDebug)
                 {
                     return;
                 }
-        #endif*/
+        #endif
 
         CameraControls();
         RaycastForNPC();
