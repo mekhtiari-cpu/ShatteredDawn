@@ -8,10 +8,6 @@ public class DebugManager : MonoBehaviour
 
     private void Awake()
     {
-#if !UNITY_EDITOR
-    Destroy(gameObject);
-#else
-
         if (instance != null && instance != this)
         {
             Destroy(gameObject);
@@ -21,7 +17,6 @@ public class DebugManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-#endif
     }
 
     private void Start()
@@ -64,5 +59,10 @@ public class DebugManager : MonoBehaviour
     {
         PlayerQuestHandler questHandler = GameManager.instance.playerQuest;
         questHandler.CompleteAllActiveQuests();
+    }
+
+    public void ResetAllQuestData()
+    {
+        GameManager.ResetAllQuestData();
     }
 }

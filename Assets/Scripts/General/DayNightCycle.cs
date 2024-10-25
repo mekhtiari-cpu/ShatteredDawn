@@ -198,7 +198,6 @@ public class DayNightCycle : MonoBehaviour
 /* -------------------------------------------------
  * DEBUG FUNCTIONS
 ------------------------------------------------- */
-#if UNITY_EDITOR
     public void IncrementDay(int val)
     {
         if(daysPassed + val >= 0 )
@@ -233,5 +232,4 @@ public class DayNightCycle : MonoBehaviour
     {
         return SetTimeOfDay(dayDuration * 0.75f);
     }
-#endif
 }

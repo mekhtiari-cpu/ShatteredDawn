@@ -53,8 +53,6 @@ public class Player_Controls : MonoBehaviour
         ui_Manager = FindFirstObjectByType<UI_Manager>();
         playerControls = new PlayerControls();
     }
-    
-#if UNITY_EDITOR
     void OnDebug(InputValue value)
     {
         if(DebugManager.instance)
@@ -67,5 +65,4 @@ public class Player_Controls : MonoBehaviour
             }
         }
     }
-#endif
 }
