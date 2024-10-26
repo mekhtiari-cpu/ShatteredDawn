@@ -17,4 +17,4 @@ MonoBehaviour:
     slightly.
   isStackable: 0
   count: 0
-  temperatureNegation: 0.9
+  temperatureNegation: 0.4
