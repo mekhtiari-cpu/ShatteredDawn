@@ -5,14 +5,31 @@ using UnityEngine.SceneManagement;
 
 public class Player_Temperature_Manager : MonoBehaviour
 {
+    public static Player_Temperature_Manager instance { get; private set; }
+
     [SerializeField] TemperatureBar tempBar;
     [SerializeField] float temperature;
+    float baseDecayRate = 0.027f;
     [SerializeField] float temperatureDecayRate;
     [SerializeField] float tempScalar;
     [SerializeField] float waitInterval;
     [SerializeField] bool isNearWarmth;
 
     private IEnumerator coroutine;
+
+    private void Awake()
+    {
+        //Singleton
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
 
     void Start()
     {
@@ -24,6 +41,21 @@ public class Player_Temperature_Manager : MonoBehaviour
     {
         tempScalar = newTempScalar;
         isNearWarmth = state;
+    }
+
+    public void SetTempDecayRate(float newDecayRate)
+    {
+        temperatureDecayRate = newDecayRate;
+    }
+
+    public float GetDecayRate()
+    {
+        return temperatureDecayRate;
+    }
+
+    public void ResetDecayRate()
+    {
+        temperatureDecayRate = baseDecayRate;
     }
 
     IEnumerator ManageTemperature()

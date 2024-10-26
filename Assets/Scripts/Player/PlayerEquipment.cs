@@ -20,7 +20,7 @@ public class PlayerEquipment : MonoBehaviour
         else
         {
             instance = this;
-            //DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject);
         }
     }
 
@@ -41,6 +41,8 @@ public class PlayerEquipment : MonoBehaviour
         if (equippedClothing != null)
             Inventory.instance.AddItem(equippedClothing);
         equippedClothing = newClothing;
+        float oldDecayRate = Player_Temperature_Manager.instance.GetDecayRate();
+        Player_Temperature_Manager.instance.SetTempDecayRate(oldDecayRate * equippedClothing.temperatureNegation);
         Inventory.instance.RemoveItem(equippedClothing);
     }
 
@@ -74,6 +76,7 @@ public class PlayerEquipment : MonoBehaviour
     {
         Inventory.instance.AddItem(equippedClothing);
         equippedClothing = null;
+        Player_Temperature_Manager.instance.ResetDecayRate();
         UI_Manager.instance.UpdateEquippedItems();
     }
 }
