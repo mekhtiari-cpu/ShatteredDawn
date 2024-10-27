@@ -10,9 +10,17 @@ public class Player_Interact : MonoBehaviour
 
     private HashSet<Interactable> currentlyInteracting = new HashSet<Interactable>();
 
+    private float interactionCheckInterval = 0.1f;
+    private float timer = 0;
+
     void Update()
     {
-        DetectNearbyInteractables();
+        timer += Time.deltaTime;
+        if (timer >= interactionCheckInterval)
+        {
+            DetectNearbyInteractables();
+            timer = 0;
+        }
     }
 
     void DetectNearbyInteractables()

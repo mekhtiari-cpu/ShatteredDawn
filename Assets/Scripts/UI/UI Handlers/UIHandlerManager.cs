@@ -14,6 +14,28 @@ public class UIHandlerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.instance.UIHandler = this;
+        if (GameManager.instance != null)
+        {
+            GameManager.instance.UIHandler = this;
+        }
+        else
+        {
+            Debug.LogWarning("GameManager instance is null. UIHandlerManager could not initialize.");
+        }
+
+        if (dialogueUI == null) Debug.LogWarning("Dialogue UI Handler is not assigned.");
+        if (promptUI == null) Debug.LogWarning("Prompt UI Handler is not assigned.");
+        if (confirmUI == null) Debug.LogWarning("Confirmation UI Handler is not assigned.");
+        if (questUI == null) Debug.LogWarning("Quest UI Handler is not assigned.");
+
+        if (cursor == null)
+        {
+            Debug.LogWarning("Cursor GameObject is not assigned.");
+        }
+        else
+        {
+            cursor.SetActive(Cursor.lockState == CursorLockMode.Locked); // Or any initial state you'd like
+        }
+
     }
 }

@@ -74,7 +74,11 @@ public class DayNightCycle : MonoBehaviour
     }
     void Start()
     {
-        GameManager.instance.dayNightScript = this;
+        GameManager gm = GameManager.instance;
+        if (gm)
+        {
+            gm.dayNightScript = this;
+        }
 
         UpdateDayText();
 
@@ -170,10 +174,15 @@ public class DayNightCycle : MonoBehaviour
     void UpdateDayText()
     {
         BroadcastMessage("UpdateText", daysPassed + 1);
-        if(GameManager.instance.playerQuest)
+
+        GameManager gm = GameManager.instance;
+        if(gm)
         {
-            GameManager.instance.playerQuest.CheckQuestCompletionConditions();
-        }
+            if (gm.playerQuest)
+            {
+                gm.playerQuest.CheckQuestCompletionConditions();
+            }
+        }   
     }
 
     SkyboxGradient LerpGradient(SkyboxGradient a, SkyboxGradient b, float t)

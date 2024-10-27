@@ -20,6 +20,8 @@ public class Player_Controls : MonoBehaviour
     #region toggle player controls
     private void OnEnable()
     {
+        OnDisable(); // clear any existing for safety
+
         move = playerControls.Player.Move;
         playerControls.Enable();
 
@@ -37,6 +39,7 @@ public class Player_Controls : MonoBehaviour
         inventory.performed += ui_Manager.ToggleInventory;
         inventory.Enable();
     }
+
     private void OnDisable()
     {
         move.Disable();
@@ -50,7 +53,11 @@ public class Player_Controls : MonoBehaviour
     private void Awake()
     {
         pm = GetComponent<Player_Movement>();
+        if (pm == null) Debug.LogWarning("Player_Movement component not found.");
+
         ui_Manager = FindFirstObjectByType<UI_Manager>();
+        if (ui_Manager == null) Debug.LogWarning("UI_Manager not found.");
+
         playerControls = new PlayerControls();
     }
     void OnDebug(InputValue value)

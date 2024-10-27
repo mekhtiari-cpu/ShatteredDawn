@@ -34,27 +34,42 @@ public class Player_Mouse_Look : MonoBehaviour
 
     void CameraControls()
     {
-        mouseX = pc.mouseX.ReadValue<float>() * sensX * Time.deltaTime;
-        mouseY = pc.mouseY.ReadValue<float>() * sensY * Time.deltaTime;
+        // null check
+        if (pc != null)
+        {
+            mouseX = pc.mouseX.ReadValue<float>() * sensX * Time.deltaTime;
+            mouseY = pc.mouseY.ReadValue<float>() * sensY * Time.deltaTime;
+        }
+        else
+        {
+            Debug.LogWarning("Player_Controls component is missing.");
+        }
 
-        rotX -= mouseY;
-        rotX = Mathf.Clamp(rotX, -x_rot_limit, x_rot_limit);
-
-        cameraTransform.localRotation = Quaternion.Euler(rotX, 0, 0);
-        playerTransform.Rotate(Vector3.up * mouseX); 
+        // ensure float precision is finite for webGl
+        if (float.IsFinite(mouseX) && float.IsFinite(mouseY))
+        {
+            rotX -= mouseY;
+            rotX = Mathf.Clamp(rotX, -x_rot_limit, x_rot_limit);
+            cameraTransform.localRotation = Quaternion.Euler(rotX, 0, 0);
+            playerTransform.Rotate(Vector3.up * mouseX);
+        }
+        else
+        {
+            Debug.LogWarning("Non-finite mouse input detected.");
+        }
     }
 
     private void Start()
     {
         gm = GameManager.instance;
-        if( gm )
+        if (gm)
         {
-            if(gm.UIHandler)
+            if (gm.UIHandler)
             {
                 promptUI = gm.UIHandler.promptUI;
             }
         }
-        
+
         pc = GetComponent<Player_Controls>();
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -62,18 +77,41 @@ public class Player_Mouse_Look : MonoBehaviour
     // Perform a raycast to detect NPCs
     private void RaycastForNPC()
     {
-        RaycastHit hit;
-        // Cast a ray from the camera's position, pointing forward
-        if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, interactionDistance))
+        if(!promptUI)
         {
-            INPC npc = hit.collider.GetComponent<INPC>();
-            if (npc != null)
+            gm = GameManager.instance;
+            if (gm)
             {
-                currentNPC = npc;
-                // Display a prompt to the player
-                if(promptUI)
+                if (gm.UIHandler)
                 {
-                    promptUI.SetDisplayText("Press E to interact with " + npc.GetNPCType());
+                    promptUI = gm.UIHandler.promptUI;    
+                }
+            }
+        }
+
+        if (float.IsFinite(interactionDistance) && interactionDistance > 0)
+        {
+            RaycastHit hit;
+            // Cast a ray from the camera's position, pointing forward
+            if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, interactionDistance))
+            {
+                INPC npc = hit.collider.GetComponent<INPC>();
+                if (npc != null)
+                {
+                    currentNPC = npc;
+                    // Display a prompt to the player
+                    if (promptUI)
+                    {
+                        promptUI.SetDisplayText("Press E to interact with " + npc.GetNPCType());
+                    }
+                }
+                else
+                {
+                    currentNPC = null;
+                    if (promptUI)
+                    {
+                        promptUI.HideDisplay();
+                    }
                 }
             }
             else
@@ -83,14 +121,6 @@ public class Player_Mouse_Look : MonoBehaviour
                 {
                     promptUI.HideDisplay();
                 }
-            }
-        }
-        else
-        {
-            currentNPC = null;
-            if (promptUI)
-            {
-                promptUI.HideDisplay();
             }
         }
     }

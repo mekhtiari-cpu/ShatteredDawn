@@ -62,8 +62,12 @@ public class Player_Movement : MonoBehaviour
 
         //Apply movement to cc
         Vector3 moveVector = transform.right * moveDirection.x + transform.forward * moveDirection.z;
-        float magnitude = Mathf.Sqrt(Mathf.Pow(moveVector.x, 2) + Mathf.Pow(moveVector.z, 2)); 
-        cc.Move((moveVector/magnitude) * moveSpeed * Time.deltaTime);
+        float magnitude = moveVector.magnitude;
+
+        if (magnitude > 0)
+        {
+            cc.Move((moveVector / magnitude) * moveSpeed * Time.deltaTime);
+        }
         cc.Move(verticalVelocity * Time.deltaTime);
     }
 
@@ -82,7 +86,14 @@ public class Player_Movement : MonoBehaviour
     //Links the input values to their corresponding variables
     void LinkInputsToVariables()
     {
-        moveDirection = pc.move.ReadValue<Vector3>();
+        if (pc != null)
+        {
+            moveDirection = pc.move.ReadValue<Vector3>();
+        }
+        else
+        {
+            Debug.LogWarning("Player_Controls component is missing.");
+        }
     }
 
     void CheckIfGrounded()

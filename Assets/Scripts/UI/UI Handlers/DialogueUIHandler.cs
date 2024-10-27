@@ -18,14 +18,13 @@ public class DialogueUIHandler : UIHandler
             dialogueText = GetComponentInChildren<TextMeshProUGUI>();
         }
 
+        if (dialogueText == null)
+        {
+            Debug.LogWarning("DialogueUIHandler: No TextMeshProUGUI component found for dialogue text.");
+        }
+
         canvasGroup = GetComponent<CanvasGroup>();
         HideDialogue();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void SetDialogueText(string dialogue, BaseNPC nPC = null)
@@ -33,11 +32,13 @@ public class DialogueUIHandler : UIHandler
         if (hideDialogueCoroutine != null)
         {
             StopCoroutine(hideDialogueCoroutine);
+            hideDialogueCoroutine = null;
         }
+
         HideUI(false);
 
         speaker = nPC;
-        string prefix = speaker != null ? $"{speaker.npcName}: ": string.Empty;
+        string prefix = speaker != null ? $"{speaker.npcName}: " : string.Empty;
         dialogueText.text = prefix + dialogue;
 
         hideDialogueCoroutine = StartCoroutine(HideAfterTime());
@@ -52,5 +53,6 @@ public class DialogueUIHandler : UIHandler
     {
         yield return new WaitForSeconds(dialogueDisplayTime);
         HideDialogue();
+        hideDialogueCoroutine = null;
     }
 }

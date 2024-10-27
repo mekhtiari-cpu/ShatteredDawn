@@ -15,14 +15,13 @@ public class PromptUIHandler : UIHandler
             displayText = GetComponentInChildren<TextMeshProUGUI>();
         }
 
+        if (displayText == null)
+        {
+            Debug.LogWarning("PromptUIHandler: No TextMeshProUGUI component found for display text.");
+        }
+
         canvasGroup = GetComponent<CanvasGroup>();
         HideDisplay();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void SetDisplayText(string str)
