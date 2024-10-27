@@ -51,7 +51,7 @@ public class Player_Mouse_Look : MonoBehaviour
         {
             if(gm.UIHandler)
             {
-                promptUI = gm.UIHandler.promptUI;
+                this.promptUI = gm.UIHandler.promptUI;
             }
         }
         
@@ -62,6 +62,20 @@ public class Player_Mouse_Look : MonoBehaviour
     // Perform a raycast to detect NPCs
     private void RaycastForNPC()
     {
+        if(!promptUI)
+        {
+            if(GameManager.instance)
+            {
+                if(GameManager.instance.UIHandler)
+                {
+                    if(GameManager.instance.UIHandler.promptUI)
+                    {
+                        this.promptUI = GameManager.instance.UIHandler.promptUI;
+                    }
+                }
+               
+            }
+        }
         RaycastHit hit;
         // Cast a ray from the camera's position, pointing forward
         if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, interactionDistance))
@@ -71,7 +85,7 @@ public class Player_Mouse_Look : MonoBehaviour
             {
                 currentNPC = npc;
                 // Display a prompt to the player
-                if(promptUI)
+                if (promptUI)
                 {
                     promptUI.SetDisplayText("Press E to interact with " + npc.GetNPCType());
                 }
