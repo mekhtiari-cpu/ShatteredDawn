@@ -77,10 +77,6 @@ public class Player_Movement : MonoBehaviour
         {
             verticalVelocity.y += gravity * Time.deltaTime;
         }
-        else
-        {
-            verticalVelocity.y = 0;
-        }
     }
 
     //Links the input values to their corresponding variables
@@ -98,7 +94,7 @@ public class Player_Movement : MonoBehaviour
 
     void CheckIfGrounded()
     {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundMask);
+        isGrounded = cc.isGrounded;
     }
 
     public void Jump(InputAction.CallbackContext context)
