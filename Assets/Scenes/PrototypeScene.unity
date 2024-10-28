@@ -4463,6 +4463,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1889777303878608178, guid: 3dd899abb0f1c8b49a9caf9b3867a836, type: 3}
+      propertyPath: dayDuration
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 2267088361307484442, guid: 3dd899abb0f1c8b49a9caf9b3867a836, type: 3}
       propertyPath: m_Name
       value: DayNightCycle Obj
