@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        ResetAllQuestData();
         //Limit FPS + VSync
         QualitySettings.vSyncCount = 1;
         Application.targetFrameRate = 144;

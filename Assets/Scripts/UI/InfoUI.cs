@@ -8,8 +8,6 @@ public class InfoUI : MonoBehaviour
     [SerializeField] TMP_Text infoTitle;
     [SerializeField] TMP_Text infoDate;
     [SerializeField] TMP_Text infoData;
-
-
     public void DisplayInfo(Item item)
     {
         InfoItem infoItem = (InfoItem)item;
