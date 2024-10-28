@@ -14,6 +14,8 @@ public class Player_Temperature_Manager : MonoBehaviour
     [SerializeField] float tempScalar;
     [SerializeField] float waitInterval;
     [SerializeField] bool isNearWarmth;
+    [SerializeField] GameObject deathCamera;
+    [SerializeField] GameObject deathPanel;
 
     private IEnumerator coroutine;
 
@@ -95,6 +97,8 @@ public class Player_Temperature_Manager : MonoBehaviour
 
     public void Die()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        deathCamera.SetActive(true);
+        deathPanel.SetActive(true);
+        Destroy(this.gameObject);
     }
 }
