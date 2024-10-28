@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 388083253}
-  m_IndirectSpecularColor: {r: 0.18831615, g: 0.20530991, b: 0.29135233, a: 1}
+  m_IndirectSpecularColor: {r: 0.2088469, g: 0.32441622, b: 0.49762714, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -23057,6 +23057,14 @@ PrefabInstance:
     - target: {fileID: 3788818504024111298, guid: 153b8e03f3d6faf44833df23c86d14f3, type: 3}
       propertyPath: jumpHeight
       value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3788818504024111298, guid: 153b8e03f3d6faf44833df23c86d14f3, type: 3}
+      propertyPath: groundCheck
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3788818504024111298, guid: 153b8e03f3d6faf44833df23c86d14f3, type: 3}
+      propertyPath: gravityScale
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3788818504024111298, guid: 153b8e03f3d6faf44833df23c86d14f3, type: 3}
       propertyPath: groundCheckRadius

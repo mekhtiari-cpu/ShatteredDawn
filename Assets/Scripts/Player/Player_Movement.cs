@@ -13,10 +13,9 @@ public class Player_Movement : MonoBehaviour
 
     [SerializeField] float moveSpeed;
     [SerializeField] float gravity = -30f;
-    [SerializeField] float groundCheckRadius;
+    [SerializeField] float gravityScale;
     [SerializeField] float jumpHeight;
 
-    [SerializeField] Transform groundCheck;
     [SerializeField] Transform cameraTransform;
 
     [SerializeField] LayerMask groundMask;
@@ -60,22 +59,27 @@ public class Player_Movement : MonoBehaviour
             isJumping = false;
         }
 
+
         //Apply movement to cc
         Vector3 moveVector = transform.right * moveDirection.x + transform.forward * moveDirection.z;
         float magnitude = moveVector.magnitude;
 
-        if (magnitude > 0)
+        if (magnitude > 0 && !UI_Manager.instance.GetInventoryState())
         {
             cc.Move((moveVector / magnitude) * moveSpeed * Time.deltaTime);
         }
         cc.Move(verticalVelocity * Time.deltaTime);
+        
     }
 
     void ApplyGravity()
     {
         if (!isGrounded)
         {
-            verticalVelocity.y += gravity * Time.deltaTime;
+            if(verticalVelocity.y < 0)
+                verticalVelocity.y += gravity * Time.deltaTime*gravityScale;
+            else
+                verticalVelocity.y += gravity * Time.deltaTime;
         }
     }
 
@@ -107,10 +111,5 @@ public class Player_Movement : MonoBehaviour
     {
         cc = GetComponent<CharacterController>();
         pc = GetComponent<Player_Controls>();
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
     }
 }

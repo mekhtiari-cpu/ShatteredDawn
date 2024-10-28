@@ -45,17 +45,20 @@ public class Player_Mouse_Look : MonoBehaviour
             Debug.LogWarning("Player_Controls component is missing.");
         }
 
-        // ensure float precision is finite for webGl
-        if (float.IsFinite(mouseX) && float.IsFinite(mouseY))
+        if (!UI_Manager.instance.GetInventoryState())
         {
-            rotX -= mouseY;
-            rotX = Mathf.Clamp(rotX, -x_rot_limit, x_rot_limit);
-            cameraTransform.localRotation = Quaternion.Euler(rotX, 0, 0);
-            playerTransform.Rotate(Vector3.up * mouseX);
-        }
-        else
-        {
-            Debug.LogWarning("Non-finite mouse input detected.");
+            // ensure float precision is finite for webGl
+            if (float.IsFinite(mouseX) && float.IsFinite(mouseY))
+            {
+                rotX -= mouseY;
+                rotX = Mathf.Clamp(rotX, -x_rot_limit, x_rot_limit);
+                cameraTransform.localRotation = Quaternion.Euler(rotX, 0, 0);
+                playerTransform.Rotate(Vector3.up * mouseX);
+            }
+            else
+            {
+                Debug.LogWarning("Non-finite mouse input detected.");
+            }
         }
     }
 

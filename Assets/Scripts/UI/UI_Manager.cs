@@ -38,6 +38,11 @@ public class UI_Manager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
     }
 
+    public bool GetInventoryState()
+    {
+        return inventory.activeSelf;
+    }
+
     public void SelectItem(Item item)
     {
         if (selectedItemPanel.gameObject.activeSelf == true && item == selectedItem)
