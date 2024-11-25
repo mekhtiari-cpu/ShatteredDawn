@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Player_Movement : MonoBehaviour
 {
-    Player_Controls pc;
+    PlayerInputControls pc;
 
     [Header("Physics")]
     [SerializeField] Vector3 moveDirection;
@@ -110,6 +110,6 @@ public class Player_Movement : MonoBehaviour
     void InitialiseVariables()
     {
         cc = GetComponent<CharacterController>();
-        pc = GetComponent<Player_Controls>();
+        pc = GetComponent<PlayerInputControls>();
     }
 }

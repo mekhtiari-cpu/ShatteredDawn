@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player_Controls : MonoBehaviour
+public class PlayerInputControls : MonoBehaviour
 {
     [Header("Other Script References")]
-    [SerializeField] Player_Movement pm;
-    [SerializeField] UI_Manager ui_Manager;
+    private Player_Movement pm;
+    private UI_Manager ui_Manager;
+    private Weapon weapon;
 
     [Header("Controls")]
     [SerializeField] PlayerControls playerControls;
@@ -60,6 +61,7 @@ public class Player_Controls : MonoBehaviour
 
         playerControls = new PlayerControls();
     }
+
     void OnDebug(InputValue value)
     {
         if(DebugManager.instance)
