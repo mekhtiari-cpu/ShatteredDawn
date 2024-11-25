@@ -170,6 +170,7 @@ public class DayNightCycle : MonoBehaviour
         skyboxMaterial.SetColor("_TopColor", currentGradient.topColor);
         skyboxMaterial.SetColor("_MiddleColor", currentGradient.middleColor);
         skyboxMaterial.SetColor("_BottomColor", currentGradient.bottomColor);
+        directionalLight.color = currentGradient.middleColor;
     }
     void UpdateDayText()
     {
