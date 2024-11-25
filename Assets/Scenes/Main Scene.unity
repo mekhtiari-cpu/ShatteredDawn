@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 0.5
+  m_AmbientIntensity: 1.5
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.32636172, g: 0.3352632, b: 0.3584906, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: f6ccdf086fcd04348b325282845adddc, type: 2}
@@ -1471,6 +1471,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.543
       objectReference: {fileID: 0}
+    - target: {fileID: 1493958779014389460, guid: b9de24523a11d714db3851b5f0f9d527, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3da4702338c986b4c98aedb1d6a9e309, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2560,6 +2564,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.13
       objectReference: {fileID: 0}
+    - target: {fileID: 1493958779014389460, guid: b9de24523a11d714db3851b5f0f9d527, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3da4702338c986b4c98aedb1d6a9e309, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -32193,6 +32201,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.444
       objectReference: {fileID: 0}
+    - target: {fileID: 1493958779014389460, guid: b9de24523a11d714db3851b5f0f9d527, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3da4702338c986b4c98aedb1d6a9e309, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -45537,6 +45549,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.543
       objectReference: {fileID: 0}
+    - target: {fileID: 1493958779014389460, guid: b9de24523a11d714db3851b5f0f9d527, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3da4702338c986b4c98aedb1d6a9e309, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -45683,6 +45699,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.12
       objectReference: {fileID: 0}
+    - target: {fileID: 1493958779014389460, guid: b9de24523a11d714db3851b5f0f9d527, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3da4702338c986b4c98aedb1d6a9e309, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -71191,6 +71211,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.543
       objectReference: {fileID: 0}
+    - target: {fileID: 1493958779014389460, guid: b9de24523a11d714db3851b5f0f9d527, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3da4702338c986b4c98aedb1d6a9e309, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -79644,7 +79668,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: dff7ebe556d00fe4b985c48e43d0b230, type: 2}
+  - {fileID: 2100000, guid: 8f55d591995fcf549af38335f6ea734f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
