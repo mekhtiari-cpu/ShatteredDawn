@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 146819353}
-  m_IndirectSpecularColor: {r: 0.17345482, g: 0.32151335, b: 0.43176448, a: 1}
+  m_IndirectSpecularColor: {r: 0.018904166, g: 0.029433582, b: 0.04581586, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -52666,6 +52666,10 @@ PrefabInstance:
     - target: {fileID: 3801411727346241221, guid: 153b8e03f3d6faf44833df23c86d14f3, type: 3}
       propertyPath: tempDivisor
       value: 1.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 5337904218758670547, guid: 153b8e03f3d6faf44833df23c86d14f3, type: 3}
+      propertyPath: m_Name
+      value: Rain
       objectReference: {fileID: 0}
     - target: {fileID: 5470818463489808218, guid: 153b8e03f3d6faf44833df23c86d14f3, type: 3}
       propertyPath: m_Name
