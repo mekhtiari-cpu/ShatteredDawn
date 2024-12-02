@@ -6,7 +6,9 @@ public class EnemyVision : MonoBehaviour
 {
     public bool playerInView = false;
     [SerializeField] bool playerNotObstructed;
+    [SerializeField] Transform enemyTransform;
     [SerializeField] Transform playerTransform;
+    [SerializeField] Vector3 rayOffset;
 
     private void Update()
     {
@@ -15,8 +17,8 @@ public class EnemyVision : MonoBehaviour
 
     void RayCheck ()
     {
-        Ray ray = new Ray(transform.position, playerTransform.position - transform.position);
-        Debug.DrawRay(transform.position, playerTransform.position - transform.position, Color.red);
+        Ray ray = new Ray(enemyTransform.transform.position + rayOffset, (playerTransform.position) - (enemyTransform.transform.position));
+        Debug.DrawRay(enemyTransform.transform.position + rayOffset, (playerTransform.position) - (enemyTransform.transform.position), Color.red);
         RaycastHit[] hits = Physics.RaycastAll(ray, 100f);
         foreach(RaycastHit hit in hits)
         {
