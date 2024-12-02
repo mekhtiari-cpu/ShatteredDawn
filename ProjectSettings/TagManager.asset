@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Warmth
   - EnemyWalkable
+  - Obstruction
   layers:
   - Default
   - TransparentFX
