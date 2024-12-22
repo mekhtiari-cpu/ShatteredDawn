@@ -17,13 +17,10 @@ public class EnemyVision : MonoBehaviour
 
     void RayCheck ()
     {
-        Ray ray = new Ray(enemyTransform.transform.position + rayOffset, (playerTransform.position) - (enemyTransform.transform.position));
-        Debug.DrawRay(enemyTransform.transform.position + rayOffset, (playerTransform.position) - (enemyTransform.transform.position), Color.red);
-        RaycastHit[] hits = Physics.RaycastAll(ray, 100f);
-        foreach(RaycastHit hit in hits)
-        {
-            Debug.Log(hit.collider);
-        }
+        Ray ray = new Ray(enemyTransform.transform.position + rayOffset, (playerTransform.position) - (enemyTransform.transform.position + rayOffset));
+        Debug.DrawRay(enemyTransform.transform.position + rayOffset, (playerTransform.position) - (enemyTransform.transform.position + rayOffset), Color.red);
+        RaycastHit[] hits = Physics.RaycastAll(ray, 200f);
+        Debug.Log(hits.Length);
         if(hits.Length == 1 && hits[0].collider.CompareTag("Player"))
         {
             playerNotObstructed = true;

@@ -17,6 +17,7 @@ public class PlayerInputControls : MonoBehaviour
     public InputAction mouseX;
     public InputAction mouseY;
     public InputAction inventory;
+    public InputAction crouch;
 
     #region toggle player controls
     private void OnEnable()
@@ -39,6 +40,10 @@ public class PlayerInputControls : MonoBehaviour
         inventory = playerControls.Player.Inventory;
         inventory.performed += ui_Manager.ToggleInventory;
         inventory.Enable();
+
+        crouch = playerControls.Player.Crouch;
+        crouch.Enable();
+        crouch.performed += pm.Crouch;
     }
 
     private void OnDisable()

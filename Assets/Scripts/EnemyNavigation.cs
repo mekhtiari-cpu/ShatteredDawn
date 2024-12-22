@@ -55,7 +55,7 @@ public class EnemyNavigation : MonoBehaviour
                 if (Patrol())
                 {
                     myState = EnemyState.Scan;
-                    Debug.Log("Finished patrolling");
+                    //Debug.Log("Finished patrolling");
                 }
                 break;
 
@@ -69,7 +69,7 @@ public class EnemyNavigation : MonoBehaviour
                 if (Scan())
                 {
                     myState = EnemyState.Patrol;
-                    Debug.Log("Scanning");
+                    //Debug.Log("Scanning");
                 }
                 break;
 
@@ -162,13 +162,13 @@ public class EnemyNavigation : MonoBehaviour
         {
             if (Time.time >= endScanTime)
             {
-                Debug.Log("Ending scan: " + (Time.time >= endScanTime));
+                //Debug.Log("Ending scan: " + (Time.time >= endScanTime));
                 hasAlreadyScanned = false;
                 return true;
             }
             else
             {
-                Debug.Log("Scanning environment for: " + randomScanTime + "s ");
+                //Debug.Log("Scanning environment for: " + randomScanTime + "s ");
                 transform.Rotate(Vector3.up*scanSpeed, Space.World);
                 return false;
             }

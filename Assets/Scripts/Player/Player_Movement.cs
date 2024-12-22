@@ -11,7 +11,8 @@ public class Player_Movement : MonoBehaviour
     [SerializeField] Vector3 moveDirection;
     [SerializeField] Vector3 verticalVelocity;
 
-    [SerializeField] float moveSpeed;
+    [SerializeField] float[] moveSpeeds;
+    float moveSpeed;
     [SerializeField] float gravity = -30f;
     [SerializeField] float gravityScale;
     [SerializeField] float jumpHeight;
@@ -22,6 +23,7 @@ public class Player_Movement : MonoBehaviour
 
     [SerializeField] bool isGrounded = true;
     [SerializeField] bool isJumping = false;
+    [SerializeField] bool isCrouching = false;
 
     [SerializeField] CharacterController cc;
 
@@ -59,6 +61,16 @@ public class Player_Movement : MonoBehaviour
             isJumping = false;
         }
 
+        if(isCrouching)
+        {
+            moveSpeed = moveSpeeds[1];
+            transform.localScale = new Vector3(1.25f, 1f, 1.25f);
+        }
+        else
+        {
+            moveSpeed = moveSpeeds[0];
+            transform.localScale = new Vector3(1.25f, 1.5f, 1.25f);
+        }
 
         //Apply movement to cc
         Vector3 moveVector = transform.right * moveDirection.x + transform.forward * moveDirection.z;
@@ -104,6 +116,10 @@ public class Player_Movement : MonoBehaviour
     public void Jump(InputAction.CallbackContext context)
     {
         isJumping = true;
+    }
+    public void Crouch(InputAction.CallbackContext context)
+    {
+        isCrouching = !isCrouching;
     }
 
     //Initialises all of the reference variables at the start.
