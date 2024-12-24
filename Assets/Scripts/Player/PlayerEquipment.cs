@@ -6,9 +6,13 @@ public class PlayerEquipment : MonoBehaviour
 {
     public static PlayerEquipment instance { get; private set; }
 
+    [Header("Equipped Items")]
     [SerializeField] WeaponItem equippedWeapon;
     [SerializeField] UtilityItem equippedUtility;
     [SerializeField] ClothesItem equippedClothing;
+
+    [Header("Gameobject containers for equipped items")]
+    [SerializeField] GameObject utilityHolder;
 
     private void Awake()
     {
@@ -34,6 +38,7 @@ public class PlayerEquipment : MonoBehaviour
     public void SetUtility(UtilityItem newUtility)
     {
         equippedUtility = newUtility;
+        Instantiate(newUtility.utilityPrefab, utilityHolder.transform.position, Quaternion.identity, utilityHolder.transform);
         Inventory.instance.RemoveItem(equippedUtility);
     }
     public void SetClothing(ClothesItem newClothing)
@@ -69,6 +74,7 @@ public class PlayerEquipment : MonoBehaviour
     public void RemoveUtility()
     {
         equippedUtility = null;
+        Destroy(utilityHolder.transform.GetChild(0).gameObject);
         UI_Manager.instance.UpdateEquippedItems();
     }
 

@@ -16,3 +16,4 @@ MonoBehaviour:
   itemDescription: Finite source of heat, use to negate effects of the cold.
   isStackable: 1
   count: 0
+  utilityPrefab: {fileID: 7466093429093164199, guid: af53bf1a1b42c6745b69af43fbd7e46f, type: 3}

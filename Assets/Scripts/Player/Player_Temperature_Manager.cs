@@ -14,6 +14,7 @@ public class Player_Temperature_Manager : MonoBehaviour
     [SerializeField] float tempScalar;
     [SerializeField] float waitInterval;
     [SerializeField] bool isNearWarmth;
+    [SerializeField] bool isNearCampfire;
     [SerializeField] GameObject deathCamera;
     [SerializeField] GameObject deathPanel;
 
@@ -39,10 +40,16 @@ public class Player_Temperature_Manager : MonoBehaviour
         StartCoroutine(coroutine);
     }
 
-    public void SetWarmthStatus(bool state, float newTempScalar)
+    public void SetWarmthStatus(bool state, bool setIsNearCampfire, float newTempScalar)
     {
         tempScalar = newTempScalar;
+        isNearCampfire = setIsNearCampfire;
         isNearWarmth = state;
+    }
+
+    public bool GetIsNearCampfire()
+    {
+        return isNearCampfire;
     }
 
     public void SetTempDecayRate(float newDecayRate)
@@ -53,6 +60,11 @@ public class Player_Temperature_Manager : MonoBehaviour
     public float GetDecayRate()
     {
         return temperatureDecayRate;
+    }
+
+    public float GetTempScalar()
+    {
+        return tempScalar;
     }
 
     public void ResetDecayRate()
@@ -93,6 +105,11 @@ public class Player_Temperature_Manager : MonoBehaviour
 
         if(temperature <= 0)
             Die();
+    }
+
+    public bool GetIsNearWarmth()
+    {
+        return isNearWarmth;
     }
 
     public void Die()
