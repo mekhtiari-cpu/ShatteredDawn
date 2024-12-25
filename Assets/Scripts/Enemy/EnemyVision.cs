@@ -9,6 +9,7 @@ public class EnemyVision : MonoBehaviour
     [SerializeField] Transform enemyTransform;
     [SerializeField] Transform playerTransform;
     [SerializeField] Vector3 rayOffset;
+    [SerializeField] LayerMask validRayObjects;
 
     private void Update()
     {
@@ -19,8 +20,11 @@ public class EnemyVision : MonoBehaviour
     {
         Ray ray = new Ray(enemyTransform.transform.position + rayOffset, (playerTransform.position) - (enemyTransform.transform.position + rayOffset));
         Debug.DrawRay(enemyTransform.transform.position + rayOffset, (playerTransform.position) - (enemyTransform.transform.position + rayOffset), Color.red);
-        RaycastHit[] hits = Physics.RaycastAll(ray, 200f);
-        //Debug.Log(hits.Length);
+        RaycastHit[] hits = Physics.RaycastAll(ray, 200f, validRayObjects);
+        foreach(RaycastHit hit in hits)
+        {
+            Debug.Log("Hit: " + hit.collider.name + ", Length: "+hits.Length);
+        }
         if(hits.Length == 1 && hits[0].collider.CompareTag("Player"))
         {
             playerNotObstructed = true;

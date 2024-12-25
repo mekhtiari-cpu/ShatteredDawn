@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 388083253}
-  m_IndirectSpecularColor: {r: 0.12862186, g: 0.28530797, b: 0.27803266, a: 1}
+  m_IndirectSpecularColor: {r: 0.20086393, g: 0.34903145, b: 0.51726604, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -21494,6 +21494,9 @@ MonoBehaviour:
   enemyTransform: {fileID: 1070483147}
   playerTransform: {fileID: 1009211161}
   rayOffset: {x: 0, y: 2, z: 0}
+  validRayObjects:
+    serializedVersion: 2
+    m_Bits: 72
 --- !u!1 &1672190968
 GameObject:
   m_ObjectHideFlags: 0
@@ -22385,8 +22388,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   movementSpeeds:
-  - 60
   - 80
+  - 190
   - 0
   myState: 0
   patrolRadius: 260.8
@@ -22396,9 +22399,9 @@ MonoBehaviour:
   vision: {fileID: 1671345459}
   hasAlreadyScanned: 0
   minScanTime: 0.5
-  maxScanTime: 3.5
-  minScanSpeed: 0.6
-  maxScanSpeed: 0.1
+  maxScanTime: 3
+  minScanSpeed: 1
+  maxScanSpeed: 1.5
 --- !u!1 &1778564709
 GameObject:
   m_ObjectHideFlags: 0

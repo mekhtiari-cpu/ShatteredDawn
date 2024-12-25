@@ -29,6 +29,8 @@ public class EnemyNavigation : MonoBehaviour
     [SerializeField] float maxScanTime;
     [SerializeField] float minScanSpeed;
     [SerializeField] float maxScanSpeed;
+
+    int toPlayerOrRand;
     float scanSpeed;
     float randomScanTime;
     float endScanTime;
@@ -154,6 +156,7 @@ public class EnemyNavigation : MonoBehaviour
             hasAlreadyScanned = true;
             myNav.speed = movementSpeeds[2];
             randomScanTime = Random.Range(minScanTime, maxScanTime);
+            toPlayerOrRand = Random.Range(1, 101);
             scanSpeed = Random.Range(minScanSpeed, maxScanSpeed) * GetRandomDirection();
             endScanTime = Time.time + randomScanTime;
             return false;
@@ -169,7 +172,24 @@ public class EnemyNavigation : MonoBehaviour
             else
             {
                 //Debug.Log("Scanning environment for: " + randomScanTime + "s ");
-                transform.Rotate(Vector3.up*scanSpeed, Space.World);
+                
+                Debug.Log(toPlayerOrRand);
+                if(toPlayerOrRand % 2 == 0)
+                {
+                    transform.Rotate(Vector3.up * scanSpeed, Space.World);
+                }
+                else
+                {
+                    Debug.Log("Rotating towards player");
+                    Vector3 dirToPlayer = player.position - transform.position;
+
+                    dirToPlayer.y = 0;
+
+                    float rotationSpeed = 0.65f;
+                    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dirToPlayer), Time.deltaTime * rotationSpeed);
+
+                }
+
                 return false;
             }
         }
