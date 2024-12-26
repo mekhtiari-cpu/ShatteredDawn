@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EnemyVision : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class EnemyVision : MonoBehaviour
     [SerializeField] Transform playerTransform;
     [SerializeField] Vector3 rayOffset;
     [SerializeField] LayerMask validRayObjects;
+    [SerializeField] float rayRange;
+    [SerializeField] TMP_Text objectsHit;
 
     private void Update()
     {
@@ -18,26 +21,54 @@ public class EnemyVision : MonoBehaviour
 
     void RayCheck ()
     {
-        Ray ray = new Ray(enemyTransform.transform.position + rayOffset, (playerTransform.position) - (enemyTransform.transform.position + rayOffset));
-        Debug.DrawRay(enemyTransform.transform.position + rayOffset, (playerTransform.position) - (enemyTransform.transform.position + rayOffset), Color.red);
-        RaycastHit[] hits = Physics.RaycastAll(ray, 200f, validRayObjects);
-        foreach(RaycastHit hit in hits)
+        Vector3 dirToPlayer = (playerTransform.position) - (enemyTransform.transform.position + rayOffset);
+        Ray ray = new Ray(enemyTransform.transform.position + rayOffset, dirToPlayer.normalized * rayRange);
+        Debug.DrawRay(enemyTransform.transform.position + rayOffset, dirToPlayer.normalized * rayRange, Color.red);
+        RaycastHit[] hits = Physics.RaycastAll(ray, rayRange, validRayObjects);
+
+        string objectsHitText = "Objects hit: ";
+
+        foreach (RaycastHit hit in hits)
         {
-            Debug.Log("Hit: " + hit.collider.name + ", Length: "+hits.Length);
+            // Append the name of the object hit to the string
+            objectsHitText += hit.collider.name + ", ";
         }
-        if(hits.Length == 1 && hits[0].collider.CompareTag("Player"))
+
+        // Remove the trailing comma and space if there are any hits
+        if (hits.Length > 0)
         {
-            playerNotObstructed = true;
+            objectsHitText = objectsHitText.TrimEnd(',', ' ');
         }
         else
         {
-            playerNotObstructed = false;
+            objectsHitText += "None";
+        }
+
+        objectsHit.text = objectsHitText;
+
+        foreach (RaycastHit hit in hits)
+        {
+            Debug.Log("Hit: " + hit.collider.name + ", Length: "+hits.Length);
+        }
+
+        if (hits.Length > 0)
+        {
+            if (hits[0].collider.CompareTag("Player"))
+            {
+                playerNotObstructed = true;
+            }
+            else
+            {
+                playerNotObstructed = false;
+            }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
+        if(other.CompareTag("Player"))
+            Debug.Log(other.name);
+
         playerInView = other.CompareTag("Player") && playerNotObstructed;
     }
 }

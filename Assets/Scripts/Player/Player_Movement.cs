@@ -27,6 +27,9 @@ public class Player_Movement : MonoBehaviour
 
     [SerializeField] CharacterController cc;
 
+    [SerializeField] float crouchHeight;
+    [SerializeField] float standingHeight;
+
 
     // Start is called before the first frame update
     void Start()
@@ -64,12 +67,12 @@ public class Player_Movement : MonoBehaviour
         if(isCrouching)
         {
             moveSpeed = moveSpeeds[1];
-            transform.localScale = new Vector3(1.25f, 1f, 1.25f);
+            transform.localScale = new Vector3(1.25f, crouchHeight, 1.25f);
         }
         else
         {
             moveSpeed = moveSpeeds[0];
-            transform.localScale = new Vector3(1.25f, 1.5f, 1.25f);
+            transform.localScale = new Vector3(1.25f, standingHeight, 1.25f);
         }
 
         //Apply movement to cc

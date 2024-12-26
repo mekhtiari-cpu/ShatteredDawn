@@ -172,8 +172,6 @@ public class EnemyNavigation : MonoBehaviour
             else
             {
                 //Debug.Log("Scanning environment for: " + randomScanTime + "s ");
-                
-                Debug.Log(toPlayerOrRand);
                 if(toPlayerOrRand % 2 == 0)
                 {
                     transform.Rotate(Vector3.up * scanSpeed, Space.World);
