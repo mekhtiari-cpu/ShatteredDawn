@@ -8,11 +8,11 @@ public class Interactable : MonoBehaviour
 
     public virtual void Interact()
     {
-        //Debug.Log("Interacting with player");
+        Debug.Log(objectName + " is interacting with player");
     }
 
     public virtual void StopInteracting()
     {
-        Debug.Log("No longer interacting with player");
+        Debug.Log(objectName + " no longer interacting with player");
     }
 }

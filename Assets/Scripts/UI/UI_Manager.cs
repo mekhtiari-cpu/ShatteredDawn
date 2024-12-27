@@ -11,6 +11,7 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] SelectedItemPanel selectedItemPanel;
     [SerializeField] EquippedItemsUI equippedItemsUI;
     [SerializeField] InfoUI infoUI;
+    [SerializeField] CarUI carUI;
 
     Item selectedItem;
 
@@ -67,5 +68,10 @@ public class UI_Manager : MonoBehaviour
         inventory.SetActive(false);
         infoUI.gameObject.SetActive(true);
         infoUI.DisplayInfo(selectedItem);
+    }
+
+    public CarUI GetCarUI()
+    {
+        return carUI;
     }
 }

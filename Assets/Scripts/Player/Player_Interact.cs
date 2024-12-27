@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player_Interact : MonoBehaviour
 {
-
     [SerializeField] float interactionRadius;
     [SerializeField] LayerMask interactableLayer;
+    [SerializeField] BrokenCar brokenCar;
 
     private HashSet<Interactable> currentlyInteracting = new HashSet<Interactable>();
 
@@ -51,6 +52,13 @@ public class Player_Interact : MonoBehaviour
             }
         }
         currentlyInteracting = interactablesThisFrame;
+    }
+
+    public void ToggleCarStatusUI(InputAction.CallbackContext context)
+    {
+        Debug.Log("Toggling car status");
+        if(brokenCar.GetPlayerNearCar())
+            UI_Manager.instance.GetCarUI().ToggleCarInfoText();
     }
 
     private void OnDrawGizmosSelected()

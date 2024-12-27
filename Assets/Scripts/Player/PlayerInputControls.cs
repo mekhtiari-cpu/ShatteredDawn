@@ -9,6 +9,7 @@ public class PlayerInputControls : MonoBehaviour
     private Player_Movement pm;
     private UI_Manager ui_Manager;
     private Weapon weapon;
+    private Player_Interact pi;
 
     [Header("Controls")]
     [SerializeField] PlayerControls playerControls;
@@ -18,6 +19,7 @@ public class PlayerInputControls : MonoBehaviour
     public InputAction mouseY;
     public InputAction inventory;
     public InputAction crouch;
+    public InputAction interact;
 
     #region toggle player controls
     private void OnEnable()
@@ -44,6 +46,10 @@ public class PlayerInputControls : MonoBehaviour
         crouch = playerControls.Player.Crouch;
         crouch.Enable();
         crouch.performed += pm.Crouch;
+
+        interact = playerControls.Player.Interact;
+        interact.Enable();
+        interact.performed += pi.ToggleCarStatusUI;
     }
 
     private void OnDisable()
@@ -65,6 +71,8 @@ public class PlayerInputControls : MonoBehaviour
         if (ui_Manager == null) Debug.LogWarning("UI_Manager not found.");
 
         playerControls = new PlayerControls();
+
+        pi = GetComponent<Player_Interact>();
     }
 
     void OnDebug(InputValue value)
