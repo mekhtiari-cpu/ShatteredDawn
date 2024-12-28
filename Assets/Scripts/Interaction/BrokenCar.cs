@@ -13,6 +13,11 @@ public class BrokenCar : Interactable
     [SerializeField] bool hasReplacedHeadlights;
     [SerializeField] bool hasObtainedIgnitionKey;
 
+    private void Update()
+    {
+        //CloseUIIfPlayerFar();
+    }
+
     public override void Interact()
     {
         base.Interact();
@@ -59,6 +64,14 @@ public class BrokenCar : Interactable
     public bool GetPlayerNearCar()
     {
         return playerNearCar;
+    }
+
+    void CloseUIIfPlayerFar()
+    {
+        if(!playerNearCar)
+        {
+            UI_Manager.instance.GetCarUI().ToggleCarInfoText();
+        }
     }
 
     public string GetCarInfo()

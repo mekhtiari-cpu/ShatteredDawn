@@ -78,6 +78,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d2efcd2fbe4b7e47b66b4c827ca7fc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerQuest: {fileID: 0}
+  UIHandler: {fileID: 0}
+  dayNightScript: {fileID: 0}
+  inDebug: 0
 --- !u!114 &8108049882144507386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,5 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0d8928bc64acd94baebc8a355bbf3dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pc: {fileID: 0}
   inventory: {fileID: 0}
+  selectedItemPanel: {fileID: 0}
+  equippedItemsUI: {fileID: 0}
+  infoUI: {fileID: 0}
+  carUI: {fileID: 0}

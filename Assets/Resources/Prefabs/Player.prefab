@@ -169,7 +169,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5010647245420459086}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Misc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 426709716243833790}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Design
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5235,6 +5235,15 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  interact:
+    m_Name: Interact
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 9ba5db22-1d97-4c26-bb3b-70c05c65a1ba
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!114 &3788818504024111298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5263,6 +5272,8 @@ MonoBehaviour:
   isJumping: 0
   isCrouching: 0
   cc: {fileID: 8977392379539551453}
+  crouchHeight: 0.8
+  standingHeight: 1.5
 --- !u!114 &211525455236232758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5335,6 +5346,7 @@ MonoBehaviour:
   interactableLayer:
     serializedVersion: 2
     m_Bits: 8
+  brokenCar: {fileID: 0}
 --- !u!114 &3801411727346241221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5353,6 +5365,7 @@ MonoBehaviour:
   tempScalar: 0
   waitInterval: 1.5
   isNearWarmth: 0
+  isNearCampfire: 0
   deathCamera: {fileID: 0}
   deathPanel: {fileID: 0}
 --- !u!114 &9070237152309048391
@@ -5442,7 +5455,7 @@ GameObject:
   - component: {fileID: 7995498300906303171}
   - component: {fileID: 7549759696163247498}
   - component: {fileID: 6773958402169100435}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -5679,7 +5692,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5511029978176122705}
   - component: {fileID: 419904388225548538}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WeaponCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5763,7 +5776,7 @@ GameObject:
   - component: {fileID: 4127898625129362586}
   - component: {fileID: 5083924591166721730}
   - component: {fileID: 7240924499454390384}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5859,7 +5872,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8919536571285857694}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.96, y: -3.79, z: 0.91}
+  m_LocalPosition: {x: -6.78, y: -1.71, z: 8.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

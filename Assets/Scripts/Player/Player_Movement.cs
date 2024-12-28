@@ -67,12 +67,12 @@ public class Player_Movement : MonoBehaviour
         if(isCrouching)
         {
             moveSpeed = moveSpeeds[1];
-            transform.localScale = new Vector3(1.25f, crouchHeight, 1.25f);
+            transform.localScale = new Vector3(transform.localScale.x, crouchHeight, transform.localScale.z);
         }
         else
         {
             moveSpeed = moveSpeeds[0];
-            transform.localScale = new Vector3(1.25f, standingHeight, 1.25f);
+            transform.localScale = new Vector3(transform.localScale.x, standingHeight, transform.localScale.x);
         }
 
         //Apply movement to cc
