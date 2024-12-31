@@ -31,7 +31,7 @@ public class Weapon : MonoBehaviour
 
     [SerializeField] private Transform ui_HitMarker;
 
-    [SerializeField] private Image hitMarkerImage;
+    [SerializeField] private RawImage hitMarkerImage;
     [SerializeField] private float hitMarkerWait;
     public AudioClip hitMarkerSound;
 
@@ -43,7 +43,7 @@ public class Weapon : MonoBehaviour
     {
         player = GetComponent<PlayerController>();
         weaponParent = transform.Find("Weapons");
-        sfx = transform.Find("Sounds/Gun Shots").GetComponent<AudioSource>();
+        sfx = transform.Find("Sounds/GunShots").GetComponent<AudioSource>();
         Equip();
         anchor = currentEquipment.transform.Find("Anchors");
         stateAds = currentEquipment.transform.Find("States/Ads");
@@ -51,9 +51,9 @@ public class Weapon : MonoBehaviour
 
         loadOut.Initialize();
 
-        //ui_HitMarker = GameObject.Find("HUD/Hitmarker").transform;
-        //hitMarkerImage = ui_HitMarker.transform.Find("Image").GetComponent<Image>();
-        //hitMarkerImage.color = CLEARWHITE;
+        ui_HitMarker = GameObject.Find("HUD/HitMarker").transform;
+        hitMarkerImage = ui_HitMarker.transform.Find("Image").GetComponent<RawImage>();
+        hitMarkerImage.color = CLEARWHITE;
             
     }
 
@@ -246,12 +246,8 @@ public class Weapon : MonoBehaviour
             //Raycast
             RaycastHit temp_hit = new RaycastHit();
             if (Physics.Raycast(temp_spawnPoint.position, temp_Bloom, out temp_hit, 1000f, canBeShot))
-            {
-                GameObject newHole = Instantiate(bulletHolePrefab, temp_hit.point + temp_hit.normal * 0.001f, Quaternion.identity) as GameObject;
-                newHole.transform.LookAt(temp_hit.point + temp_hit.normal);
-
-                Destroy(newHole, 2f);
-
+            {              
+                // Change this to be layer for enemies
                 if (temp_hit.collider.gameObject.layer == 11)
                 {
                     // @note nathanael.hondi 25/11/24. Give Damage
@@ -261,7 +257,26 @@ public class Weapon : MonoBehaviour
                     sfx.PlayOneShot(hitMarkerSound);
                     hitMarkerWait = 1f;
                 }
-                    
+                else
+                {
+                    Vector3 bulletHolePosition = temp_hit.point + temp_hit.normal * 0.001f;
+
+                    // Align the bullet hole to the surface
+                    Quaternion bulletHoleRotation = Quaternion.LookRotation(temp_hit.normal);
+
+                    GameObject newHole = Instantiate(bulletHolePrefab, bulletHolePosition, bulletHoleRotation);
+
+                    // Optional: Parent to the hit object for dynamic surfaces
+                    newHole.transform.SetParent(temp_hit.collider.transform);
+
+                    // Destroy after 2 seconds
+                    // @note nathanael.hondi 31/12/24. Pooling for extra efficiency and less garbage collection
+                    Destroy(newHole, 2f);
+
+                    hitMarkerImage.color = Color.white;
+                    sfx.PlayOneShot(hitMarkerSound);
+                    hitMarkerWait = 1f;
+                }           
             }
         }
         //Sound
