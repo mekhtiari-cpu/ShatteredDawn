@@ -5426,7 +5426,7 @@ MonoBehaviour:
   ui_HitMarker: {fileID: 0}
   hitMarkerImage: {fileID: 0}
   hitMarkerWait: 0
-  hitMarkerSound: {fileID: 0}
+  hitMarkerSound: {fileID: 8300000, guid: 9ef04968513afd94bb32fc97bf45e194, type: 3}
 --- !u!114 &2455098124611979558
 MonoBehaviour:
   m_ObjectHideFlags: 0

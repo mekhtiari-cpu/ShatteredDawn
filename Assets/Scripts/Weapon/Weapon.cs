@@ -8,7 +8,6 @@ public class Weapon : MonoBehaviour
     public Gun loadOut;
     [HideInInspector] public Gun currentGunData;
 
-    private int currentIndex;
     public GameObject currentEquipment;
 
     public Transform weaponParent;
@@ -18,21 +17,20 @@ public class Weapon : MonoBehaviour
 
     private float currentCooldown;
     private bool isReloading;
-    public bool isSwitching;
     public bool pickUp;
 
     PlayerController player;
 
-    [SerializeField] private Transform anchor;
-    [SerializeField] private Transform stateAds;
-    [SerializeField] private Transform stateHip;
+    private Transform anchor;
+    private Transform stateAds;
+    private Transform stateHip;
 
     public AudioSource sfx;
 
-    [SerializeField] private Transform ui_HitMarker;
+    private Transform ui_HitMarker;
 
-    [SerializeField] private RawImage hitMarkerImage;
-    [SerializeField] private float hitMarkerWait;
+    private RawImage hitMarkerImage;
+    private float hitMarkerWait;
     public AudioClip hitMarkerSound;
 
     private Color CLEARWHITE = new Color(1, 1, 1, 0);
@@ -128,7 +126,6 @@ public class Weapon : MonoBehaviour
     #region Functions/Methods
     void Equip()
     {
-        //isSwitching = true;
         if (currentEquipment != null)
         {
             if (isReloading)
@@ -147,9 +144,6 @@ public class Weapon : MonoBehaviour
 
         currentEquipment = newEquipment;
         currentGunData = loadOut;
-
-
-        //isSwitching = false; //put into a function for animator
     }
     private void ChangeLayerRecursivly(GameObject target, int layer)
     {
@@ -272,19 +266,14 @@ public class Weapon : MonoBehaviour
                     // Destroy after 2 seconds
                     // @note nathanael.hondi 31/12/24. Pooling for extra efficiency and less garbage collection
                     Destroy(newHole, 2f);
-
-                    hitMarkerImage.color = Color.white;
-                    sfx.PlayOneShot(hitMarkerSound);
-                    hitMarkerWait = 1f;
                 }           
             }
         }
         //Sound
-        sfx.Stop();
         sfx.clip = currentGunData.gunShotSound;
         sfx.pitch = currentGunData.basepitch - currentGunData.pitchRandomisation + Random.Range(-currentGunData.pitchRandomisation, currentGunData.pitchRandomisation);
         sfx.volume = currentGunData.gunSoundVolume;
-        sfx.Play();
+        sfx.PlayOneShot(sfx.clip);
 
         //Gun FX
         if (player.firingState == playerFiringState.Ads)
