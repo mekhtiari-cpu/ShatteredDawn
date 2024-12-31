@@ -7,7 +7,7 @@ public class LoadingScreenManager : MonoBehaviour
 {
     private string currentActiveScene;
     private const string LOADINGSCENENAME = "Loading Scene";
-    private const string MAINMENUSCENE = "Main Menu";
+    private const string MAINMENUSCENE = "Main Scene";
 
     // Start is called before the first frame update
     void Start()
