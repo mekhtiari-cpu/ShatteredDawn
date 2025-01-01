@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     private LoadingScreenManager manager;
     private GameSettingsManager settings;
+    //private AchievementsManager achievements;
 
     void Start() 
     {
@@ -23,9 +24,14 @@ public class MainMenu : MonoBehaviour
         settings = GameSettingsManager.Instance;
         if (settings) 
         {
-            settings.gameObject.SetActive(true);
+            settings.transform.GetChild(0).gameObject.SetActive(true);
         } 
             
+    }
+
+    public void Achievements()
+    {
+        // not yet implemented
     }
   
 }
