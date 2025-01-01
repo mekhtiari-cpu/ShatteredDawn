@@ -95,10 +95,9 @@ public class BrokenCar : Interactable
     {
         string tireStatus = "• "+tiresReplaced+" Tire Replaced, " + (2-tiresReplaced) + " Remaining" + "\n";
         string batteryStatus = "• Battery Replaced: " + hasReplacedBattery + "\n";
-        string headlightsStatus = "• Headlights Replaced: " + hasReplacedHeadlights + "\n";
         string oilStatus = "• Has Filled Oil: " + hasFilledOil + "\n";
         string obtainedIgnitionStatus = "• Has Obtained Ignition Key: " + hasObtainedIgnitionKey + "\n";
-        string carInfo = tireStatus + "\n" + batteryStatus + "\n" + headlightsStatus + "\n" + oilStatus + "\n" + obtainedIgnitionStatus;
+        string carInfo = tireStatus + "\n" + batteryStatus + "\n" + oilStatus + "\n" + obtainedIgnitionStatus;
         return carInfo;
     }
 }
