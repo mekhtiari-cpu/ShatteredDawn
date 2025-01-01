@@ -4,5 +4,15 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 416d27656f7fa44db87c62c7001b378d
+  - enabled: 1
+    path: Assets/Scenes/DemoScene.unity
+    guid: 448551a8f4b9e144baa28aa461db331b
+  - enabled: 0
+    path: Assets/Scenes/Player Movement Test Scene.unity
+    guid: f146ab43aa728464eb0de25c0d41f878
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0
