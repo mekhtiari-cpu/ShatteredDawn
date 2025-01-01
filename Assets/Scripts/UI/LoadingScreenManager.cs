@@ -7,7 +7,7 @@ public class LoadingScreenManager : MonoBehaviour
 {
     private string currentActiveScene;
     private const string LOADINGSCENENAME = "Loading Scene";
-    private const string MAINMENUSCENE = "Main Scene";
+    private const string MAINMENUSCENE = "Main Menu";
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +37,8 @@ public class LoadingScreenManager : MonoBehaviour
             SceneManager.LoadScene(LOADINGSCENENAME, LoadSceneMode.Additive);
         }
 
+        CanvasGroup canvas = GetComponent<CanvasGroup>();
+        canvas.alpha = 1;
         // Begin async loading
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(newSceneName, LoadSceneMode.Additive);
         asyncLoad.allowSceneActivation = false;
@@ -54,6 +56,7 @@ public class LoadingScreenManager : MonoBehaviour
 
         // Switch the active scene
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(newSceneName));
+        canvas.alpha = 0;
 
         // Unload the previous active scene if applicable
         if (!string.IsNullOrEmpty(currentActiveScene) && currentActiveScene != LOADINGSCENENAME)

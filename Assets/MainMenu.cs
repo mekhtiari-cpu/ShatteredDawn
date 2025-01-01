@@ -5,9 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    private LoadingScreenManager manager;
+    private GameSettingsManager settings;
+
+    void Start() 
+    {
+        manager = FindObjectOfType<LoadingScreenManager>();
+    }
+
     public void PlayGame()
     {
-        SceneManager.LoadSceneAsync(2);
+        manager.LoadSceneWithTransition("Main Scene");
+    }
+
+    public void Settings()
+    {
+        settings = GameSettingsManager.Instance;
+        if (settings) 
+        {
+            settings.gameObject.SetActive(true);
+        } 
+            
     }
   
 }
