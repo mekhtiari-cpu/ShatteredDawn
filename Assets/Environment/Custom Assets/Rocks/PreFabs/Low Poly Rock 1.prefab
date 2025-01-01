@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a5d78973648b028448f6690f24b6c89c, type: 3}
       propertyPath: m_Name
-      value: LowPolyRock1 Variant
+      value: Low Poly Rock 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -63,8 +63,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a5d78973648b028448f6690f24b6c89c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5946411098497085312}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a5d78973648b028448f6690f24b6c89c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3887368434116235730}
   m_SourcePrefab: {fileID: 100100000, guid: a5d78973648b028448f6690f24b6c89c, type: 3}
---- !u!1 &6792708836702999249 stripped
+--- !u!1 &6004607410505629678 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a5d78973648b028448f6690f24b6c89c, type: 3}
   m_PrefabInstance: {fileID: 6887639292102869695}
@@ -75,7 +78,7 @@ MeshCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6792708836702999249}
+  m_GameObject: {fileID: 6004607410505629678}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -91,3 +94,27 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 289301614986012343, guid: a5d78973648b028448f6690f24b6c89c, type: 3}
+--- !u!205 &3887368434116235730
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6004607410505629678}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
