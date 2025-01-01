@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     private Weapon weaponScript;
     private PlayerInputControls inputControls;
     private Player_Mouse_Look mouseLook;
+    private float MaxHealth = 100;
+    public float CurrentHealth;
 
     #region Variables
     [Header("General Variables")]
@@ -61,7 +63,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        CurrentHealth = MaxHealth;
     }
 
     // Update is called once per frame
@@ -77,5 +79,11 @@ public class PlayerController : MonoBehaviour
     public UI_Manager GetUIManagerScript() { return ui_Manager; }
     public Weapon GetWeaponScript() { return weaponScript; }
     public PlayerInputControls GetPlayerInputControlsScript() { return inputControls; }
+    public void TakeDamage(float damage) {
+        CurrentHealth -= damage;
+        if (CurrentHealth <= 0) {
+            Player_Temperature_Manager.instance.Die();
+        }
+    }
 
 }
