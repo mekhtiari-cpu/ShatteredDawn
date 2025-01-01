@@ -143,8 +143,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skyboxMaterial: {fileID: 2100000, guid: f6ccdf086fcd04348b325282845adddc, type: 2}
   morningGradient:
-    topColor: {r: 0.17942327, g: 0.37136045, b: 0.3773585, a: 1}
-    middleColor: {r: 0.7960785, g: 0.97647053, b: 0.9572932, a: 1}
+    topColor: {r: 0.17771445, g: 0.484309, b: 0.49056602, a: 1}
+    middleColor: {r: 0.79607844, g: 0.9764706, b: 0.9055158, a: 1}
     bottomColor: {r: 0.23260942, g: 0.3614739, b: 0.4150943, a: 1}
   afternoonGradient:
     topColor: {r: 0.20392156, g: 0.39607844, b: 0.5960784, a: 1}
@@ -152,11 +152,11 @@ MonoBehaviour:
     bottomColor: {r: 0.5490196, g: 0.7019608, b: 0.8588236, a: 1}
   eveningGradient:
     topColor: {r: 0.4448558, g: 0.53798133, b: 0.6698113, a: 1}
-    middleColor: {r: 0.85882354, g: 0.49019608, b: 0.14901961, a: 1}
+    middleColor: {r: 0.9056604, g: 0.6145802, b: 0.34517622, a: 1}
     bottomColor: {r: 0.18298322, g: 0.26223102, b: 0.37735847, a: 1}
   nightGradient:
     topColor: {r: 0.09868277, g: 0.15202636, b: 0.20754716, a: 1}
-    middleColor: {r: 0.2693841, g: 0.3552888, b: 0.44339618, a: 1}
+    middleColor: {r: 0.11562831, g: 0.18788254, b: 0.26415092, a: 1}
     bottomColor: {r: 0.032698467, g: 0.072871335, b: 0.10377359, a: 1}
   directionalLight: {fileID: 6620569093647470105}
   dayDuration: 480

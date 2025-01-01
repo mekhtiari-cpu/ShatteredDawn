@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
-using static UnityEditor.Progress;
 
 public class Inventory : MonoBehaviour
 {
@@ -36,26 +35,17 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(Item newItem)
     {
-        bool foundItem = false;
+        InventoryItem existingItem = FindItem(newItem);
 
         //Check if item already exists within inventory and is stackable.
-        if (newItem.isStackable && inventory.Count > 0)
+        if (existingItem == null || !existingItem.item.isStackable)
         {
-            foreach (InventoryItem existingItem in inventory)
-            {
-                if(existingItem.item == newItem)
-                {
-                    foundItem = true;
-                    existingItem.count++;
-                    Debug.Log(existingItem.count);
-                    break;
-                }
-            }
-        }
-
-        if(!foundItem)
-        {
+            Debug.Log("Adding to inventory");
             inventory.Add(CreateNewInventoryItem(newItem));
+        }
+        else
+        {
+            existingItem.count++;
         }
 
         Debug.Log("Added " + newItem + " to inventory.");
@@ -69,8 +59,39 @@ public class Inventory : MonoBehaviour
         return newInventoryItem;
     }
 
-    public void RemoveItem()
+    //Search for a specific item in the inventory.
+    public InventoryItem FindItem(Item itemToFind)
     {
+        foreach (InventoryItem existingItem in inventory)
+        {
+            if (existingItem.item == itemToFind)
+            {
+                return existingItem;
+            }
+        }
+        return null;
+    }
 
+    //Remove an item from the inventory
+    public bool RemoveItem(Item itemToRemove)
+    {
+        InventoryItem existingItem = FindItem(itemToRemove);
+
+        if(existingItem == null)
+        {
+            return false;
+        }
+
+        existingItem.count--;
+
+        if(existingItem.count <= 0)
+        {
+            inventory.Remove(existingItem);
+            ui.GenerateInventorySlots();
+            return false;
+        }
+
+        ui.GenerateInventorySlots();
+        return true;
     }
 }

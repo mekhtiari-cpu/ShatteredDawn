@@ -1,7 +1,12 @@
 # ShatteredDawn
 
-Welcome to Shattered Dawn!
+Welcome to Shattered Dawn! A survival action-adventure game. You'll find yourself in a post-apocalypitic world,trying to survive the harsh environment! Accept quests, forage items, and gather clues to the past.
 
-This survival horror looks to merge FPS with crafting.
+Link to game: https://mekhtiari-cpu.github.io/ShatteredDawnBuilds/
 
-Stay tuned for more of this post-apocalyptic world!
+Controls:
+Walk: WASD
+Jump: Spacebar
+Inventory Toggle: Tab
+Interact: E
+

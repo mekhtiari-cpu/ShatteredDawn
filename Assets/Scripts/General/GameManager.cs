@@ -14,13 +14,15 @@ public class GameManager : MonoBehaviour
     public UIHandlerManager UIHandler;
     [Space]
     public DayNightCycle dayNightScript;
-
-#if UNITY_EDITOR
+    
     public bool inDebug;
     public const string QUESTFILEPATH = "QuestData";
 
+    // Reset Scriptable Objects so all quest appear as incomplete
+#if UNITY_EDITOR
     [MenuItem("Shattered Down/Quest Data/Reset All Quest Data")]
-    private static void ResetAllQuestData()
+#endif
+    public static void ResetAllQuestData()
     {
         Quest[] allQuests = Resources.LoadAll(QUESTFILEPATH).Cast<Quest>().ToArray();
 
@@ -30,10 +32,10 @@ public class GameManager : MonoBehaviour
             item.turnedIn = false;
         }
     }
-#endif
 
     private void Awake()
     {
+        ResetAllQuestData();
         //Limit FPS + VSync
         QualitySettings.vSyncCount = 1;
         Application.targetFrameRate = 144;

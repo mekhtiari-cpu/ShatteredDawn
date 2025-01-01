@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d56cf478124ebbc49b8596c94f19ad29, type: 3}
+  m_Name: Note Near Car
+  m_EditorClassIdentifier: 
+  itemName: Note Near Car
+  itemDescription: Final note from someone who died
+  isStackable: 0
+  count: 0
+  infoTitle: Note Near Car
+  infoDate: 00/00/0000
+  info: Testing note #1 - This will display lore in the final game.

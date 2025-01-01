@@ -13,9 +13,10 @@ public class Inventory_UI : MonoBehaviour
     {
         ClearSlots();
         inventoryItems = Inventory.instance.GetAllItems();
-        foreach(InventoryItem i in inventoryItems)
+        foreach (InventoryItem i in inventoryItems)
         {
             ItemSlot newItemSlot = itemSlotTemplate;
+            newItemSlot.item = i.item;
             newItemSlot.itemName = i.item.itemName;
             newItemSlot.count = i.count;
             Instantiate(newItemSlot, transform.position, Quaternion.identity, inventorySlotsParent.transform);

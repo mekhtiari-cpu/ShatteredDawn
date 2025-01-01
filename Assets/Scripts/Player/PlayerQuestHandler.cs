@@ -7,11 +7,23 @@ public class PlayerQuestHandler : MonoBehaviour
 
     private void Start()
     {
-        GameManager.instance.playerQuest = this;
+        if (GameManager.instance != null)
+        {
+            GameManager.instance.playerQuest = this;
+        }
+        else
+        {
+            Debug.LogWarning("GameManager instance is null. PlayerQuestHandler could not initialize.");
+        }
     }
 
     public void AddQuest(Quest newQuest)
     {
+        if (newQuest == null)
+        {
+            Debug.LogWarning("Attempted to add a null quest.");
+            return;
+        }
         if (!activeQuests.Contains(newQuest))
         {
             activeQuests.Add(newQuest);
@@ -22,7 +34,7 @@ public class PlayerQuestHandler : MonoBehaviour
                 GameManager.instance.playerQuest.CheckQuestCompletionConditions();
             }
 
-            GameManager.instance.UIHandler.questUI.UpdateDisplay(ref activeQuests);
+            UpdateQuestDisplay();
         }
     }
 
@@ -33,7 +45,7 @@ public class PlayerQuestHandler : MonoBehaviour
             quest.isCompleted = true;
             Debug.Log($"Quest completed: {quest.questName}");
 
-            GameManager.instance.UIHandler.questUI.UpdateDisplay(ref activeQuests);
+            UpdateQuestDisplay();
         }
     }
 
@@ -71,7 +83,7 @@ public class PlayerQuestHandler : MonoBehaviour
             activeQuests.Remove(quest);
             Debug.Log($"Quest removed: {quest.questName}");
 
-            GameManager.instance.UIHandler.questUI.UpdateDisplay(ref activeQuests);
+            UpdateQuestDisplay();
         }
     }
 
@@ -95,6 +107,18 @@ public class PlayerQuestHandler : MonoBehaviour
         foreach (Quest quest in activeQuests) 
         {
             CompleteQuest(quest);
+        }
+    }
+
+    private void UpdateQuestDisplay()
+    {
+        if (GameManager.instance.UIHandler != null && GameManager.instance.UIHandler.questUI != null)
+        {
+            GameManager.instance.UIHandler.questUI.UpdateDisplay(ref activeQuests);
+        }
+        else
+        {
+            Debug.LogWarning("UIHandler or questUI is null. Cannot update quest display.");
         }
     }
 }

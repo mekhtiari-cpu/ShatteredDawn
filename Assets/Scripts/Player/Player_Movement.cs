@@ -5,26 +5,30 @@ using UnityEngine.InputSystem;
 
 public class Player_Movement : MonoBehaviour
 {
-    Player_Controls pc;
+    PlayerInputControls pc;
 
     [Header("Physics")]
     [SerializeField] Vector3 moveDirection;
     [SerializeField] Vector3 verticalVelocity;
 
-    [SerializeField] float moveSpeed;
+    [SerializeField] float[] moveSpeeds;
+    float moveSpeed;
     [SerializeField] float gravity = -30f;
-    [SerializeField] float groundCheckRadius;
+    [SerializeField] float gravityScale;
     [SerializeField] float jumpHeight;
 
-    [SerializeField] Transform groundCheck;
     [SerializeField] Transform cameraTransform;
 
     [SerializeField] LayerMask groundMask;
 
     [SerializeField] bool isGrounded = true;
     [SerializeField] bool isJumping = false;
+    [SerializeField] bool isCrouching = false;
 
     [SerializeField] CharacterController cc;
+
+    [SerializeField] float crouchHeight;
+    [SerializeField] float standingHeight;
 
 
     // Start is called before the first frame update
@@ -36,12 +40,10 @@ public class Player_Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-#if UNITY_EDITOR
         if (GameManager.instance.inDebug)
         {
             return;
         }
-#endif
 
         LinkInputsToVariables();
         ApplyMovement();
@@ -62,50 +64,71 @@ public class Player_Movement : MonoBehaviour
             isJumping = false;
         }
 
+        if(isCrouching)
+        {
+            moveSpeed = moveSpeeds[1];
+            transform.localScale = new Vector3(transform.localScale.x, crouchHeight, transform.localScale.z);
+        }
+        else
+        {
+            moveSpeed = moveSpeeds[0];
+            transform.localScale = new Vector3(transform.localScale.x, standingHeight, transform.localScale.x);
+        }
+
         //Apply movement to cc
         Vector3 moveVector = transform.right * moveDirection.x + transform.forward * moveDirection.z;
-        float magnitude = Mathf.Sqrt(Mathf.Pow(moveVector.x, 2) + Mathf.Pow(moveVector.z, 2)); 
-        cc.Move((moveVector/magnitude) * moveSpeed * Time.deltaTime);
+        float magnitude = moveVector.magnitude;
+
+        if (magnitude > 0 && !UI_Manager.instance.GetInventoryState())
+        {
+            cc.Move((moveVector / magnitude) * moveSpeed * Time.deltaTime);
+        }
         cc.Move(verticalVelocity * Time.deltaTime);
+        
     }
 
     void ApplyGravity()
     {
         if (!isGrounded)
         {
-            verticalVelocity.y += gravity * Time.deltaTime;
-        }
-        else
-        {
-            verticalVelocity.y = 0;
+            if(verticalVelocity.y < 0)
+                verticalVelocity.y += gravity * Time.deltaTime*gravityScale;
+            else
+                verticalVelocity.y += gravity * Time.deltaTime;
         }
     }
 
     //Links the input values to their corresponding variables
     void LinkInputsToVariables()
     {
-        moveDirection = pc.move.ReadValue<Vector3>();
+        if (pc != null)
+        {
+            moveDirection = pc.move.ReadValue<Vector3>();
+        }
+        else
+        {
+            Debug.LogWarning("Player_Controls component is missing.");
+        }
     }
 
     void CheckIfGrounded()
     {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundMask);
+        isGrounded = cc.isGrounded;
     }
 
     public void Jump(InputAction.CallbackContext context)
     {
         isJumping = true;
     }
+    public void Crouch(InputAction.CallbackContext context)
+    {
+        isCrouching = !isCrouching;
+    }
 
     //Initialises all of the reference variables at the start.
     void InitialiseVariables()
     {
         cc = GetComponent<CharacterController>();
-        pc = GetComponent<Player_Controls>();
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+        pc = GetComponent<PlayerInputControls>();
     }
 }

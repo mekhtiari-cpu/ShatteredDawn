@@ -1,17 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player_Temperature_Manager : MonoBehaviour
 {
+    public static Player_Temperature_Manager instance { get; private set; }
+
     [SerializeField] TemperatureBar tempBar;
     [SerializeField] float temperature;
-    [SerializeField] float tempDivisor;
+    float baseDecayRate = 0.027f;
+    [SerializeField] float temperatureDecayRate;
     [SerializeField] float tempScalar;
     [SerializeField] float waitInterval;
     [SerializeField] bool isNearWarmth;
+    [SerializeField] bool isNearCampfire;
+    [SerializeField] GameObject deathCamera;
+    [SerializeField] GameObject deathPanel;
 
     private IEnumerator coroutine;
+
+    private void Awake()
+    {
+        //Singleton
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
 
     void Start()
     {
@@ -19,20 +40,46 @@ public class Player_Temperature_Manager : MonoBehaviour
         StartCoroutine(coroutine);
     }
 
-    public void SetWarmthStatus(bool state, float newTempScalar)
+    public void SetWarmthStatus(bool state, bool setIsNearCampfire, float newTempScalar)
     {
         tempScalar = newTempScalar;
+        isNearCampfire = setIsNearCampfire;
         isNearWarmth = state;
+    }
+
+    public bool GetIsNearCampfire()
+    {
+        return isNearCampfire;
+    }
+
+    public void SetTempDecayRate(float newDecayRate)
+    {
+        temperatureDecayRate = newDecayRate;
+    }
+
+    public float GetDecayRate()
+    {
+        return temperatureDecayRate;
+    }
+
+    public float GetTempScalar()
+    {
+        return tempScalar;
+    }
+
+    public void ResetDecayRate()
+    {
+        temperatureDecayRate = baseDecayRate;
     }
 
     IEnumerator ManageTemperature()
     {
-        float newTemp = temperature;
         while (true)
         {
+            float newTemp;
             if (!isNearWarmth)
             {
-                newTemp = temperature / tempDivisor;
+                newTemp = temperature - temperatureDecayRate;
             }
             else
             {
@@ -41,14 +88,34 @@ public class Player_Temperature_Manager : MonoBehaviour
 
             temperature = newTemp;
 
-            if (temperature < 0)
+            if (temperature <= 0)
+            {
                 temperature = 0;
+                break;
+            }
             if (temperature > 1)
+            {
                 temperature = 1;
+            }
 
             tempBar.SetValue(newTemp);
 
             yield return new WaitForSeconds(waitInterval);
         }
+
+        if(temperature <= 0)
+            Die();
+    }
+
+    public bool GetIsNearWarmth()
+    {
+        return isNearWarmth;
+    }
+
+    public void Die()
+    {
+        deathCamera.SetActive(true);
+        deathPanel.SetActive(true);
+        Destroy(this.gameObject);
     }
 }
