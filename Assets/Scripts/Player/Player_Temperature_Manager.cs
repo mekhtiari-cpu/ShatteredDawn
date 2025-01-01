@@ -19,6 +19,8 @@ public class Player_Temperature_Manager : MonoBehaviour
     [SerializeField] GameObject deathPanel;
 
     private IEnumerator coroutine;
+    private float elpasedTime;
+    private float healthDecay = 5;
 
     private void Awake()
     {
@@ -38,6 +40,22 @@ public class Player_Temperature_Manager : MonoBehaviour
     {
         coroutine = ManageTemperature();
         StartCoroutine(coroutine);
+    }
+
+    void Update()
+    {
+        if (temperature <= 0) 
+        {
+            if (elpasedTime > 0) 
+            {
+            elpasedTime -= Time.deltaTime;
+            }
+            else 
+            {
+            elpasedTime = healthDecay;
+            gameObject.SendMessage("TakeDamage", 5);
+            }
+        }
     }
 
     public void SetWarmthStatus(bool state, bool setIsNearCampfire, float newTempScalar)
@@ -91,7 +109,6 @@ public class Player_Temperature_Manager : MonoBehaviour
             if (temperature <= 0)
             {
                 temperature = 0;
-                break;
             }
             if (temperature > 1)
             {
@@ -103,8 +120,6 @@ public class Player_Temperature_Manager : MonoBehaviour
             yield return new WaitForSeconds(waitInterval);
         }
 
-        if(temperature <= 0)
-            Die();
     }
 
     public bool GetIsNearWarmth()
