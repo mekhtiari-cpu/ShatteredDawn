@@ -14,6 +14,7 @@ public class KeyItem : Item
         {
             Debug.Log("Returning " + itemName);
             Player_Interact.instance.ReturnKeyItem(this);
+            Inventory.instance.RemoveItem(this);
         }
         else
         {
