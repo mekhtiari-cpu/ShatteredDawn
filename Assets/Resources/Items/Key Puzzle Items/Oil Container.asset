@@ -16,3 +16,4 @@ MonoBehaviour:
   itemDescription: A metal container holding oil
   isStackable: 0
   count: 0
+  keyItemType: 2

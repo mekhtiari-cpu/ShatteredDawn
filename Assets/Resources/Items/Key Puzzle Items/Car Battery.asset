@@ -16,3 +16,4 @@ MonoBehaviour:
   itemDescription: An old car battery which can be used to replace a faulty one
   isStackable: 0
   count: 0
+  keyItemType: 1

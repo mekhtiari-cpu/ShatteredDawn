@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class Player_Interact : MonoBehaviour
 {
+    public static Player_Interact instance { get; private set; }
+
     [SerializeField] float interactionRadius;
     [SerializeField] LayerMask interactableLayer;
     [SerializeField] BrokenCar brokenCar;
@@ -13,6 +15,20 @@ public class Player_Interact : MonoBehaviour
 
     private float interactionCheckInterval = 0.1f;
     private float timer = 0;
+
+    private void Awake()
+    {
+        //Singleton
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
 
     void Update()
     {
@@ -59,6 +75,16 @@ public class Player_Interact : MonoBehaviour
         Debug.Log("Toggling car status");
         if(brokenCar.GetPlayerNearCar())
             UI_Manager.instance.GetCarUI().ToggleCarInfoText();
+    }
+
+    public bool PlayerNearCar()
+    {
+        return brokenCar.GetPlayerNearCar();
+    }
+
+    public void ReturnKeyItem(KeyItem keyItem)
+    {
+        brokenCar.ReturnKeyItem(keyItem);
     }
 
     private void OnDrawGizmosSelected()

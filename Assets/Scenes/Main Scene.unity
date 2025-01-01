@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 146819353}
-  m_IndirectSpecularColor: {r: 0.13171744, g: 0.28701344, b: 0.28979313, a: 1}
+  m_IndirectSpecularColor: {r: 0.17088464, g: 0.3190597, b: 0.42354202, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 4201399}
   - component: {fileID: 4201398}
   - component: {fileID: 4201397}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38466,7 +38466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8865371237698158708, guid: 4a9b8f6b4172453448a7dddca71afe13, type: 3}
       propertyPath: m_Name
-      value: pickup (1)
+      value: Tire Pickup
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -55537,7 +55537,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8865371237698158708, guid: 4a9b8f6b4172453448a7dddca71afe13, type: 3}
       propertyPath: m_Name
-      value: pickup
+      value: Battery Pickup
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -60930,7 +60930,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1301208317}
   - component: {fileID: 1301208318}
-  m_Layer: 0
+  - component: {fileID: 1301208319}
+  m_Layer: 3
   m_Name: Broken Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60974,6 +60975,27 @@ MonoBehaviour:
   hasFilledOil: 0
   hasReplacedHeadlights: 0
   hasObtainedIgnitionKey: 0
+--- !u!135 &1301208319
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301208316}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 6.03
+  m_Center: {x: -23.61, y: 8.11, z: -0.4}
 --- !u!1001 &1301891841
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73207,7 +73229,7 @@ GameObject:
   - component: {fileID: 1531176931}
   - component: {fileID: 1531176930}
   - component: {fileID: 1531176929}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83783,7 +83805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1752984309}
   - component: {fileID: 1752984310}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

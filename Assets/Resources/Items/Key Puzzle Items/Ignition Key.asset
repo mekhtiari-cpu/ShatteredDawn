@@ -16,3 +16,4 @@ MonoBehaviour:
   itemDescription: A tarnished ignition key
   isStackable: 0
   count: 0
+  keyItemType: 3

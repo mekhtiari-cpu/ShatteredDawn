@@ -31,6 +31,29 @@ public class BrokenCar : Interactable
         UI_Manager.instance.GetCarUI().ToggleCarInteractText();
     }
 
+    public void ReturnKeyItem(KeyItem keyItem)
+    {
+        switch(keyItem.keyItemType)
+        {
+            case KeyItem.KeyItemType.Tire:
+                ReplaceTire();
+                break;
+            case KeyItem.KeyItemType.Battery:
+                ReplaceBattery();
+                break;
+            case KeyItem.KeyItemType.OilCan:
+                FillOil();
+                break;
+            case KeyItem.KeyItemType.IgnitionKey:
+                ObtainedIgnitionKey();
+                break;
+            default:
+                Debug.Log("Invalid key item");
+                break;
+        }
+        
+    }
+
     public void ReplaceTire()
     {
         Debug.Log("1 Tire Replaced, " + tiresReplaced + " Remaining");
@@ -47,12 +70,6 @@ public class BrokenCar : Interactable
     {
         Debug.Log("Oil Filled");
         hasFilledOil = true;
-    }
-
-    public void ReplaceHeadlights()
-    {
-        Debug.Log("Has Replaced Headlights");
-        hasReplacedBattery = true;
     }
 
     public void ObtainedIgnitionKey()
