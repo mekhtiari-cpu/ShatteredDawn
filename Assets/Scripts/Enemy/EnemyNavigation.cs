@@ -101,7 +101,7 @@ public class EnemyNavigation : MonoBehaviour
 
         if (isPatrolling)
         {
-            if(Vector3.Distance(transform.position, randomPoint) <= 25)
+            if(Vector3.Distance(transform.position, randomPoint) <= 5f)
             {
                 isPatrolling = false;
                 isMovingTowardsPoint = false;
@@ -123,7 +123,7 @@ public class EnemyNavigation : MonoBehaviour
         else
         {
             randomPoint = (Random.insideUnitSphere * patrolRadius) + transform.position;
-            randomPoint.y = transform.position.y-3f;
+            randomPoint.y = transform.position.y;
             GameObject randomPointInstance = Instantiate(randomPointGo, randomPoint, Quaternion.identity);
 
             if (Physics.OverlapSphere(randomPointInstance.transform.position, 10, walkablePath).Length == 0)
