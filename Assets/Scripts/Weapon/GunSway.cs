@@ -27,6 +27,11 @@ public class GunSway : MonoBehaviour
 
     private void UpdateSway()
     {
+        if (UI_Manager.instance.GetInventoryState())
+        {
+            return;
+        }
+
         //controls use new input system
         float mouseInputY = Input.GetAxis("Mouse Y");
         float mouseInputX = Input.GetAxis("Mouse X");

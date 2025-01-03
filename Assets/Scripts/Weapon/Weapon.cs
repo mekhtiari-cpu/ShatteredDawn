@@ -58,8 +58,6 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Pause.paused) return;
-
         if (ui_HitMarker != null)
         {
             if (hitMarkerWait > 0)
@@ -71,7 +69,11 @@ public class Weapon : MonoBehaviour
                 hitMarkerImage.color = Color.Lerp(hitMarkerImage.color, CLEARWHITE, Time.deltaTime * 2f);
             }
         }
-            
+
+        if (UI_Manager.instance.GetInventoryState())
+        {
+            return;
+        }
         if (currentEquipment != null)
         {
             #region Semi Fire Mode
@@ -88,7 +90,7 @@ public class Weapon : MonoBehaviour
                     else
                     {
                         StartCoroutine(Reload(loadOut.reloadTime));
-                    }
+                    }                  
                 }
             }
             #endregion

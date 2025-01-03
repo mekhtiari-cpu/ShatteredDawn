@@ -89,19 +89,7 @@ public class Player_Mouse_Look : MonoBehaviour
         }
 
         CameraControls();
-        if (playerController.firingState == playerFiringState.HipFire)
-        {
-            Bob(movementCounter, 0.02f, 0.02f);
-            movementCounter += Time.deltaTime * 5;
-            weapon.localPosition = Vector3.MoveTowards(weapon.localPosition, targetWeaponBob, Time.deltaTime * 10f * 0.2f);
-
-        }
-        else if (playerController.firingState == playerFiringState.Ads)
-        {
-            Bob(movementCounter, 0.002f, 0.004f);
-            movementCounter += Time.deltaTime * 5;
-            weapon.localPosition = Vector3.MoveTowards(weapon.localPosition, targetWeaponBob, Time.deltaTime * 10f * 0.2f);
-        }
+        WeaponCameraControls();
         RaycastForNPC();
     }
     void LateUpdate()
@@ -112,6 +100,11 @@ public class Player_Mouse_Look : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (UI_Manager.instance.GetInventoryState())
+        {
+            return;
+        }
+
         float targetFOV = playerController.isAiming
             ? baseFOV * 0.7f // Adjust to the aiming FOV
             : baseFOV;       // Default FOV
@@ -155,7 +148,22 @@ public class Player_Mouse_Look : MonoBehaviour
             }
         }
     }
+    void WeaponCameraControls()
+    {
+        if (playerController.firingState == playerFiringState.HipFire)
+        {
+            Bob(movementCounter, 0.02f, 0.02f);
+            movementCounter += Time.deltaTime * 5;
+            weapon.localPosition = Vector3.MoveTowards(weapon.localPosition, targetWeaponBob, Time.deltaTime * 10f * 0.2f);
 
+        }
+        else if (playerController.firingState == playerFiringState.Ads)
+        {
+            Bob(movementCounter, 0.002f, 0.004f);
+            movementCounter += Time.deltaTime * 5;
+            weapon.localPosition = Vector3.MoveTowards(weapon.localPosition, targetWeaponBob, Time.deltaTime * 10f * 0.2f);
+        }
+    }
     void Bob(float tempZ, float tempYIntensisty, float tempXIntensity)
     {
         targetWeaponBob = weaponParentPosition + new Vector3(Mathf.Cos(tempZ) * tempXIntensity, Mathf.Sin(tempZ) * tempYIntensisty * 2, 0);

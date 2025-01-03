@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 146819353}
-  m_IndirectSpecularColor: {r: 0.18037689, g: 0.3282566, b: 0.45371333, a: 1}
+  m_IndirectSpecularColor: {r: 0.15238747, g: 0.3023301, b: 0.36279988, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -47135,6 +47135,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3801411727346241221, guid: 153b8e03f3d6faf44833df23c86d14f3, type: 3}
+      propertyPath: deathPanel
+      value: 
+      objectReference: {fileID: 1979854031}
     - target: {fileID: 5470818463489808218, guid: 153b8e03f3d6faf44833df23c86d14f3, type: 3}
       propertyPath: m_Name
       value: Player
@@ -51073,10 +51077,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6008942091494583928, guid: 2796de21e4912af4daa09afb173cd3db, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8248274323030367395, guid: 2796de21e4912af4daa09afb173cd3db, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8360994531309925525, guid: 2796de21e4912af4daa09afb173cd3db, type: 3}
@@ -56644,6 +56644,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 429084, guid: 1bc3a967e1e743b41b30f111c58ba985, type: 3}
   m_PrefabInstance: {fileID: 1978810323}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1979854031 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6148741321454022637, guid: 2796de21e4912af4daa09afb173cd3db, type: 3}
+  m_PrefabInstance: {fileID: 1822898776}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1982559566
 PrefabInstance:
