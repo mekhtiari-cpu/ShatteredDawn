@@ -7,11 +7,15 @@ public class EnemyNavigation : MonoBehaviour
 {
     [Header("General Variables")]
     NavMeshAgent myNav;
-    Animator animator;
     [SerializeField] GameObject randomPointGo;
     [SerializeField] Transform player;
     [SerializeField] LayerMask walkablePath;
     [SerializeField] float[] movementSpeeds;
+
+    Animator animator;
+    private AnimatorClipInfo[] animatorinfo;
+    [SerializeField] private string current_animation;
+
 
     enum EnemyState { Patrol, Chase, Scan}
     [SerializeField] EnemyState myState = EnemyState.Patrol;
@@ -43,17 +47,29 @@ public class EnemyNavigation : MonoBehaviour
         myState = EnemyState.Patrol;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        animatorinfo = animator.GetCurrentAnimatorClipInfo(0);
+        current_animation = animatorinfo[0].clip.name;
+        if(current_animation == "Hit")
+        {
+            return;
+        }
+
         HandleState();
     }
 
     public void Die()
     {
-
+        animator.SetInteger("rand",Random.Range(1, 3));
+        animator.SetBool("isDead", true);
+        Destroy(gameObject, 5f);
     }
 
-
+    public void Hit()
+    {
+        animator.SetTrigger("Hit");
+    }
 
     //Based on enemy state, behave accordingly
     void HandleState()
@@ -88,6 +104,8 @@ public class EnemyNavigation : MonoBehaviour
                 Debug.Log("Default");
                 break;
         }
+
+        animator.SetBool("isWalking", myState == EnemyState.Patrol || myState == EnemyState.Chase);
     }
 
     //Constantly check whether the player is in the enemy's vision
