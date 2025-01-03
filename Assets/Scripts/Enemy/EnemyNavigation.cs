@@ -7,6 +7,7 @@ public class EnemyNavigation : MonoBehaviour
 {
     [Header("General Variables")]
     NavMeshAgent myNav;
+    Animator animator;
     [SerializeField] GameObject randomPointGo;
     [SerializeField] Transform player;
     [SerializeField] LayerMask walkablePath;
@@ -38,6 +39,7 @@ public class EnemyNavigation : MonoBehaviour
     void Start()
     {
         myNav = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
         myState = EnemyState.Patrol;
     }
 
@@ -45,6 +47,13 @@ public class EnemyNavigation : MonoBehaviour
     {
         HandleState();
     }
+
+    public void Die()
+    {
+
+    }
+
+
 
     //Based on enemy state, behave accordingly
     void HandleState()
