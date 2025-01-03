@@ -804,9 +804,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6232110121612679658}
   - component: {fileID: 5839966393794550633}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: mixamorig:Head
-  m_TagString: Enemy
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1151,7 +1151,7 @@ GameObject:
   - component: {fileID: 1115128724904544746}
   - component: {fileID: 1840150391661098368}
   - component: {fileID: 376764196411221694}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Zombie Idle
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1165,7 +1165,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7921240314299885267}
-  m_LocalRotation: {x: -0, y: 0.9595717, z: -0, w: 0.2814644}
+  m_LocalRotation: {x: 0, y: 0.95957226, z: 0, w: 0.2814624}
   m_LocalPosition: {x: -117.06464, y: 2.499999, z: 175.20673}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

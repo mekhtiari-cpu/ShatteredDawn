@@ -244,12 +244,21 @@ public class Weapon : MonoBehaviour
             if (Physics.Raycast(temp_spawnPoint.position, temp_Bloom, out temp_hit, 1000f, canBeShot))
             {              
                 // Change this to be layer for enemies
-                if (temp_hit.collider.gameObject.layer == 11)
+                if (temp_hit.collider.gameObject.tag == "Enemy")
                 {
-                    // @note nathanael.hondi 25/11/24. Give Damage
+                    temp_hit.collider.gameObject.SendMessage("TakeDamage", currentGunData.damage);
 
                     //Hit Marker
                     hitMarkerImage.color = Color.white;
+                    sfx.PlayOneShot(hitMarkerSound);
+                    hitMarkerWait = 1f;
+                }
+                else if(temp_hit.collider.gameObject.tag == "Head")
+                {
+                    temp_hit.collider.gameObject.GetComponentInParent<HealthManager>().TakeDamage(currentGunData.damage * 10);
+
+                    //Hit Marker
+                    hitMarkerImage.color = Color.red;
                     sfx.PlayOneShot(hitMarkerSound);
                     hitMarkerWait = 1f;
                 }

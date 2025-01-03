@@ -9,6 +9,7 @@ TagManager:
   - Obstruction
   - AimAssist
   - Enemy
+  - Head
   layers:
   - Default
   - TransparentFX

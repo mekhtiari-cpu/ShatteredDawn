@@ -62,13 +62,13 @@ public class EnemyNavigation : MonoBehaviour
     public void Die()
     {
         animator.SetInteger("rand",Random.Range(1, 3));
-        animator.SetBool("isDead", true);
+        animator.SetBool("IsDead", true);
         Destroy(gameObject, 5f);
     }
 
     public void Hit()
     {
-        animator.SetTrigger("Hit");
+        animator.Play("Hit");
     }
 
     //Based on enemy state, behave accordingly

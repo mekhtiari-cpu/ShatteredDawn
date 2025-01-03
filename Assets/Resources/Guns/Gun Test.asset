@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 1
   name: Test Gun
-  prefab: {fileID: 501184178058379290, guid: 6fbeedd64ceadd64a955568df187fd46, type: 3}
+  prefab: {fileID: 501184178058379290, guid: a3c6ec9067b85c348a23767c0d7114c3, type: 3}
   displayPrefab: {fileID: 0}
   gunType: 5
   firingMode: 1
