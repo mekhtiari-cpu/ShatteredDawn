@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public abstract class Item : ScriptableObject
 {
+    public int itemId;
     [SerializeField] public string itemName;
     [SerializeField] public string itemDescription;
     [SerializeField] public bool isStackable;

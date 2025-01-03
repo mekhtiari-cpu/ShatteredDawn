@@ -85,12 +85,12 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _BottomColor: {r: 0.41916323, g: 0.5622232, b: 0.6767148, a: 1}
+    - _BottomColor: {r: 0.23300493, g: 0.3618995, b: 0.41564894, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _InnerColor: {r: 0.8, g: 0.8, b: 0.8, a: 0}
-    - _MiddleColor: {r: 0.7960785, g: 0.9302279, b: 0.9473504, a: 1}
+    - _MiddleColor: {r: 0.79607844, g: 0.97637254, b: 0.9056045, a: 1}
     - _OuterColor: {r: 0.5, g: 0.5, b: 0.5, a: 0}
-    - _TopColor: {r: 0.19316603, g: 0.4322887, b: 0.55277556, a: 1}
+    - _TopColor: {r: 0.1777472, g: 0.4841987, b: 0.49069792, a: 1}
     - _Up: {r: 0, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

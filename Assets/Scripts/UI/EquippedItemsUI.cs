@@ -11,7 +11,7 @@ public class EquippedItemsUI : MonoBehaviour
 
     public void SetEquipmentUI()
     {
-        WeaponItem newWeapon = PlayerEquipment.instance.GetWeapon();
+        Gun newWeapon = PlayerEquipment.instance.GetWeapon();
         UtilityItem newUtility = PlayerEquipment.instance.GetUtility();
         ClothesItem newClothing = PlayerEquipment.instance.GetClothing();
 

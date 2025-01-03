@@ -42,12 +42,6 @@ public class Weapon : MonoBehaviour
         player = GetComponent<PlayerController>();
         weaponParent = transform.Find("Weapons");
         sfx = transform.Find("Sounds/GunShots").GetComponent<AudioSource>();
-        Equip();
-        anchor = currentEquipment.transform.Find("Anchors");
-        stateAds = currentEquipment.transform.Find("States/Ads");
-        stateHip = currentEquipment.transform.Find("States/Hip");
-
-        loadOut.Initialize();
 
         ui_HitMarker = GameObject.Find("HUD/HitMarker").transform;
         hitMarkerImage = ui_HitMarker.transform.Find("Image").GetComponent<RawImage>();
@@ -126,7 +120,7 @@ public class Weapon : MonoBehaviour
         }
     }
     #region Functions/Methods
-    void Equip()
+    public void Equip()
     {
         if (currentEquipment != null)
         {
@@ -146,6 +140,20 @@ public class Weapon : MonoBehaviour
 
         currentEquipment = newEquipment;
         currentGunData = loadOut;
+
+        anchor = currentEquipment.transform.Find("Anchors");
+        stateAds = currentEquipment.transform.Find("States/Ads");
+        stateHip = currentEquipment.transform.Find("States/Hip");
+
+        loadOut.Initialize();
+    }
+    public void DropWeapon()
+    {
+        if (currentEquipment != null)
+        {
+            loadOut = null;
+            currentGunData = null;
+        }
     }
     private void ChangeLayerRecursivly(GameObject target, int layer)
     {
@@ -344,11 +352,6 @@ public class Weapon : MonoBehaviour
         }
     }
     #endregion
-
-    private void TakeDamage(int damage)
-    {
-        // @note nathanael.hondi 25/11/24. Update player health
-    }
 
     public void RefreshAmmo(Text ammoText)
     {

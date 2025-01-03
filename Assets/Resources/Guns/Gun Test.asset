@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Gun Test
   m_EditorClassIdentifier: 
   itemId: 1
-  name: Test Gun
+  itemName: Pistol
+  itemDescription: Test Pistol
+  isStackable: 0
+  count: 0
   prefab: {fileID: 501184178058379290, guid: a3c6ec9067b85c348a23767c0d7114c3, type: 3}
   displayPrefab: {fileID: 0}
   gunType: 5

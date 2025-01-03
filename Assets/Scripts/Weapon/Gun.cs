@@ -10,12 +10,10 @@ public enum GunTypes
     AssauultRifle, SubmachhineGun, Shotgun, MachineGun, SniperRifle, Pistol, Explosive
 }
 
-[CreateAssetMenu(fileName = "New Gun", menuName = "Gun")]
-public class Gun : ScriptableObject
+[CreateAssetMenu(fileName = "New Weapon Item", menuName = "Item/Equipable/Weapon")]
+public class Gun : EquipableItem
 {
     [Header("General")]
-    public int itemId;
-    public string name;
     public GameObject prefab;
     public GameObject displayPrefab;
     public GunTypes gunType;
@@ -83,5 +81,12 @@ public class Gun : ScriptableObject
     public int GetClip()
     {
         return clip;
+    }
+
+    public override void EquipItem()
+    {
+        Debug.Log("Now wielding " + itemName);
+        PlayerEquipment.instance.SetWeapon(this);
+        UI_Manager.instance.UpdateEquippedItems();
     }
 }

@@ -7,7 +7,7 @@ public class PlayerEquipment : MonoBehaviour
     public static PlayerEquipment instance { get; private set; }
 
     [Header("Equipped Items")]
-    [SerializeField] WeaponItem equippedWeapon;
+    [SerializeField] Gun equippedWeapon;
     [SerializeField] UtilityItem equippedUtility;
     [SerializeField] ClothesItem equippedClothing;
 
@@ -28,12 +28,15 @@ public class PlayerEquipment : MonoBehaviour
         }
     }
 
-    public void SetWeapon(WeaponItem newWeapon)
+    public void SetWeapon(Gun newWeapon)
     {
         if (equippedWeapon != null)
             Inventory.instance.AddItem(equippedWeapon);
         equippedWeapon = newWeapon;
         Inventory.instance.RemoveItem(equippedWeapon);
+        Weapon weaponScript = GetComponent<Weapon>();
+        weaponScript.loadOut = newWeapon;
+        weaponScript.Equip();
     }
     public void SetUtility(UtilityItem newUtility)
     {
@@ -51,7 +54,7 @@ public class PlayerEquipment : MonoBehaviour
         Inventory.instance.RemoveItem(equippedClothing);
     }
 
-    public WeaponItem GetWeapon()
+    public Gun GetWeapon()
     {
         return equippedWeapon;
     }
@@ -69,6 +72,8 @@ public class PlayerEquipment : MonoBehaviour
         Inventory.instance.AddItem(equippedWeapon);
         equippedWeapon = null;
         UI_Manager.instance.UpdateEquippedItems();
+        Weapon weaponScript = GetComponent<Weapon>();
+        weaponScript.DropWeapon();
     }
 
     public void RemoveUtility()
