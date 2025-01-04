@@ -14,12 +14,7 @@ public class EnemyVision : MonoBehaviour
     [SerializeField] float rayRange;
     [SerializeField] TMP_Text objectsHit;
 
-    private void Update()
-    {
-        RayCheck();
-    }
-
-    void RayCheck ()
+    bool RayCheck ()
     {
         Vector3 dirToPlayer = (playerTransform.position) - (enemyTransform.transform.position + rayOffset);
         Ray ray = new Ray(enemyTransform.transform.position + rayOffset, dirToPlayer.normalized * rayRange);
@@ -52,19 +47,23 @@ public class EnemyVision : MonoBehaviour
             if (hits[0].collider.CompareTag("Player"))
             {
                 playerNotObstructed = true;
+                return true;
             }
             else
             {
                 playerNotObstructed = false;
+                return false;
             }
+        }
+        else
+        {
+            return false;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
-            Debug.Log(other.name);
-
-        playerInView = other.CompareTag("Player") && playerNotObstructed;
+            playerInView = RayCheck();
     }
 }
