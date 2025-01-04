@@ -101,7 +101,16 @@ public class Player_Temperature_Manager : MonoBehaviour
             }
             else
             {
-                newTemp = temperature * tempScalar;
+                if(temperature <= 0)
+                {
+                    newTemp = temperature + 0.01f;
+                }
+                else
+                {
+                    float missingTemperature = 1 - temperature;
+                    float recoveryRate = tempScalar * missingTemperature;
+                    newTemp = temperature + recoveryRate;
+                }
             }
 
             temperature = newTemp;
@@ -115,7 +124,7 @@ public class Player_Temperature_Manager : MonoBehaviour
                 temperature = 1;
             }
 
-            tempBar.SetValue(newTemp);
+            tempBar.SetValue(temperature);
 
             yield return new WaitForSeconds(waitInterval);
         }

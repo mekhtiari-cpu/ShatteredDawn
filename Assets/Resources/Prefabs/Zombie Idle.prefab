@@ -919,8 +919,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.21
-  m_Center: {x: 0, y: 0.16, z: 0}
+  m_Radius: 0.2666277
+  m_Center: {x: 8.774888e-11, y: 0.16, z: 6.8032635e-10}
 --- !u!1 &5181476735820667452
 GameObject:
   m_ObjectHideFlags: 0
@@ -1246,7 +1246,7 @@ Transform:
   - {fileID: 3275316606026812341}
   - {fileID: 672767241740247508}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 147.305, z: 0}
 --- !u!95 &3630285972270419361
 Animator:
@@ -1311,7 +1311,7 @@ MonoBehaviour:
     m_Bits: 512
   movementSpeeds:
   - 1
-  - 7.5
+  - 10
   - 0
   hit: {fileID: -203655887218126122, guid: 98cd082ab2a08d048abe4a362898b883, type: 3}
   isStaggered: 0
