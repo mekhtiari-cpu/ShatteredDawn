@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 196385092470413143}
   - component: {fileID: 141235896836342574}
   - component: {fileID: 6817681957416367150}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Low Poly Rock 2 (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8444338669897855847}
   - component: {fileID: 679730909278686048}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 7557711836107940557}
   - component: {fileID: 7877592613773717951}
   - component: {fileID: 90780389351335294}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5040,7 +5040,7 @@ GameObject:
   - component: {fileID: 4589898796592134028}
   - component: {fileID: 9061857061227667403}
   - component: {fileID: 7493841177160615766}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Low Poly Rock 2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5146,7 +5146,7 @@ GameObject:
   - component: {fileID: 2218605611043749830}
   - component: {fileID: 5379344547189065919}
   - component: {fileID: 4461126101182798530}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Stick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5248,7 +5248,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8439505233856677579}
-  m_Layer: 0
+  - component: {fileID: 8534453148215382829}
+  - component: {fileID: 8278977444148860118}
+  m_Layer: 3
   m_Name: Campfire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5262,7 +5264,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3719875273775468705}
-  m_LocalRotation: {x: -0, y: -0, z: -0.026498081, w: 0.9996489}
+  m_LocalRotation: {x: 0, y: 0, z: -0.026499636, w: 0.99964887}
   m_LocalPosition: {x: -7.404215, y: -3.6146126, z: 10.181042}
   m_LocalScale: {x: 1, y: 1.2028, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5285,6 +5287,42 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -3.037}
+--- !u!135 &8534453148215382829
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3719875273775468705}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 13.486575
+  m_Center: {x: 0.4269367, y: -0.63999987, z: -0.3300004}
+--- !u!114 &8278977444148860118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3719875273775468705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8a2049f5b3cf8443ae60d239c3871a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Campfire
+  warmthIntensity: 1.1
+  ptm: {fileID: 0}
 --- !u!1 &4480782763873653189
 GameObject:
   m_ObjectHideFlags: 0
@@ -5297,7 +5335,7 @@ GameObject:
   - component: {fileID: 4070053402106784809}
   - component: {fileID: 5237786700199838826}
   - component: {fileID: 8764644813189190274}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Low Poly Rock 2 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5403,7 +5441,7 @@ GameObject:
   - component: {fileID: 1464285477363589325}
   - component: {fileID: 4452041645639485838}
   - component: {fileID: 8598729699536227046}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Low Poly Rock 2 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5509,7 +5547,7 @@ GameObject:
   - component: {fileID: 2992181207287086741}
   - component: {fileID: 321609288209907700}
   - component: {fileID: 892418869990843798}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Low Poly Rock 2 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5615,7 +5653,7 @@ GameObject:
   - component: {fileID: 8444035517295820712}
   - component: {fileID: 5615414269609196072}
   - component: {fileID: 650651835527984939}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Stick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5720,7 +5758,7 @@ GameObject:
   - component: {fileID: 5564997962330821710}
   - component: {fileID: 2984325316033562108}
   - component: {fileID: 3070586519979289397}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Low Poly Rock 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5826,7 +5864,7 @@ GameObject:
   - component: {fileID: 1756822893634666369}
   - component: {fileID: 8264122528594904720}
   - component: {fileID: 8275694423594004701}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Low Poly Rock 2 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5931,7 +5969,7 @@ GameObject:
   - component: {fileID: 1599508821723616635}
   - component: {fileID: 3220178674422071072}
   - component: {fileID: 467329135769040102}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10760,7 +10798,7 @@ GameObject:
   - component: {fileID: 5976619525091789627}
   - component: {fileID: 5502421334924870032}
   - component: {fileID: 7893137054993630114}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Low Poly Rock 2 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10866,7 +10904,7 @@ GameObject:
   - component: {fileID: 7959641602926303452}
   - component: {fileID: 2017116352066293122}
   - component: {fileID: 6932588993469776531}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Stick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10971,7 +11009,7 @@ GameObject:
   - component: {fileID: 3448051791882197410}
   - component: {fileID: 506306684862197207}
   - component: {fileID: 43055710977583463}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 'Stick '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11073,7 +11111,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1931117954140299904}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11109,7 +11147,7 @@ GameObject:
   - component: {fileID: 5247894777375921615}
   - component: {fileID: 3340730185947643379}
   - component: {fileID: 6878777014005388567}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Low Poly Rock 2 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
