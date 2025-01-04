@@ -11,6 +11,12 @@ public class Player_Interact : MonoBehaviour
     [SerializeField] LayerMask interactableLayer;
     [SerializeField] BrokenCar brokenCar;
 
+    [Header("Damage Variables")]
+    [SerializeField] HealthManager myHealthManager;
+    bool isTakingDamage;
+    [SerializeField] float damageInterval;
+    Coroutine damageCoroutine;
+
     private HashSet<Interactable> currentlyInteracting = new HashSet<Interactable>();
 
     private float interactionCheckInterval = 0.1f;
@@ -90,5 +96,34 @@ public class Player_Interact : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, interactionRadius);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Enemy"))
+        {
+            Debug.Log("Taking damage from enemy");
+            isTakingDamage = true;
+            damageCoroutine = StartCoroutine(TakeDamage(other.gameObject));
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.CompareTag("Enemy"))
+        {
+            Debug.Log("No longer taking damage");
+            isTakingDamage = false;
+            StopCoroutine(damageCoroutine);
+        }
+    }
+
+    IEnumerator TakeDamage(GameObject enemy)
+    {
+        while(isTakingDamage)
+        {
+            myHealthManager.TakeDamage(enemy.GetComponent<Enemy_Damage>().GetDamage());
+            yield return new WaitForSeconds(damageInterval);
+        }
     }
 }

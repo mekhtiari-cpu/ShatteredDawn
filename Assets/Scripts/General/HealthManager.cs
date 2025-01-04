@@ -24,21 +24,11 @@ public class HealthManager : MonoBehaviour
     }
     public void TakeDamage(float damage) {
         CurrentHealth -= damage;
+        health.setHealth(CurrentHealth);
 
         if (CurrentHealth <= 0) {
             CurrentHealth = 0;
             gameObject.SendMessage("Die");
-        }
-        else
-        {
-            if(gameObject.tag == "Enemy")
-            {
-                gameObject.SendMessage("Hit");
-            }
-        }
-        if (health) 
-        {
-            health.setHealth(CurrentHealth);
         }
     }
 }
