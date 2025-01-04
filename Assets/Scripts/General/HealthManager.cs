@@ -17,11 +17,24 @@ public class HealthManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool GainHealth(int amount)
     {
-        
+        if(CurrentHealth < MaxHealth)
+        {
+            CurrentHealth += amount;
+            if(CurrentHealth > MaxHealth)
+            {
+                CurrentHealth = MaxHealth;
+            }
+            health.setHealth(CurrentHealth);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
+
     public void TakeDamage(float damage) {
         CurrentHealth -= damage;
 
