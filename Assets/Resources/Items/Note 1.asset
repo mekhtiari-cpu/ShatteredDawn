@@ -12,10 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d56cf478124ebbc49b8596c94f19ad29, type: 3}
   m_Name: Note 1
   m_EditorClassIdentifier: 
-  itemName: 
-  itemDescription: 
+  itemId: 0
+  itemName: Note 1
+  itemDescription: A note
   isStackable: 0
   count: 0
-  infoTitle: 
+  infoTitle: Note 1
   infoDate: 
-  info: 
+  info: I've left the city. I knew you'd come looking so I left you this note- brothers
+    know best. I heard there's a broken truck in the city, used to belong to Old
+    Man Jenkins. He's living in one of these buildings. Find him, and ask for the
+    key. If you want to reach me, fix the truck, and drive North. You can do it -
+    I'm waiting for you.

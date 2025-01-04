@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d966cb8ceb949641b8d31d4ead8ae3e, type: 3}
   m_Name: Quest 2
   m_EditorClassIdentifier: 
-  questName: adsadsa
-  description: adsds
+  questName: Find Both Tyres
+  description: A truck can only run with all tyres intact.
   prerequisiteQuests: []
-  isConfirmationRequired: 1
-  isCompleted: 1
-  turnedIn: 1
-  completionConditions: []
+  isConfirmationRequired: 0
+  isCompleted: 0
+  turnedIn: 0
+  completionConditions:
+  - completionType: 0
+    requiredAmount: 2
