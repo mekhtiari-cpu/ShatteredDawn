@@ -9,6 +9,7 @@ public class EnemyNavigation : MonoBehaviour
     NavMeshAgent myNav;
     [SerializeField] GameObject randomPointGo;
     [SerializeField] Transform player;
+    [SerializeField] Player_Movement pm;
     [SerializeField] LayerMask walkablePath;
     [SerializeField] float[] movementSpeeds;
     [SerializeField] AnimationClip hit;
@@ -48,6 +49,7 @@ public class EnemyNavigation : MonoBehaviour
         myNav = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         myState = EnemyState.Patrol;
+        pm = FindFirstObjectByType<Player_Movement>();
     }
 
     private void FixedUpdate()
@@ -58,7 +60,10 @@ public class EnemyNavigation : MonoBehaviour
         {
             return;
         }
-
+        if(!pm.GetIsCrouched() && Vector3.Distance(player.position, transform.position) < 8f)
+        {
+            myState = EnemyState.Chase;
+        }
         HandleState();
     }
 

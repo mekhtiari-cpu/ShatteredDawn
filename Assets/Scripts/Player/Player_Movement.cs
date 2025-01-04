@@ -111,6 +111,10 @@ public class Player_Movement : MonoBehaviour
         }
     }
 
+    public bool GetIsCrouched()
+    {
+        return isCrouching;
+    }
     void CheckIfGrounded()
     {
         isGrounded = cc.isGrounded;
