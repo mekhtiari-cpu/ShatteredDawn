@@ -17,4 +17,4 @@ MonoBehaviour:
   itemDescription: A tarnished tin with food. Consume to gain health.
   isStackable: 1
   count: 0
-  healthGainAmount: 15
+  healthGainAmount: 10
