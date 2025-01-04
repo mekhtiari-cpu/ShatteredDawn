@@ -13,6 +13,7 @@ public class PlayerEquipment : MonoBehaviour
 
     [Header("Gameobject containers for equipped items")]
     [SerializeField] GameObject utilityHolder;
+    [SerializeField] GameObject gunHolder;
 
     private void Awake()
     {
@@ -74,6 +75,7 @@ public class PlayerEquipment : MonoBehaviour
         UI_Manager.instance.UpdateEquippedItems();
         Weapon weaponScript = GetComponent<Weapon>();
         weaponScript.DropWeapon();
+        Destroy(gunHolder.transform.GetChild(0).gameObject);
     }
 
     public void RemoveUtility()
