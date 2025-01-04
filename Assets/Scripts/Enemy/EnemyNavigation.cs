@@ -68,7 +68,8 @@ public class EnemyNavigation : MonoBehaviour
 
     public void Hit()
     {
-        animator.Play("Hit");
+        animator.SetTrigger("Hit");
+        Debug.Log("Zombie hit");
     }
 
     //Based on enemy state, behave accordingly

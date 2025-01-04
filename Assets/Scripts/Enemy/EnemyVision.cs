@@ -46,10 +46,6 @@ public class EnemyVision : MonoBehaviour
 
         objectsHit.text = objectsHitText;
 
-        foreach (RaycastHit hit in hits)
-        {
-            Debug.Log("Hit: " + hit.collider.name + ", Length: "+hits.Length);
-        }
 
         if (hits.Length > 0)
         {

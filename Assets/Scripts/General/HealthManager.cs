@@ -24,7 +24,6 @@ public class HealthManager : MonoBehaviour
     }
     public void TakeDamage(float damage) {
         CurrentHealth -= damage;
-        health.setHealth(CurrentHealth);
 
         if (CurrentHealth <= 0) {
             CurrentHealth = 0;
@@ -34,6 +33,7 @@ public class HealthManager : MonoBehaviour
         {
             if(gameObject.tag == "Enemy")
             {
+                Debug.Log("Zombie has been hit");
                 gameObject.SendMessage("Hit");
             }
         }
