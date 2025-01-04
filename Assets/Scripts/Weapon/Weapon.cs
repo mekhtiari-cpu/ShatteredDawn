@@ -17,6 +17,7 @@ public class Weapon : MonoBehaviour
 
     private float currentCooldown;
     private bool isReloading;
+    public float gunRange;
     public bool pickUp;
 
     PlayerController player;
@@ -249,7 +250,7 @@ public class Weapon : MonoBehaviour
 
             //Raycast
             RaycastHit temp_hit = new RaycastHit();
-            if (Physics.Raycast(temp_spawnPoint.position, temp_Bloom, out temp_hit, 1000f, canBeShot))
+            if (Physics.Raycast(temp_spawnPoint.position, temp_Bloom, out temp_hit, gunRange, canBeShot))
             {              
                 // Change this to be layer for enemies
                 if (temp_hit.collider.gameObject.tag == "Enemy")

@@ -20,17 +20,17 @@ MonoBehaviour:
   prefab: {fileID: 501184178058379290, guid: a3c6ec9067b85c348a23767c0d7114c3, type: 3}
   displayPrefab: {fileID: 0}
   gunType: 5
-  firingMode: 1
+  firingMode: 0
   ammo: 100
-  clipSize: 20
+  clipSize: 8
   pellets: 0
   bloom: 20
   recoil: 10
   kickBack: 0.2
   aimSpeed: 20
-  reloadTime: 5
+  reloadTime: 2
   recovery: 0
-  fireRate: 0.1
+  fireRate: 0.2
   damage: 10
   mainFOV: 0
   weaponFOV: 0

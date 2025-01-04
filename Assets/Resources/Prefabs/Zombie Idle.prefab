@@ -1314,6 +1314,8 @@ MonoBehaviour:
   - 7.5
   - 0
   hit: {fileID: -203655887218126122, guid: 98cd082ab2a08d048abe4a362898b883, type: 3}
+  isStaggered: 0
+  isDead: 0
   current_animation: 
   myState: 0
   patrolRadius: 18

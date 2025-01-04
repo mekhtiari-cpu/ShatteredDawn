@@ -82,7 +82,7 @@ public class EnemyNavigation : MonoBehaviour
 
     IEnumerator WaitForHitDuration()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(hit.length);
         isStaggered = false;
         if(myState != EnemyState.Chase)
         {
@@ -256,7 +256,7 @@ public class EnemyNavigation : MonoBehaviour
         if(!isStaggered)
         {
             myNav.speed = movementSpeeds[1];
-            myNav.acceleration = 500;
+            myNav.acceleration = 800;
             myNav.SetDestination(player.position);
         }
     }
