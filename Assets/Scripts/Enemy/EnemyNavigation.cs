@@ -12,6 +12,8 @@ public class EnemyNavigation : MonoBehaviour
     [SerializeField] LayerMask walkablePath;
     [SerializeField] float[] movementSpeeds;
     [SerializeField] AnimationClip hit;
+    [SerializeField] bool isStaggered;
+    [SerializeField] bool isDead;
 
     Animator animator;
     private AnimatorClipInfo[] animatorinfo;
@@ -64,68 +66,75 @@ public class EnemyNavigation : MonoBehaviour
     {
         animator.SetInteger("rand",Random.Range(1, 3));
         animator.SetBool("IsDead", true);
+        isDead = true;
+        myNav.speed = movementSpeeds[2];
         Destroy(gameObject, 5f);
     }
 
     public void Hit()
     {
+        isStaggered = true;
+        StartCoroutine(WaitForHitDuration());
         animator.Play("Hit");
         myNav.speed = movementSpeeds[2];
         Debug.Log("Zombie hit");
-        StartCoroutine(WaitForHitDuration());
-        if (myState != EnemyState.Chase)
-        {
-            myState = EnemyState.Chase;
-        }
     }
 
     IEnumerator WaitForHitDuration()
     {
         yield return new WaitForSeconds(2f);
+        isStaggered = false;
+        if(myState != EnemyState.Chase)
+        {
+            myState = EnemyState.Chase;
+        }
     }
 
     //Based on enemy state, behave accordingly
     void HandleState()
     {
-        CheckEyesight();
-        switch (myState)
+        if(!isDead)
         {
-            case (EnemyState.Patrol):
-                //Check whether enemy has finished patrolling
-                if (Patrol())
-                {
-                    myState = EnemyState.Scan;
-                    //Debug.Log("Finished patrolling");
-                }
-                break;
+            CheckEyesight();
+            switch (myState)
+            {
+                case (EnemyState.Patrol):
+                    //Check whether enemy has finished patrolling
+                    if (Patrol())
+                    {
+                        myState = EnemyState.Scan;
+                        //Debug.Log("Finished patrolling");
+                    }
+                    break;
 
-            case (EnemyState.Chase):
-                Debug.Log("Chasing");
-                Chase();
-                break;
+                case (EnemyState.Chase):
+                    Debug.Log("Chasing");
+                    Chase();
+                    break;
 
-            case (EnemyState.Scan):
-                //Check whether enemy has finished scanning
-                if (Scan())
-                {
-                    myState = EnemyState.Patrol;
-                    //Debug.Log("Scanning");
-                }
-                break;
+                case (EnemyState.Scan):
+                    //Check whether enemy has finished scanning
+                    if (Scan())
+                    {
+                        myState = EnemyState.Patrol;
+                        //Debug.Log("Scanning");
+                    }
+                    break;
 
-            default:
-                Debug.Log("Default");
-                break;
-        }
+                default:
+                    Debug.Log("Default");
+                    break;
+            }
 
-        if(myState == EnemyState.Chase)
-        {
-            animator.SetBool("isChasing", true);
-            animator.SetBool("isWalking", false);
-        }
-        else
-        {
-            animator.SetBool("isWalking", myState == EnemyState.Patrol || myState == EnemyState.Chase);
+            if (myState == EnemyState.Chase)
+            {
+                animator.SetBool("isChasing", true);
+                animator.SetBool("isWalking", false);
+            }
+            else
+            {
+                animator.SetBool("isWalking", myState == EnemyState.Patrol || myState == EnemyState.Chase);
+            }
         }
     }
 
@@ -244,9 +253,12 @@ public class EnemyNavigation : MonoBehaviour
     //Chase: Chase down the player
     void Chase()
     {
-        myNav.speed = movementSpeeds[1];
-        myNav.acceleration = 500;
-        myNav.SetDestination(player.position);
+        if(!isStaggered)
+        {
+            myNav.speed = movementSpeeds[1];
+            myNav.acceleration = 500;
+            myNav.SetDestination(player.position);
+        }
     }
 
     int GetRandomDirection()
