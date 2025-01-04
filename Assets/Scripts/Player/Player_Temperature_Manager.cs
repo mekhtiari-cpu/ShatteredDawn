@@ -107,9 +107,16 @@ public class Player_Temperature_Manager : MonoBehaviour
                 }
                 else
                 {
-                    float missingTemperature = 1 - temperature;
-                    float recoveryRate = tempScalar * missingTemperature;
-                    newTemp = temperature + recoveryRate;
+                    if(temperature >= 0.95f)
+                    {
+                        newTemp = 1;
+                    }
+                    else
+                    {
+                        float missingTemperature = 1 - temperature;
+                        float recoveryRate = tempScalar * missingTemperature;
+                        newTemp = temperature + recoveryRate;
+                    }
                 }
             }
 
