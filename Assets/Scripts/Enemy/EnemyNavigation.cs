@@ -105,7 +105,15 @@ public class EnemyNavigation : MonoBehaviour
                 break;
         }
 
-        animator.SetBool("isWalking", myState == EnemyState.Patrol || myState == EnemyState.Chase);
+        if(myState == EnemyState.Chase)
+        {
+            animator.SetBool("isChasing", true);
+            animator.SetBool("isWalking", false);
+        }
+        else
+        {
+            animator.SetBool("isWalking", myState == EnemyState.Patrol || myState == EnemyState.Chase);
+        }
     }
 
     //Constantly check whether the player is in the enemy's vision
