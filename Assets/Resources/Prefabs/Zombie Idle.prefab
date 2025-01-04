@@ -1720,7 +1720,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1c36a42c2eda04b478542d50ff493110, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.18898459
+      value: 0.15152028
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1c36a42c2eda04b478542d50ff493110, type: 3}
       propertyPath: m_LocalScale.y
@@ -1728,11 +1728,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1c36a42c2eda04b478542d50ff493110, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.19895677
+      value: 0.11752178
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1c36a42c2eda04b478542d50ff493110, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.09
+      value: 0.07358438
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1c36a42c2eda04b478542d50ff493110, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1740,7 +1740,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1c36a42c2eda04b478542d50ff493110, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.21038893
+      value: 0.24250162
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1c36a42c2eda04b478542d50ff493110, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1895,5 +1895,5 @@ MonoBehaviour:
   validRayObjects:
     serializedVersion: 2
     m_Bits: 64
-  rayRange: 20
+  rayRange: 40
   objectsHit: {fileID: 0}

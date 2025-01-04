@@ -30,5 +30,16 @@ public class HealthManager : MonoBehaviour
             CurrentHealth = 0;
             gameObject.SendMessage("Die");
         }
+        else
+        {
+            if(gameObject.tag == "Enemy")
+            {
+                gameObject.SendMessage("Hit");
+            }
+        }
+        if(health)
+        {
+            health.setHealth(CurrentHealth);
+        }
     }
 }
