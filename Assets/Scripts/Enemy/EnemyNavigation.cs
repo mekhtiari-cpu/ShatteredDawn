@@ -82,12 +82,9 @@ public class EnemyNavigation : MonoBehaviour
 
     IEnumerator WaitForHitDuration()
     {
+        myState = EnemyState.Chase;
         yield return new WaitForSeconds(hit.length);
         isStaggered = false;
-        if(myState != EnemyState.Chase)
-        {
-            myState = EnemyState.Chase;
-        }
     }
 
     //Based on enemy state, behave accordingly
