@@ -33,7 +33,6 @@ public class HealthManager : MonoBehaviour
         {
             if(gameObject.tag == "Enemy")
             {
-                Debug.Log("Zombie has been hit");
                 gameObject.SendMessage("Hit");
             }
         }

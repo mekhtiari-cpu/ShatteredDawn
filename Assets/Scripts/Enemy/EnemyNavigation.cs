@@ -11,6 +11,7 @@ public class EnemyNavigation : MonoBehaviour
     [SerializeField] Transform player;
     [SerializeField] LayerMask walkablePath;
     [SerializeField] float[] movementSpeeds;
+    [SerializeField] AnimationClip hit;
 
     Animator animator;
     private AnimatorClipInfo[] animatorinfo;
@@ -68,8 +69,19 @@ public class EnemyNavigation : MonoBehaviour
 
     public void Hit()
     {
-        animator.SetTrigger("Hit");
+        animator.Play("Hit");
+        myNav.speed = movementSpeeds[2];
         Debug.Log("Zombie hit");
+        StartCoroutine(WaitForHitDuration());
+        if (myState != EnemyState.Chase)
+        {
+            myState = EnemyState.Chase;
+        }
+    }
+
+    IEnumerator WaitForHitDuration()
+    {
+        yield return new WaitForSeconds(2f);
     }
 
     //Based on enemy state, behave accordingly
