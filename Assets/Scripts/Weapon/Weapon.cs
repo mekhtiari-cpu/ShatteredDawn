@@ -53,6 +53,7 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.DrawRay(transform.position, transform.forward * gunRange, Color.cyan);
         if (ui_HitMarker != null)
         {
             if (hitMarkerWait > 0)
