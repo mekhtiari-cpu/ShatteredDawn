@@ -119,6 +119,10 @@ public class Player_Movement : MonoBehaviour
     {
         isGrounded = cc.isGrounded;
     }
+    public bool GetIsGrounded()
+    {
+        return isGrounded;
+    }
 
     public void Jump(InputAction.CallbackContext context)
     {
