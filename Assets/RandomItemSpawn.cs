@@ -35,12 +35,12 @@ public class RandomItemSpawn : MonoBehaviour
     {
         for (int i = 0; i < numConsumablesToBeSpawned; i++)
         {
-            int randSlot = Random.Range(0, transform.childCount-1);
+            int randSlot = Random.Range(0, openSlots.Length);
             int consumableToBeSpawned = Random.Range(0, 101);
 
             while(openSlots[randSlot] == true)
             {
-                randSlot = Random.Range(0, transform.childCount-1);
+                randSlot = Random.Range(0, openSlots.Length);
             }
 
             openSlots[randSlot] = true;
@@ -59,11 +59,11 @@ public class RandomItemSpawn : MonoBehaviour
     {
         for (int i = 0; i < numUtilityToBeSpawned; i++)
         {
-            int randSlot = Random.Range(0, transform.childCount-1);
+            int randSlot = Random.Range(0, openSlots.Length);
 
             while (openSlots[randSlot] == true)
             {
-                randSlot = Random.Range(0, transform.childCount-1);
+                randSlot = Random.Range(0, openSlots.Length);
             }
 
             openSlots[randSlot] = true;
@@ -76,12 +76,12 @@ public class RandomItemSpawn : MonoBehaviour
     {
         for (int i = 0; i < numGunsToBeSpawned; i++)
         {
-            int randSlot = Random.Range(0, transform.childCount-1);
+            int randSlot = Random.Range(0, openSlots.Length);
             int gunToBeSpawned = Random.Range(0, 101);
 
             while (openSlots[randSlot] == true)
             {
-                randSlot = Random.Range(0, transform.childCount-1);
+                randSlot = Random.Range(0, openSlots.Length);
             }
 
             openSlots[randSlot] = true;
@@ -104,12 +104,12 @@ public class RandomItemSpawn : MonoBehaviour
     {
         for (int i = 0; i < numClothingToBeSpawned; i++)
         {
-            int randSlot = Random.Range(0, transform.childCount-1);
+            int randSlot = Random.Range(0, openSlots.Length);
             int gunToBeSpawned = Random.Range(0, 101);
 
             while (openSlots[randSlot] == true)
             {
-                randSlot = Random.Range(0, transform.childCount-1);
+                randSlot = Random.Range(0, openSlots.Length);
             }
 
             openSlots[randSlot] = true;

@@ -46,6 +46,9 @@ public class EnemyNavigation : MonoBehaviour
     [SerializeField] float minScanSpeed;
     [SerializeField] float maxScanSpeed;
 
+    [Header("Chase Variables")]
+    [SerializeField] float deAggroDistance;
+
     int toPlayerOrRand;
     float scanSpeed;
     float randomScanTime;
@@ -204,6 +207,11 @@ public class EnemyNavigation : MonoBehaviour
 
             myState = EnemyState.Chase;
             Debug.Log("Chasing");
+        }
+
+        if(myState == EnemyState.Chase && Vector3.Distance(player.position, transform.position) > deAggroDistance)
+        {
+            myState = EnemyState.Scan;
         }
     }
 
