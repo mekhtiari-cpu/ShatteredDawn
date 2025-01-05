@@ -41,7 +41,20 @@ public class QuestCompletionCondition
             case QuestCompletionType.GiveItems:
                 return questHandler.HasItem(requiredItem, requiredAmount);
             case QuestCompletionType.KillEnemies:
-                return killCount >= requiredAmount;
+                {
+                    GameManager gm = GameManager.instance;
+                    if(gm)
+                    {
+                        PlayerController pc = gm.playerQuest.GetComponent<PlayerController>();
+                        if(pc)
+                        {
+                            killCount = pc.zombiesKilled;
+                        }
+                        
+                    }
+                    return killCount >= requiredAmount;
+                }
+               
             case QuestCompletionType.InteractWith:
                 return interactionCount >= requiredAmount;
             case QuestCompletionType.PickUpItem:

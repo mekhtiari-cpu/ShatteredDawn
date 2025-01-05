@@ -19,7 +19,7 @@ MonoBehaviour:
   completionDialogue: I remember your brother, Paul right? He was a good man.  I
     trust you to find him.
   rewardItemOnAccept: {fileID: 0}
-  rewardItemOnComplete: {fileID: 0}
+  rewardItemOnComplete: {fileID: 11400000, guid: 797266b2c09f71a47970bdc72e23b5f8, type: 2}
   prerequisiteQuests: []
   isConfirmationRequired: 0
   isCompleted: 0
