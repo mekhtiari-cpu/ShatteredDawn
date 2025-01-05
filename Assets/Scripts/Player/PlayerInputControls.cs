@@ -65,10 +65,8 @@ public class PlayerInputControls : MonoBehaviour
     private void Awake()
     {
         pm = GetComponent<Player_Movement>();
-        if (pm == null) Debug.LogWarning("Player_Movement component not found.");
 
         ui_Manager = FindFirstObjectByType<UI_Manager>();
-        if (ui_Manager == null) Debug.LogWarning("UI_Manager not found.");
 
         playerControls = new PlayerControls();
 

@@ -12,13 +12,8 @@ public class KeyItem : Item
     {
         if(Player_Interact.instance.PlayerNearCar())
         {
-            Debug.Log("Returning " + itemName);
             Player_Interact.instance.ReturnKeyItem(this);
             Inventory.instance.RemoveItem(this);
-        }
-        else
-        {
-            Debug.Log("You must be near the car to use this key item.");
         }
     }
 }

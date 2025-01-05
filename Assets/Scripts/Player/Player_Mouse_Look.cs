@@ -121,10 +121,6 @@ public class Player_Mouse_Look : MonoBehaviour
             mouseX = pc.mouseX.ReadValue<float>() * sensX * Time.deltaTime;
             mouseY = pc.mouseY.ReadValue<float>() * sensY * Time.deltaTime;
         }
-        else
-        {
-            Debug.LogWarning("Player_Controls component is missing.");
-        }
 
         if (!UI_Manager.instance.GetInventoryState())
         {
@@ -136,10 +132,6 @@ public class Player_Mouse_Look : MonoBehaviour
                 myCamera.transform.localRotation = Quaternion.Euler(rotX, 0, 0);
                 playerTransform.Rotate(Vector3.up * mouseX);
                 weapon.rotation = myCamera.transform.rotation;
-            }
-            else
-            {
-                Debug.LogWarning("Non-finite mouse input detected.");
             }
         }
     }

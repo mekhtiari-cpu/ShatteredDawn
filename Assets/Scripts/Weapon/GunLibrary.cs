@@ -21,8 +21,6 @@ public class GunLibrary : MonoBehaviour
                 return a;
             }
         }
-
-        Debug.LogWarning($"Couldn't Find Gun {name} by name, using default");
         return guns[0];
     }
 }

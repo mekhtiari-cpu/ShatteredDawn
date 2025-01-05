@@ -10,7 +10,6 @@ public class ItemPickup : Interactable
     public override void Interact()
     {
         base.Interact();
-        Debug.Log("Player picked up " + objectName);
         Inventory.instance.AddItem(itemObj);
 
         PlayerQuestHandler questHandler = GameManager.instance.playerQuest;

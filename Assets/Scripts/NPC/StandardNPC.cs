@@ -57,7 +57,6 @@ public class StandardNPC : BaseNPC
                 if (assignedQuest.rewardItemOnAccept != null)
                 {
                     Inventory.instance.AddItem(assignedQuest.rewardItemOnAccept);
-                    Debug.Log($"Received item {assignedQuest.rewardItemOnAccept.itemName} for accepting the quest.");
                 }
             }
         }
@@ -72,7 +71,6 @@ public class StandardNPC : BaseNPC
             if (assignedQuest.rewardItemOnComplete != null)
             {
                 Inventory.instance.AddItem(assignedQuest.rewardItemOnComplete);
-                Debug.Log($"Received item {assignedQuest.rewardItemOnComplete.itemName} for completing the quest.");
             }
             questGiven = false;
         }

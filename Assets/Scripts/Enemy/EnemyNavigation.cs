@@ -134,7 +134,6 @@ public class EnemyNavigation : MonoBehaviour
         StartCoroutine(WaitForHitDuration());
         animator.Play("Hit");
         myNav.speed = movementSpeeds[2];
-        Debug.Log("Zombie hit");
     }
 
     IEnumerator WaitForHitDuration()
@@ -160,12 +159,10 @@ public class EnemyNavigation : MonoBehaviour
                     if (Patrol())
                     {
                         myState = EnemyState.Scan;
-                        //Debug.Log("Finished patrolling");
                     }
                     break;
 
                 case (EnemyState.Chase):
-                    Debug.Log("Chasing");
                     Chase();
                     break;
 
@@ -174,12 +171,7 @@ public class EnemyNavigation : MonoBehaviour
                     if (Scan())
                     {
                         myState = EnemyState.Patrol;
-                        //Debug.Log("Scanning");
                     }
-                    break;
-
-                default:
-                    Debug.Log("Default");
                     break;
             }
 
@@ -209,7 +201,6 @@ public class EnemyNavigation : MonoBehaviour
             }
             hasPlayedIdleAudio = false;
             myState = EnemyState.Chase;
-            Debug.Log("Chasing");
         }
         else
         {
@@ -315,20 +306,17 @@ public class EnemyNavigation : MonoBehaviour
         {
             if (Time.time >= endScanTime)
             {
-                //Debug.Log("Ending scan: " + (Time.time >= endScanTime));
                 hasAlreadyScanned = false;
                 return true;
             }
             else
             {
-                //Debug.Log("Scanning environment for: " + randomScanTime + "s ");
                 if(toPlayerOrRand % 2 == 0)
                 {
                     transform.Rotate(Vector3.up * scanSpeed, Space.World);
                 }
                 else
                 {
-                    Debug.Log("Rotating towards player");
                     Vector3 dirToPlayer = player.position - transform.position;
 
                     dirToPlayer.y = 0;

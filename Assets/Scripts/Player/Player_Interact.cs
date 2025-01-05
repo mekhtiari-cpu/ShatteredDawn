@@ -84,7 +84,6 @@ public class Player_Interact : MonoBehaviour
     {     
         if(brokenCar.GetPlayerNearCar())
         {
-            Debug.Log("Toggling car status");
             if (brokenCar.GetNumPartsFixed() < 5)
             {
                 UI_Manager.instance.GetCarUI().ToggleCarInfoText();
@@ -92,7 +91,6 @@ public class Player_Interact : MonoBehaviour
             else
             {
                 escapePanel.SetActive(true);
-                Debug.Log("Escaping the city");
             }
         }        
     }
@@ -116,7 +114,6 @@ public class Player_Interact : MonoBehaviour
     {
         if(other.CompareTag("Enemy"))
         {
-            Debug.Log("Taking damage from enemy");
             isTakingDamage = true;
             damageCoroutine = StartCoroutine(TakeDamage(other.gameObject));
         }
@@ -126,7 +123,6 @@ public class Player_Interact : MonoBehaviour
     {
         if(other.CompareTag("Enemy"))
         {
-            Debug.Log("No longer taking damage");
             isTakingDamage = false;
             StopCoroutine(damageCoroutine);
         }

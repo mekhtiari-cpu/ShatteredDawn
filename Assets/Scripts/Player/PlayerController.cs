@@ -37,29 +37,22 @@ public class PlayerController : MonoBehaviour
         weaponScript = GetComponent<Weapon>();
         if (weaponScript == null)
         {
-            Debug.LogWarning("Weapon component not found. Adding a new component. Likely to cause problems");
             weaponScript = gameObject.AddComponent<Weapon>();
         }
 
         pm = GetComponent<Player_Movement>();
         if (pm == null)
         {
-            Debug.LogWarning("Player_Movement component not found.  Adding a new component. Likely to cause problems");
             pm = gameObject.AddComponent<Player_Movement>();
         }
 
         inputControls = GetComponent<PlayerInputControls>();
         if (inputControls == null)
         {
-            Debug.LogWarning("PlayerInputControls component not found.  Adding a new component. Likely to cause problems");
             inputControls = gameObject.AddComponent<PlayerInputControls>();
         }
 
         ui_Manager = FindFirstObjectByType<UI_Manager>();
-        if (ui_Manager == null)
-        {
-            Debug.LogWarning("UI_Manager not found.");
-        }
     }
 
     void OnPause(InputValue value)

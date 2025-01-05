@@ -50,7 +50,6 @@ public class DayNightCycle : MonoBehaviour
             if(RenderSettings.skybox != skyboxMaterial)
             {
                 RenderSettings.skybox = skyboxMaterial;
-                Debug.LogWarning($"Changed Skybox to be one ({skyboxMaterial.name}) necessary for DayNightCycle.cs to run correctly");
             }
         }
 
@@ -68,7 +67,6 @@ public class DayNightCycle : MonoBehaviour
             if(RenderSettings.sun != directionalLight)
             {
                 RenderSettings.sun = directionalLight;
-                Debug.LogWarning($"Changed Sun Source to be one ({directionalLight.name}) necessary for DayNightCycle.cs to run correctly");
             }
         }
     }
@@ -203,43 +201,5 @@ public class DayNightCycle : MonoBehaviour
     public bool GetIsDay()
     {
         return isDaytime;
-    }
-
-/* -------------------------------------------------
- * DEBUG FUNCTIONS
-------------------------------------------------- */
-    public void IncrementDay(int val)
-    {
-        if(daysPassed + val >= 0 )
-        {
-            daysPassed += val;
-        }
-        UpdateDayText();
-    }
-
-    private float SetTimeOfDay(float val)
-    {
-        timeOfDay = val;
-        return timeOfDay;
-    }
-
-    public float GetMorningTime()
-    {
-        return SetTimeOfDay(0);
-    }
-
-    public float GetAfternoonTime()
-    {
-        return SetTimeOfDay(dayDuration * 0.25f);
-    }
-
-    public float GetEveningTime()
-    {
-        return SetTimeOfDay(dayDuration * 0.5f);
-    }
-
-    public float GetNightTime()
-    {
-        return SetTimeOfDay(dayDuration * 0.75f);
     }
 }

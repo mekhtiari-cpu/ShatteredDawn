@@ -94,8 +94,6 @@ public class RandomItemSpawn : MonoBehaviour
                 Instantiate(gunPickups[1], transform.GetChild(randSlot).position, Quaternion.identity, transform.GetChild(randSlot));
             else
                 Instantiate(gunPickups[0], transform.GetChild(randSlot).position, Quaternion.identity, transform.GetChild(randSlot));
-
-            Debug.Log(randSlot);
         }
         SpawnClothing();
     }

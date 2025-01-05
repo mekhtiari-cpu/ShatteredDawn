@@ -26,11 +26,4 @@ public class MainMenu : MonoBehaviour
         settings = GameSettingsManager.Instance;
         settings.OpenSettings();            
     }
-
-    public void Achievements()
-    {
-        SoundManager.Instance.PlayUI(SoundManager.Instance.uiClick);
-        // not yet implemented
-    }
-  
 }
