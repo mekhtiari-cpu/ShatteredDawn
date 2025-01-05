@@ -18,6 +18,7 @@ public class EnemyNavigation : MonoBehaviour
     [SerializeField] ZombieAudio myAudio;
     bool hasPlayedSeenAudio;
     bool hasPlayedDeathAudio;
+    bool hasPlayedChaseAudio;
 
     Animator animator;
     private AnimatorClipInfo[] animatorinfo;
@@ -322,7 +323,13 @@ public class EnemyNavigation : MonoBehaviour
     {
         if(!isStaggered)
         {
-            myAudio.PlayChaseAudio();
+            if(!hasPlayedChaseAudio)
+            {
+                myAudio.PlayChaseAudio();
+                hasPlayedChaseAudio = true;
+            }
+
+            Debug.Log("playing chase audio");
             GameSettingsManager gsm = GameSettingsManager.Instance;
             float modifier = 1f;
             if (gsm)
@@ -346,6 +353,10 @@ public class EnemyNavigation : MonoBehaviour
                         break;
 
                 }
+            }
+            else
+            {
+                myAudio.StopPlayingChaseAudio();
             }
 
             myNav.speed = movementSpeeds[1] * modifier;
