@@ -6,6 +6,7 @@ using UnityEngine;
 public class PersistentManager : MonoBehaviour
 {
     public static PersistentManager Instance;
+    public AudioSource MusicAudioSource, SFXAudioSource;
 
     private void Awake()
     {

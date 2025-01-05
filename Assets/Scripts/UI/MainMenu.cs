@@ -16,21 +16,20 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
+        SoundManager.Instance.PlayUI(SoundManager.Instance.uiClick);
         manager.LoadSceneWithTransition("Main Scene");
     }
 
     public void Settings()
     {
+        SoundManager.Instance.PlayUI(SoundManager.Instance.uiClick);
         settings = GameSettingsManager.Instance;
-        if (settings) 
-        {
-            settings.transform.GetChild(0).gameObject.SetActive(true);
-        } 
-            
+        settings.OpenSettings();            
     }
 
     public void Achievements()
     {
+        SoundManager.Instance.PlayUI(SoundManager.Instance.uiClick);
         // not yet implemented
     }
   
