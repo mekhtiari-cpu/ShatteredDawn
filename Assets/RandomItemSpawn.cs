@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class RandomItemSpawn : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [Header("Item pickup objects")]
+    [SerializeField] GameObject[] consumablePickups;
+    [SerializeField] GameObject[] clothingPickups;
+    [SerializeField] GameObject[] gunPickups;
+
     void Start()
     {
-        
+        RandomiseItems();
     }
 
-    // Update is called once per frame
-    void Update()
+    void RandomiseItems()
     {
-        
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            print(transform.GetChild(i));
+        }
     }
+
 }
