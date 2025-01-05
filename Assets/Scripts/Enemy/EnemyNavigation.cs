@@ -286,7 +286,32 @@ public class EnemyNavigation : MonoBehaviour
     {
         if(!isStaggered)
         {
-            myNav.speed = movementSpeeds[1];
+            GameSettingsManager gsm = GameSettingsManager.Instance;
+            float modifier = 1f;
+            if (gsm)
+            {
+                switch (gsm.Settings.Difficulty)
+                {
+                    case "Easy":
+                        modifier = 0.8f;
+                        break;
+
+                    case "Normal":
+                        modifier = 1;
+                        break;
+
+                    case "Hard":
+                        modifier = 1.25f;
+                        break;
+
+                    default:
+                        modifier = 1;
+                        break;
+
+                }
+            }
+
+            myNav.speed = movementSpeeds[1] * modifier;
             myNav.acceleration = 800;
             myNav.SetDestination(player.position);
         }

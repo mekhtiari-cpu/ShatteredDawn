@@ -10,7 +10,32 @@ public class HealthManager : MonoBehaviour
     public HealthBar health;
     void Start()
     {
-        CurrentHealth = MaxHealth;
+        GameSettingsManager gsm = GameSettingsManager.Instance;
+        float modifier = 1f;
+        if(gsm)
+        {
+            switch (gsm.Settings.Difficulty)
+            {
+                case "Easy":
+                    modifier = gameObject.tag == "Enemy" ? 0.8f : 1.25f;
+                    break;
+
+                case "Normal":
+                    modifier = 1;
+                    break;
+
+                case "Hard":
+                    modifier = gameObject.tag == "Enemy" ? 1.25f : .8f;
+                    break;
+
+                default:
+                    modifier = 1;
+                    break;
+
+            }
+        }
+
+        CurrentHealth = MaxHealth * modifier;
         if (health) 
         {
             health.setMaxHealth(CurrentHealth);
@@ -19,9 +44,34 @@ public class HealthManager : MonoBehaviour
 
     public bool GainHealth(int amount)
     {
-        if(CurrentHealth < MaxHealth)
+        GameSettingsManager gsm = GameSettingsManager.Instance;
+        float modifier = 1f;
+        if (gsm)
         {
-            CurrentHealth += amount;
+            switch (gsm.Settings.Difficulty)
+            {
+                case "Easy":
+                    modifier = 1.25f;
+                    break;
+
+                case "Normal":
+                    modifier = 1;
+                    break;
+
+                case "Hard":
+                    modifier = .8f;
+                    break;
+
+                default:
+                    modifier = 1;
+                    break;
+
+            }
+        }
+
+        if (CurrentHealth < MaxHealth)
+        {
+            CurrentHealth += amount * modifier;
             if(CurrentHealth > MaxHealth)
             {
                 CurrentHealth = MaxHealth;
@@ -36,7 +86,31 @@ public class HealthManager : MonoBehaviour
     }
 
     public void TakeDamage(float damage) {
-        CurrentHealth -= damage;
+        GameSettingsManager gsm = GameSettingsManager.Instance;
+        float modifier = 1f;
+        if (gsm)
+        {
+            switch (gsm.Settings.Difficulty)
+            {
+                case "Easy":
+                    modifier = gameObject.tag != "Enemy" ? 0.8f : 1.25f;
+                    break;
+
+                case "Normal":
+                    modifier = 1;
+                    break;
+
+                case "Hard":
+                    modifier = gameObject.tag != "Enemy" ? 1.25f : .8f;
+                    break;
+
+                default:
+                    modifier = 1;
+                    break;
+
+            }
+        }
+        CurrentHealth -= damage * modifier;
 
         if (CurrentHealth <= 0) {
             CurrentHealth = 0;

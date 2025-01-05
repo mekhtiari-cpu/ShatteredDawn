@@ -89,7 +89,31 @@ public class Player_Temperature_Manager : MonoBehaviour
 
     public void ResetDecayRate()
     {
-        temperatureDecayRate = baseDecayRate;
+        GameSettingsManager gsm = GameSettingsManager.Instance;
+        float modifier = 1f;
+        if (gsm)
+        {
+            switch (gsm.Settings.Difficulty)
+            {
+                case "Easy":
+                    modifier = 0.8f; ;
+                    break;
+
+                case "Normal":
+                    modifier = 1;
+                    break;
+
+                case "Hard":
+                    modifier = 1.25f;
+                    break;
+
+                default:
+                    modifier = 1;
+                    break;
+
+            }
+        }
+        temperatureDecayRate = baseDecayRate * modifier;
     }
 
     IEnumerator ManageTemperature()
