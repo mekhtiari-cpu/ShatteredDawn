@@ -50,7 +50,6 @@ public class FPSSetting : MonoBehaviour
 
             case 2: // Unlimited FPS
                 GameSettingsManager.Instance.SetTargetFPS(-1); // -1 means unlimited in Unity
-                DisableVSync();
                 break;
         }
     }
