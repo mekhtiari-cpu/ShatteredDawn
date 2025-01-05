@@ -8,6 +8,8 @@ public class DeathCamera : MonoBehaviour
 
     public void ShowDeathPanel()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         deathPanel.SetActive(true);
     }
 }

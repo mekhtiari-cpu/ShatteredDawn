@@ -24,7 +24,6 @@ public class Inventory : MonoBehaviour
         else
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
     }
 

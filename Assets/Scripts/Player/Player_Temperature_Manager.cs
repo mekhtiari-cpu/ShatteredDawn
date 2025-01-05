@@ -35,7 +35,6 @@ public class Player_Temperature_Manager : MonoBehaviour
         else
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
     }
 

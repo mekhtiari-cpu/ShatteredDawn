@@ -14,6 +14,7 @@ public class Player_Death : MonoBehaviour
     [SerializeField] Player_Mouse_Look pml;
 
     [Header("Other references")]
+    [SerializeField] GameManager gm;
     [SerializeField] GameObject hud;
     [SerializeField] GameObject deathPanel;
     [SerializeField] GameObject frostEffect;
@@ -29,6 +30,7 @@ public class Player_Death : MonoBehaviour
         hud.SetActive(false);
         pm.enabled = false;
         pml.enabled = false;
+        gm.gameObject.SetActive(false);
     }
 
     public void SetCauseOfDeath(string cause)
