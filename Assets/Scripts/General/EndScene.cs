@@ -10,6 +10,8 @@ public class EndScene : MonoBehaviour
     public void ShowEndPanel()
     {
         endPanel.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void BackToMenu()
