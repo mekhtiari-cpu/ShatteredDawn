@@ -22,6 +22,8 @@ public class Player_Temperature_Manager : MonoBehaviour
     private float elpasedTime;
     private float healthDecay = 5;
 
+    public CanvasGroup frostEffect;
+
     private void Awake()
     {
         //Singleton
@@ -120,18 +122,10 @@ public class Player_Temperature_Manager : MonoBehaviour
                 }
             }
 
-            temperature = newTemp;
-
-            if (temperature <= 0)
-            {
-                temperature = 0;
-            }
-            if (temperature > 1)
-            {
-                temperature = 1;
-            }
+            temperature = Mathf.Clamp(newTemp, 0, 1);
 
             tempBar.SetValue(temperature);
+            frostEffect.alpha = 1 - temperature;
 
             yield return new WaitForSeconds(waitInterval);
         }
