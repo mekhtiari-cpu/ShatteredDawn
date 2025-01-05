@@ -10,6 +10,8 @@ public class GameSettingsManager : MonoBehaviour
     public int currentIndex;
     public Transform[] settingTabs;
 
+    public bool isSettingOpen;
+
     private void Awake()
     {
         if (Instance == null)
@@ -35,12 +37,14 @@ public class GameSettingsManager : MonoBehaviour
     {
         transform.GetChild(0).gameObject.SetActive(true);
         OpenTab(0);
+        isSettingOpen = true;
     }
 
     public void CloseSettings()
     {
         SoundManager.Instance.PlayUI(SoundManager.Instance.uiClick);
         transform.GetChild(0).gameObject.SetActive(false);
+        isSettingOpen = false;
     }
 
     public void OpenTab(int index)

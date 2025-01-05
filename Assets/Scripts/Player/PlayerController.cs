@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 public enum playerFiringState
 {
@@ -61,10 +62,30 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    void OnPause(InputValue value)
     {
-        
+        if (value.isPressed)
+        {
+            GameSettingsManager gsm = GameSettingsManager.Instance;
+            if (gsm)
+            {
+                if(gsm.isSettingOpen == true)
+                    return;
+            }
+
+            if(FindFirstObjectByType<PauseManager>())
+            {
+                PauseManager pm = FindFirstObjectByType<PauseManager>();
+                if (GameManager.instance.paused)
+                {
+                    pm.ClosePause();
+                }
+                else
+                {
+                    pm.OpenPause();
+                }
+            }
+        }
     }
 
     // Update is called once per frame

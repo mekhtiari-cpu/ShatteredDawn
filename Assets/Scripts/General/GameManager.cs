@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     
     public const string QUESTFILEPATH = "QuestData";
 
+    public bool paused;
+
     // Reset Scriptable Objects so all quest appear as incomplete
 #if UNITY_EDITOR
     [MenuItem("Shattered Down/Quest Data/Reset All Quest Data")]
