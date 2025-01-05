@@ -66,7 +66,7 @@ public class QuestUIHandler : UIHandler
                     {
                         if (condition.requiredAmount > 0)
                         {
-                            string progressSuffix = $"({condition.targetNPC}: {condition.GetInteractionCount()} / {condition.requiredAmount})";
+                            string progressSuffix = $"({condition.targetInteract}: {condition.GetInteractionCount()} / {condition.requiredAmount})";
                             textMesh.text = textMesh.text + progressSuffix;
                         }
                     }

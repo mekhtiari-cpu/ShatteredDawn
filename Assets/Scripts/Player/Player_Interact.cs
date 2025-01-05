@@ -77,10 +77,12 @@ public class Player_Interact : MonoBehaviour
     }
 
     public void ToggleCarStatusUI(InputAction.CallbackContext context)
-    {
-        Debug.Log("Toggling car status");
+    {     
         if(brokenCar.GetPlayerNearCar())
+        {
+            Debug.Log("Toggling car status");
             UI_Manager.instance.GetCarUI().ToggleCarInfoText();
+        }        
     }
 
     public bool PlayerNearCar()

@@ -20,20 +20,18 @@ MonoBehaviour:
   prefab: {fileID: 501184178058379290, guid: e5d77f0bd379f7742914b4400a42828d, type: 3}
   displayPrefab: {fileID: 0}
   gunType: 0
-  firingMode: 2
+  firingMode: 1
   ammo: 90
   clipSize: 24
   pellets: 1
   bloom: 10
   recoil: 10
-  kickBack: 7
+  kickBack: 0.7
   aimSpeed: 10
   reloadTime: 2.2
   recovery: 0
   fireRate: 0.2
   damage: 20
-  mainFOV: 0
-  weaponFOV: 0
   gunShotSound: {fileID: 8300000, guid: f98d034d9123461478f13f3fd6aac312, type: 3}
   pitchRandomisation: 0.4
   basepitch: 3

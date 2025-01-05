@@ -32,7 +32,7 @@ public class StandardNPC : BaseNPC
 
                 foreach (QuestCompletionCondition condition in quest.completionConditions)
                 {
-                    if (condition.completionType == QuestCompletionType.InteractWithNPC)
+                    if (condition.completionType == QuestCompletionType.InteractWith)
                     {
                         condition.RegisterNPCInteraction(this);
                         questHandler.CheckQuestCompletionConditions();

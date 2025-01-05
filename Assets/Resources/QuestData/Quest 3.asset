@@ -28,7 +28,7 @@ MonoBehaviour:
   turnedIn: 0
   completionConditions:
   - completionType: 5
-    requiredAmount: 0
+    requiredAmount: 1
     requiredItem: {fileID: 0}
-    targetNPC: 
+    targetInteract: Broken Car
     enemyType: 

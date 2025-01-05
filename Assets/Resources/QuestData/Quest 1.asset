@@ -16,7 +16,8 @@ MonoBehaviour:
   description: There's another survivor in this world. Go find him.
   startQuestDialogue: 
   midQuestDialogue: 
-  completionDialogue: 
+  completionDialogue: I remember your brother, Paul right? He was a good man.  I
+    trust you to find him.
   rewardItemOnAccept: {fileID: 0}
   rewardItemOnComplete: {fileID: 0}
   prerequisiteQuests: []
@@ -27,5 +28,5 @@ MonoBehaviour:
   - completionType: 5
     requiredAmount: 1
     requiredItem: {fileID: 0}
-    targetNPC: Old Man Jenkins
+    targetInteract: Old Man Jenkins
     enemyType: 

@@ -7,7 +7,7 @@ public enum QuestCompletionType
     CollectItems,
     GiveItems,
     KillEnemies,
-    InteractWithNPC,
+    InteractWith,
     PickUpItem
 }
 
@@ -17,7 +17,7 @@ public class QuestCompletionCondition
     public QuestCompletionType completionType;
     public int requiredAmount;
     public Item requiredItem;
-    public string targetNPC;
+    public string targetInteract;
     public string enemyType;
 
     private int interactionCount = 0;
@@ -42,7 +42,7 @@ public class QuestCompletionCondition
                 return questHandler.HasItem(requiredItem, requiredAmount);
             case QuestCompletionType.KillEnemies:
                 return killCount >= requiredAmount;
-            case QuestCompletionType.InteractWithNPC:
+            case QuestCompletionType.InteractWith:
                 return interactionCount >= requiredAmount;
             case QuestCompletionType.PickUpItem:
                 return itemPickupCount >= requiredAmount;
@@ -54,10 +54,19 @@ public class QuestCompletionCondition
 
     public void RegisterNPCInteraction(BaseNPC npc)
     {
-        if (completionType == QuestCompletionType.InteractWithNPC && npc.name == targetNPC)
+        if (completionType == QuestCompletionType.InteractWith && npc.npcName == targetInteract)
         {
             interactionCount++;
             Debug.Log($"Interacted with NPC: {npc.npcName}. Count: {interactionCount}/{requiredAmount}");
+        }
+    }
+
+    public void RegisterInteraction(BrokenCar car)
+    {
+        if (completionType == QuestCompletionType.InteractWith && car.name == targetInteract)
+        {
+            interactionCount++;
+            Debug.Log($"Interacted with NPC: {car.name}. Count: {interactionCount}/{requiredAmount}");
         }
     }
 
