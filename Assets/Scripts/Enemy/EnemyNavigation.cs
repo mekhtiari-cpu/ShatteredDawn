@@ -16,6 +16,8 @@ public class EnemyNavigation : MonoBehaviour
     [SerializeField] bool isStaggered;
     [SerializeField] bool isDead;
     [SerializeField] ZombieAudio myAudio;
+    bool hasPlayedSeenAudio;
+    bool hasPlayedDeathAudio;
 
     Animator animator;
     private AnimatorClipInfo[] animatorinfo;
@@ -51,6 +53,8 @@ public class EnemyNavigation : MonoBehaviour
         animator = GetComponent<Animator>();
         myState = EnemyState.Patrol;
         pm = FindFirstObjectByType<Player_Movement>();
+        hasPlayedSeenAudio = false;
+        hasPlayedDeathAudio = false;
         myAudio.PlayIdleAudio();
     }
 
@@ -71,6 +75,12 @@ public class EnemyNavigation : MonoBehaviour
 
     public void Die()
     {
+        if(!hasPlayedDeathAudio)
+        {
+            myAudio.StopPlayingChaseAudio();
+            myAudio.PlayDeathAudio();
+            hasPlayedDeathAudio = true;
+        }
         animator.SetInteger("rand",Random.Range(1, 3));
         animator.SetBool("IsDead", true);
         isDead = true;
@@ -177,8 +187,13 @@ public class EnemyNavigation : MonoBehaviour
     {
         if(vision.GetConditionsForChase())
         {
-            myAudio.StopPlayingIdleAudio();
-            myAudio.PlayPlayerSeenAudio();
+            if(!hasPlayedSeenAudio)
+            {
+                myAudio.PlayPlayerSeenAudio();
+                myAudio.StopPlayingIdleAudio();
+                hasPlayedSeenAudio = true;
+            }
+
             myState = EnemyState.Chase;
             Debug.Log("Chasing");
         }

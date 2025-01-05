@@ -8,6 +8,7 @@ public class ZombieAudio : MonoBehaviour
     [SerializeField] AudioSource playerSeenAudio;
     [SerializeField] AudioSource chaseAudio;
     [SerializeField] AudioSource hurtAudio;
+    [SerializeField] AudioSource deathAudio;
 
     public void PlayIdleAudio()
     {
@@ -27,9 +28,18 @@ public class ZombieAudio : MonoBehaviour
     {
         chaseAudio.Play();
     }
+    public void StopPlayingChaseAudio()
+    {
+        chaseAudio.Stop();
+    }
 
     public void PlayHurtAudio()
     {
         hurtAudio.Play();
+    }
+
+    public void PlayDeathAudio()
+    {
+        deathAudio.Play();
     }
 }
