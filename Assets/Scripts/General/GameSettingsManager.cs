@@ -31,6 +31,7 @@ public class GameSettingsManager : MonoBehaviour
     private void Start()
     {
         ApplySettings();
+        CloseSettings();
     }
 
     public void OpenSettings()
