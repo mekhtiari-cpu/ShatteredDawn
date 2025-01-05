@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
     [Space]
     public DayNightCycle dayNightScript;
     
-    public bool inDebug;
     public const string QUESTFILEPATH = "QuestData";
 
     // Reset Scriptable Objects so all quest appear as incomplete

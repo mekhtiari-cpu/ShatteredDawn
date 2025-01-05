@@ -83,11 +83,6 @@ public class Player_Mouse_Look : MonoBehaviour
     {
         weaponCamera.transform.rotation = myCamera.transform.rotation;
 
-        if (GameManager.instance.inDebug)
-        {
-            return;
-        }
-
         CameraControls();
         WeaponCameraControls();
         RaycastForNPC();

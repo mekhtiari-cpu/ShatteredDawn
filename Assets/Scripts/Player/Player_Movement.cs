@@ -40,11 +40,6 @@ public class Player_Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.inDebug)
-        {
-            return;
-        }
-
         LinkInputsToVariables();
         ApplyMovement();
         CheckIfGrounded();
