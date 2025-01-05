@@ -5,7 +5,6 @@ using TMPro;
 
 public class EnemyVision : MonoBehaviour
 {
-    [SerializeField] Transform player;
     [SerializeField] bool playerInView = false;
     [SerializeField] bool playerObstructed;
     [SerializeField] Transform enemyTransform;
@@ -17,7 +16,7 @@ public class EnemyVision : MonoBehaviour
 
     private void Update()
     {
-        if(Vector3.Distance(transform.position, player.position) < rayRange + 2f)
+        if(Vector3.Distance(transform.position, playerTransform.position) < rayRange + 2f)
         {
             RayCheck();
         }
