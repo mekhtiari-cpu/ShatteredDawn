@@ -919,7 +919,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.2666277
+  m_Radius: 0.3
   m_Center: {x: 8.774888e-11, y: 0.16, z: 6.8032635e-10}
 --- !u!1 &5181476735820667452
 GameObject:
@@ -1306,6 +1306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomPointGo: {fileID: 4478761861040824533, guid: 2f8349e2fdfc2074cbaed518c575f28b, type: 3}
   player: {fileID: 0}
+  pm: {fileID: 0}
   walkablePath:
     serializedVersion: 2
     m_Bits: 512
@@ -1363,9 +1364,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.47584134
-  m_Height: 2.1956387
+  m_Height: 2.013092
   m_Direction: 1
-  m_Center: {x: 0.0010361698, y: 0.9278183, z: 0.10913223}
+  m_Center: {x: 0.0010361698, y: 0.9687457, z: 0.10913223}
 --- !u!1 &8125339293332448974
 GameObject:
   m_ObjectHideFlags: 0

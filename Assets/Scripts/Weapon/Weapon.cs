@@ -219,6 +219,26 @@ public class Weapon : MonoBehaviour
             //ads               
             player.firingState = playerFiringState.Ads;
 
+            Transform cameraTransform = transform.Find("Cameras/Main Camera");
+            RaycastHit hit;
+
+            if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, gunRange))
+            {
+                if (hit.collider.CompareTag("AimAssist"))
+                {
+                    // Calculate direction towards the AimAssist collider's center
+                    Vector3 aimAssistTarget = hit.collider.bounds.center;
+                    Vector3 aimDirection = (aimAssistTarget - cameraTransform.position).normalized;
+
+                    // Smoothly move camera's forward direction towards the AimAssist target
+                    cameraTransform.rotation = Quaternion.Lerp(
+                        cameraTransform.rotation,
+                        Quaternion.LookRotation(aimDirection),
+                        Time.deltaTime * loadOut.aimSpeed
+                    );
+                }
+            }
+
             anchor.position = Vector3.Lerp(anchor.position, stateAds.position, Time.deltaTime * loadOut.aimSpeed);
         }
         else
