@@ -25,6 +25,8 @@ public class Player_Interact : MonoBehaviour
     [SerializeField] HealthManager myHealth;
     [SerializeField] Player_Death myDeath;
 
+    [SerializeField] GameObject escapePanel;
+
     private void Awake()
     {
         //Singleton
@@ -84,9 +86,14 @@ public class Player_Interact : MonoBehaviour
         {
             Debug.Log("Toggling car status");
             if (brokenCar.GetNumPartsFixed() < 5)
+            {
                 UI_Manager.instance.GetCarUI().ToggleCarInfoText();
+            }
             else
+            {
+                escapePanel.SetActive(true);
                 Debug.Log("Escaping the city");
+            }
         }        
     }
 

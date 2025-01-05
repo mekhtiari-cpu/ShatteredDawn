@@ -61,13 +61,6 @@ public class GameSettingsManager : MonoBehaviour
         // Apply color blindness mode
         FindObjectOfType<PostProcessorManager>()?.SetColorBlindMode(Settings.ColorBlindMode);
 
-        // Apply resolution
-        if (Settings.ResolutionIndex >= 0 && Settings.ResolutionIndex < availableResolutions.Length)
-        {
-            Resolution res = availableResolutions[Settings.ResolutionIndex];
-            Screen.SetResolution(res.width, res.height, Settings.Fullscreen);
-        }
-
         // Apply quality level
         QualitySettings.SetQualityLevel(Settings.QualityLevel);
 
@@ -151,23 +144,9 @@ public class GameSettingsManager : MonoBehaviour
         Settings.SaveSettings();
     }
 
-    public void SetResolution(int index)
-    {
-        Settings.ResolutionIndex = index;
-        ApplySettings();
-        Settings.SaveSettings();
-    }
-
     public void SetQualityLevel(int level)
     {
         Settings.QualityLevel = level;
-        ApplySettings();
-        Settings.SaveSettings();
-    }
-
-    public void SetFullscreen(bool isFullscreen)
-    {
-        Settings.Fullscreen = isFullscreen;
         ApplySettings();
         Settings.SaveSettings();
     }
