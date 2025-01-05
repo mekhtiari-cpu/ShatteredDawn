@@ -16,7 +16,6 @@ public class EnemyVision : MonoBehaviour
 
     private void Update()
     {
-        RayCheck();
         if(Vector3.Distance(transform.position, playerTransform.position) < rayRange + 2f)
         {
             RayCheck();
