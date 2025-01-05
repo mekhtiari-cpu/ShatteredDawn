@@ -1684,7 +1684,7 @@ Transform:
   - {fileID: 3275316606026812341}
   - {fileID: 672767241740247508}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 147.305, z: 0}
 --- !u!95 &3630285972270419361
 Animator:
@@ -1756,6 +1756,7 @@ MonoBehaviour:
   isStaggered: 0
   isDead: 0
   myAudio: {fileID: 2439681674007312967}
+  hasPlayedChaseAudio: 0
   current_animation: 
   myState: 0
   patrolRadius: 18
@@ -1770,6 +1771,7 @@ MonoBehaviour:
   maxScanTime: 3
   minScanSpeed: 1
   maxScanSpeed: 1.5
+  deAggroDistance: 8
 --- !u!114 &1840150391661098368
 MonoBehaviour:
   m_ObjectHideFlags: 0
