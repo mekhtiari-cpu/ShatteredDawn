@@ -1587,7 +1587,7 @@ Transform:
   - {fileID: 3275316606026812341}
   - {fileID: 672767241740247508}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 147.305, z: 0}
 --- !u!95 &3630285972270419361
 Animator:
@@ -1653,7 +1653,7 @@ MonoBehaviour:
     m_Bits: 512
   movementSpeeds:
   - 1
-  - 10
+  - 7.5
   - 0
   hit: {fileID: -203655887218126122, guid: 98cd082ab2a08d048abe4a362898b883, type: 3}
   isStaggered: 0
@@ -1665,6 +1665,8 @@ MonoBehaviour:
   isPatrolling: 0
   isMovingTowardsPoint: 0
   lastPoint: {fileID: 0}
+  patrolTimeout: 10
+  patrolTimeoutTime: 0
   vision: {fileID: 5380448316029637179}
   hasAlreadyScanned: 0
   minScanTime: 0.5
@@ -1932,6 +1934,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1c36a42c2eda04b478542d50ff493110, type: 3}
       propertyPath: m_Name
       value: Vision
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1c36a42c2eda04b478542d50ff493110, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1300264252759386080, guid: 1c36a42c2eda04b478542d50ff493110, type: 3}
       propertyPath: m_LocalScale.x

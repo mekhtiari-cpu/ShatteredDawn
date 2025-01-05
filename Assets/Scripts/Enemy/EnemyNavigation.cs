@@ -32,6 +32,9 @@ public class EnemyNavigation : MonoBehaviour
     [SerializeField] bool isPatrolling;
     [SerializeField] bool isMovingTowardsPoint = false;
     [SerializeField] GameObject lastPoint;
+    [SerializeField] float patrolTimeout;
+    [SerializeField] float patrolTimeoutTime;
+    bool hasSetPatrolTime;
     Vector3 randomPoint;
 
     [Header("Scan Variables")]
@@ -56,6 +59,7 @@ public class EnemyNavigation : MonoBehaviour
         hasPlayedSeenAudio = false;
         hasPlayedDeathAudio = false;
         myAudio.PlayIdleAudio();
+        patrolTimeoutTime = patrolTimeout;
     }
 
     private void FixedUpdate()
@@ -209,12 +213,24 @@ public class EnemyNavigation : MonoBehaviour
 
         if (isPatrolling)
         {
-            if(Vector3.Distance(transform.position, randomPoint) <= 5f)
+            if (!hasSetPatrolTime)
             {
+                patrolTimeoutTime = patrolTimeout;
+                hasSetPatrolTime = true;
+            }
+            else
+            {
+                patrolTimeoutTime -= Time.deltaTime;
+            }
+
+            if(Vector3.Distance(transform.position, randomPoint) <= 5f || patrolTimeoutTime <= 0f)
+            {
+                patrolTimeoutTime = patrolTimeout;
                 isPatrolling = false;
                 isMovingTowardsPoint = false;
                 Destroy(lastPoint);
                 myNav.speed = 0f;
+                hasSetPatrolTime = false;
                 return true;
             }
             else
