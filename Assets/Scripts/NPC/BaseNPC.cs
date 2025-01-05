@@ -8,6 +8,8 @@ public class BaseNPC : MonoBehaviour, INPC
     public List<Quest> allQuests = new List<Quest>();
     public Quest assignedQuest { get; private set; }
 
+    public GameObject pointOfInterest;
+
     [SerializeField] protected bool questGiven = false;
 
     public virtual void Interact(PlayerQuestHandler questHandler) {}
@@ -43,10 +45,13 @@ public class BaseNPC : MonoBehaviour, INPC
             if (!quest.turnedIn && quest.ArePrerequisitesMet())
             {
                 assignedQuest = quest;
+                bool showInterest = assignedQuest.isCompleted;
+                pointOfInterest.SetActive(showInterest);
                 return;
             }
         }
 
+       
         assignedQuest = null;
     }
 
@@ -133,5 +138,8 @@ public class BaseNPC : MonoBehaviour, INPC
         questGiven = true;
     }
 
-
+    public virtual string GetName()
+    {
+        return npcName;
+    }
 }
