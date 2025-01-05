@@ -13,7 +13,6 @@ public class FPSDisplay : MonoBehaviour
         fpsText = GetComponent<TextMeshProUGUI>();
         if (fpsText == null)
         {
-            Debug.LogError("FPSDisplay: TMP_Text component is not assigned or missing.");
             return;
         }
         UpdateDisplayState();
@@ -33,7 +32,6 @@ public class FPSDisplay : MonoBehaviour
     {
         if (fpsText == null)
         {
-            Debug.LogError("FPSDisplay: TMP_Text component is not assigned or missing.");
             return;
         }
 

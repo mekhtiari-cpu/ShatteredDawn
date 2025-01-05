@@ -10,7 +10,6 @@ public class InfoItem : Item
     public string info;
     public override void UseItem()
     {
-        Debug.Log(info);
         UI_Manager.instance.ReadInfo();
     }
 }

@@ -57,7 +57,6 @@ public class Gun : EquipableItem
         if (clip > 0)
         {
             clip -= 1;
-            //stash--;
 
             return true;
         }
@@ -81,7 +80,6 @@ public class Gun : EquipableItem
 
     public override void EquipItem()
     {
-        Debug.Log("Now wielding " + itemName);
         PlayerEquipment.instance.SetWeapon(this);
         UI_Manager.instance.UpdateEquippedItems();
     }

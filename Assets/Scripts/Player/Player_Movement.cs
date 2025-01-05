@@ -100,10 +100,6 @@ public class Player_Movement : MonoBehaviour
         {
             moveDirection = pc.move.ReadValue<Vector3>();
         }
-        else
-        {
-            Debug.LogWarning("Player_Controls component is missing.");
-        }
     }
 
     public bool GetIsCrouched()

@@ -19,7 +19,6 @@ public class PostProcessorManager : MonoBehaviour
     {
         if (postProcessVolume == null)
         {
-            Debug.LogError("PostProcessVolume is not assigned in the ColorBlindnessManager.");
             return;
         }
 
@@ -52,7 +51,6 @@ public class PostProcessorManager : MonoBehaviour
     {
         if (activeColorGrading == null)
         {
-            Debug.LogError("Color Grading settings are not available.");
             return;
         }
 
@@ -72,16 +70,6 @@ public class PostProcessorManager : MonoBehaviour
                 break;
         }
     }
-    /*public void SetBrightness(float exposure)
-    {
-        if (activeColorGrading == null)
-        {
-            Debug.LogError("Color Grading settings are not available.");
-            return;
-        }
-
-        activeColorGrading.postExposure.value = Mathf.Clamp(exposure, -10f, 10f); // Clamp exposure for safety
-    }*/
     private ColorGrading CreateColorGradingSettings(Vector3? mixerRed = null, Vector3? mixerGreen = null, Vector3? mixerBlue = null)
     {
         var colorGrading = ScriptableObject.CreateInstance<ColorGrading>();

@@ -32,7 +32,6 @@ public class Quest : ScriptableObject
         {
             if (prerequisite == null)
             {
-                Debug.LogWarning($"A quest prerequisite is null in {questName}.");
                 continue;
             }
 
@@ -55,7 +54,6 @@ public class Quest : ScriptableObject
         {
             if (condition == null)
             {
-                Debug.LogWarning($"A quest completion condition is null in {questName}.");
                 continue;
             }
 

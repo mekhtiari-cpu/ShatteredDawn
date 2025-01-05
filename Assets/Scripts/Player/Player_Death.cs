@@ -23,7 +23,6 @@ public class Player_Death : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("Player died");
         mainCamera.gameObject.SetActive(false);
         deathCamera.gameObject.SetActive(true);
         frostEffect.SetActive(false);

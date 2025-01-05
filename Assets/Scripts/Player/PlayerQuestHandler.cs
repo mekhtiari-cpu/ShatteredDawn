@@ -11,23 +11,17 @@ public class PlayerQuestHandler : MonoBehaviour
         {
             GameManager.instance.playerQuest = this;
         }
-        else
-        {
-            Debug.LogWarning("GameManager instance is null. PlayerQuestHandler could not initialize.");
-        }
     }
 
     public void AddQuest(Quest newQuest)
     {
         if (newQuest == null)
         {
-            Debug.LogWarning("Attempted to add a null quest.");
             return;
         }
         if (!activeQuests.Contains(newQuest))
         {
             activeQuests.Add(newQuest);
-            Debug.Log($"Quest added: {newQuest.questName}");
 
             if (GameManager.instance.playerQuest)
             {
@@ -43,7 +37,6 @@ public class PlayerQuestHandler : MonoBehaviour
         if (activeQuests.Contains(quest))
         {
             quest.isCompleted = true;
-            Debug.Log($"Quest completed: {quest.questName}");
 
             UpdateQuestDisplay();
         }
@@ -72,7 +65,6 @@ public class PlayerQuestHandler : MonoBehaviour
         {
             if (quest == null || quest.isCompleted)
             {
-                Debug.LogWarning($"A quest is null in {quest.name}.");
                 continue;  // Skip null conditions and move to the next one
             }
 
@@ -88,7 +80,6 @@ public class PlayerQuestHandler : MonoBehaviour
         if (activeQuests.Contains(quest))
         {
             activeQuests.Remove(quest);
-            Debug.Log($"Quest removed: {quest.questName}");
 
             UpdateQuestDisplay();
         }
@@ -104,7 +95,6 @@ public class PlayerQuestHandler : MonoBehaviour
             npc.GiveReward(quest); 
             return true;
         }
-        Debug.Log("Quest is not completed or does not exist in active quests.");
         return false;
     }
 
@@ -122,10 +112,6 @@ public class PlayerQuestHandler : MonoBehaviour
         if (GameManager.instance.UIHandler != null && GameManager.instance.UIHandler.questUI != null)
         {
             GameManager.instance.UIHandler.questUI.UpdateDisplay(ref activeQuests);
-        }
-        else
-        {
-            Debug.LogWarning("UIHandler or questUI is null. Cannot update quest display.");
         }
     }
 }

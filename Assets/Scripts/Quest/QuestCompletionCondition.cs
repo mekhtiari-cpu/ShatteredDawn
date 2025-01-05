@@ -57,7 +57,6 @@ public class QuestCompletionCondition
         if (completionType == QuestCompletionType.InteractWith && npc.npcName == targetInteract)
         {
             interactionCount++;
-            Debug.Log($"Interacted with NPC: {npc.npcName}. Count: {interactionCount}/{requiredAmount}");
         }
     }
 
@@ -66,7 +65,6 @@ public class QuestCompletionCondition
         if (completionType == QuestCompletionType.InteractWith && car.name == targetInteract)
         {
             interactionCount++;
-            Debug.Log($"Interacted with NPC: {car.name}. Count: {interactionCount}/{requiredAmount}");
         }
     }
 
@@ -75,7 +73,6 @@ public class QuestCompletionCondition
         if (pickedUpItem == requiredItem)
         {
             itemPickupCount++;
-            Debug.Log($"Picked up item: {pickedUpItem.itemName}. Count: {itemPickupCount}/{requiredAmount}");
         }
     }
 

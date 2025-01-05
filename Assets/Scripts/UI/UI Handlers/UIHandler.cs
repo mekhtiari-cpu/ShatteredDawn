@@ -10,7 +10,6 @@ public class UIHandler : MonoBehaviour
         canvasGroup = GetComponent<CanvasGroup>();
         if (canvasGroup == null)
         {
-            Debug.LogWarning("UIHandler: CanvasGroup component is missing.");
             gameObject.AddComponent<CanvasGroup>();
         }
     }

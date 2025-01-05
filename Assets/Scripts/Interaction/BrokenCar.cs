@@ -59,34 +59,27 @@ public class BrokenCar : Interactable
             case KeyItem.KeyItemType.IgnitionKey:
                 ObtainedIgnitionKey();
                 break;
-            default:
-                Debug.Log("Invalid key item");
-                break;
         }
         
     }
 
     public void ReplaceTire()
     {
-        Debug.Log("1 Tire Replaced, " + tiresReplaced + " Remaining");
         tiresReplaced++;
     }
 
     public void ReplaceBattery()
     {
-        Debug.Log("Battery Replaced");
         hasReplacedBattery = true;
     }
 
     public void FillOil()
     {
-        Debug.Log("Oil Filled");
         hasFilledOil = true;
     }
 
     public void ObtainedIgnitionKey()
     {
-        Debug.Log("Has Obtained Ignition Key");
         hasObtainedIgnitionKey = true;
     }
 

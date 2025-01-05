@@ -81,7 +81,6 @@ public class Weapon : MonoBehaviour
                     {
                         Shoot();
                         fireShots = false;
-                        //Play Shoot Animation here
                     }
                     else
                     {
@@ -98,7 +97,6 @@ public class Weapon : MonoBehaviour
                     if (currentGunData.FireBullet())
                     {
                         Shoot();
-                        //Play Shoot Animation here
                     }
                     else
                     {

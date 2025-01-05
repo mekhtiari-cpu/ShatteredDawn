@@ -22,10 +22,6 @@ public class FPSToggle : MonoBehaviour
         {
             fpsDisplay.UpdateDisplayState();
         }
-        else
-        {
-            Debug.LogError("FPSToggle: FPSDisplay script is not found in the scene.");
-        }
     }
 }
 

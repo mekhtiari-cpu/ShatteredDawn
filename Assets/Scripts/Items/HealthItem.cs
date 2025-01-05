@@ -9,7 +9,6 @@ public class HealthItem : ConsumableItem
 
     public override void ConsumeItem()
     {
-        Debug.Log("Gaining " + healthGainAmount + " health");
         bool hasGainedHealth = PlayerEquipment.instance.gameObject.GetComponent<HealthManager>().GainHealth(healthGainAmount);
         if(hasGainedHealth)
         {

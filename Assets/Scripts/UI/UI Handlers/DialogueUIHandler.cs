@@ -18,11 +18,6 @@ public class DialogueUIHandler : UIHandler
             dialogueText = GetComponentInChildren<TextMeshProUGUI>();
         }
 
-        if (dialogueText == null)
-        {
-            Debug.LogWarning("DialogueUIHandler: No TextMeshProUGUI component found for dialogue text.");
-        }
-
         canvasGroup = GetComponent<CanvasGroup>();
         HideDialogue();
     }
