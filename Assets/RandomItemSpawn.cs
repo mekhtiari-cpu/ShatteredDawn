@@ -89,11 +89,13 @@ public class RandomItemSpawn : MonoBehaviour
             if (gunToBeSpawned <= 10)
                 Instantiate(gunPickups[3], transform.GetChild(randSlot).position, Quaternion.identity, transform.GetChild(randSlot));
             else if (gunToBeSpawned <= 20)
-                Instantiate(consumablePickups[2], transform.GetChild(randSlot).position, Quaternion.identity, transform.GetChild(randSlot));
+                Instantiate(gunPickups[2], transform.GetChild(randSlot).position, Quaternion.identity, transform.GetChild(randSlot));
             else if (gunToBeSpawned <= 30)
-                Instantiate(consumablePickups[1], transform.GetChild(randSlot).position, Quaternion.identity, transform.GetChild(randSlot));
+                Instantiate(gunPickups[1], transform.GetChild(randSlot).position, Quaternion.identity, transform.GetChild(randSlot));
             else
-                Instantiate(consumablePickups[0], transform.GetChild(randSlot).position, Quaternion.identity, transform.GetChild(randSlot));
+                Instantiate(gunPickups[0], transform.GetChild(randSlot).position, Quaternion.identity, transform.GetChild(randSlot));
+
+            Debug.Log(randSlot);
         }
         SpawnClothing();
     }
