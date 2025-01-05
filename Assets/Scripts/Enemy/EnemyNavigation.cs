@@ -175,8 +175,10 @@ public class EnemyNavigation : MonoBehaviour
     //Constantly check whether the player is in the enemy's vision
     void CheckEyesight()
     {
-        if(vision.playerInView)
+        if(vision.GetConditionsForChase())
         {
+            myAudio.StopPlayingIdleAudio();
+            myAudio.PlayPlayerSeenAudio();
             myState = EnemyState.Chase;
             Debug.Log("Chasing");
         }
@@ -289,6 +291,7 @@ public class EnemyNavigation : MonoBehaviour
     {
         if(!isStaggered)
         {
+            myAudio.PlayChaseAudio();
             GameSettingsManager gsm = GameSettingsManager.Instance;
             float modifier = 1f;
             if (gsm)

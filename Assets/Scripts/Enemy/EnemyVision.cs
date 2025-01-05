@@ -5,8 +5,9 @@ using TMPro;
 
 public class EnemyVision : MonoBehaviour
 {
-    public bool playerInView = false;
-    [SerializeField] bool playerNotObstructed;
+    [SerializeField] Transform player;
+    [SerializeField] bool playerInView = false;
+    [SerializeField] bool playerObstructed;
     [SerializeField] Transform enemyTransform;
     [SerializeField] Transform playerTransform;
     [SerializeField] Vector3 rayOffset;
@@ -14,6 +15,15 @@ public class EnemyVision : MonoBehaviour
     [SerializeField] float rayRange;
     [SerializeField] TMP_Text objectsHit;
 
+    private void Update()
+    {
+        if(Vector3.Distance(transform.position, player.position) < rayRange + 2f)
+        {
+            RayCheck();
+        }
+    }
+
+    //Check whether the player is obstructed by anything
     bool RayCheck ()
     {
         Vector3 dirToPlayer = (playerTransform.position) - (enemyTransform.transform.position + rayOffset);
@@ -46,24 +56,40 @@ public class EnemyVision : MonoBehaviour
         {
             if (hits[0].collider.CompareTag("Player"))
             {
-                playerNotObstructed = true;
-                return true;
+                playerObstructed = false;
+                return false;
             }
             else
             {
-                playerNotObstructed = false;
-                return false;
+                playerObstructed = true;
+                return true;
             }
         }
         else
         {
-            return false;
+            playerObstructed = true;
+            return true;
         }
     }
 
+    public bool GetConditionsForChase()
+    {
+        return playerInView && !playerObstructed;
+    }
+
+    //Check whether the player is actually in view or not
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
-            playerInView = RayCheck();
+        {
+            playerInView = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInView = false;
+        }
     }
 }
