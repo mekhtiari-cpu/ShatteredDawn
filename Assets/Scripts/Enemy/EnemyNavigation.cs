@@ -15,6 +15,7 @@ public class EnemyNavigation : MonoBehaviour
     [SerializeField] AnimationClip hit;
     [SerializeField] bool isStaggered;
     [SerializeField] bool isDead;
+    [SerializeField] ZombieAudio myAudio;
 
     Animator animator;
     private AnimatorClipInfo[] animatorinfo;
@@ -50,6 +51,7 @@ public class EnemyNavigation : MonoBehaviour
         animator = GetComponent<Animator>();
         myState = EnemyState.Patrol;
         pm = FindFirstObjectByType<Player_Movement>();
+        myAudio.PlayIdleAudio();
     }
 
     private void FixedUpdate()
@@ -108,6 +110,7 @@ public class EnemyNavigation : MonoBehaviour
     public void Hit()
     {
         isStaggered = true;
+        myAudio.PlayHurtAudio();
         StartCoroutine(WaitForHitDuration());
         animator.Play("Hit");
         myNav.speed = movementSpeeds[2];
@@ -312,7 +315,7 @@ public class EnemyNavigation : MonoBehaviour
             }
 
             myNav.speed = movementSpeeds[1] * modifier;
-            myNav.acceleration = 800;
+            myNav.acceleration = 1000;
             myNav.SetDestination(player.position);
         }
     }
