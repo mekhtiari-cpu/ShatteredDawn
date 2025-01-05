@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 public enum GunFiringTypes
 {
-    SemiAuto, Automatic, Burst
+    SemiAuto, Automatic
 }
 public enum GunTypes
 {
-    AssauultRifle, SubmachhineGun, Shotgun, MachineGun, SniperRifle, Pistol, Explosive
+    AssauultRifle, SubmachhineGun, Shotgun, Pistol
 }
 
 [CreateAssetMenu(fileName = "New Weapon Item", menuName = "Item/Equipable/Weapon")]
@@ -38,10 +38,6 @@ public class Gun : EquipableItem
 
     private int stash; //current ammo
     private int clip; //current clip
-
-    [Header("Ads Var")]
-    [Range(0, 1)] public float mainFOV;
-    [Range(0, 1)] public float weaponFOV;
 
     [Header("Sound")]
     public AudioClip gunShotSound;
