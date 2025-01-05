@@ -434,6 +434,7 @@ MonoBehaviour:
   playerSeenAudio: {fileID: 5992697207299818831}
   chaseAudio: {fileID: 3868663792796939376}
   hurtAudio: {fileID: 5195713629630136131}
+  deathAudio: {fileID: 5992697207299818831}
 --- !u!1 &1324599249191413831
 GameObject:
   m_ObjectHideFlags: 0
@@ -2041,8 +2042,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba6c09c9e08d8de4a968649a48848252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   playerInView: 0
-  playerNotObstructed: 0
+  playerObstructed: 0
   enemyTransform: {fileID: 8000145460650119319}
   playerTransform: {fileID: 0}
   rayOffset: {x: 0, y: 0, z: 0}
@@ -2232,8 +2234,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba6c09c9e08d8de4a968649a48848252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   playerInView: 0
-  playerNotObstructed: 0
+  playerObstructed: 0
   enemyTransform: {fileID: 8000145460650119319}
   playerTransform: {fileID: 0}
   rayOffset: {x: 0, y: 0, z: 0}
