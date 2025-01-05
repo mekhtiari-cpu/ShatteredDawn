@@ -128,4 +128,9 @@ public class HealthManager : MonoBehaviour
             health.setHealth(CurrentHealth);
         }
     }
+
+    public float GetCurrentHealth()
+    {
+        return CurrentHealth;
+    }
 }

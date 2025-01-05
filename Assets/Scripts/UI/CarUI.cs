@@ -15,10 +15,21 @@ public class CarUI : MonoBehaviour
         carInteractText.SetActive(!carInteractText.activeSelf);
     }
 
+    public void ChangeInteractText(string newText)
+    {
+        carInteractText.GetComponent<TMP_Text>().text = newText;
+    }
+
     public void ToggleCarInfoText()
     {
         carInfo.SetActive(!carInfo.activeSelf);
         ToggleCarInteractText();
         carInfoText.text = brokenCar.GetCarInfo();
+    }
+
+    public void DisableCarInfo()
+    {
+        carInfo.SetActive(false);
+        carInteractText.SetActive(false);
     }
 }

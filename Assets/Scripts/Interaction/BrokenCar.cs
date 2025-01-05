@@ -12,10 +12,11 @@ public class BrokenCar : Interactable
     [SerializeField] bool hasFilledOil;
     [SerializeField] bool hasReplacedHeadlights;
     [SerializeField] bool hasObtainedIgnitionKey;
+    int numPartsFixed;
 
     private void Update()
     {
-        //CloseUIIfPlayerFar();
+        CloseUIIfPlayerFar();
     }
 
     public override void Interact()
@@ -23,6 +24,10 @@ public class BrokenCar : Interactable
         base.Interact();
         playerNearCar = true;
         UI_Manager.instance.GetCarUI().ToggleCarInteractText();
+        if(numPartsFixed >= 5)
+        {
+            UI_Manager.instance.GetCarUI().ChangeInteractText("Press E to drive the car and escape");
+        }
     }
     public override void StopInteracting()
     {
@@ -33,7 +38,14 @@ public class BrokenCar : Interactable
 
     public void ReturnKeyItem(KeyItem keyItem)
     {
-        switch(keyItem.keyItemType)
+        numPartsFixed++;
+        if(numPartsFixed >= 5)
+        {
+            UI_Manager.instance.GetCarUI().DisableCarInfo();
+            UI_Manager.instance.GetCarUI().ChangeInteractText("Press E to drive the car and escape");
+            UI_Manager.instance.GetCarUI().ToggleCarInteractText();
+        }
+        switch (keyItem.keyItemType)
         {
             case KeyItem.KeyItemType.Tire:
                 ReplaceTire();
@@ -87,8 +99,13 @@ public class BrokenCar : Interactable
     {
         if(!playerNearCar)
         {
-            UI_Manager.instance.GetCarUI().ToggleCarInfoText();
+            UI_Manager.instance.GetCarUI().DisableCarInfo();
         }
+    }
+
+    public int GetNumPartsFixed()
+    {
+        return numPartsFixed;
     }
 
     public string GetCarInfo()
@@ -113,7 +130,6 @@ public class BrokenCar : Interactable
 
                 }
             }
-
         }
         string tireStatus = "• "+tiresReplaced+" Tire Replaced, " + (2-tiresReplaced) + " Remaining" + "\n";
         string batteryStatus = "• Battery Replaced: " + hasReplacedBattery + "\n";

@@ -25,7 +25,6 @@ public class UI_Manager : MonoBehaviour
         else
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
     }
 

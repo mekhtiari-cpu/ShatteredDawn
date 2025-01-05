@@ -18,7 +18,8 @@ public class EnemyNavigation : MonoBehaviour
     [SerializeField] ZombieAudio myAudio;
     bool hasPlayedSeenAudio;
     bool hasPlayedDeathAudio;
-    bool hasPlayedChaseAudio;
+    bool hasPlayedIdleAudio;
+    [SerializeField]bool hasPlayedChaseAudio;
 
     Animator animator;
     private AnimatorClipInfo[] animatorinfo;
@@ -45,6 +46,9 @@ public class EnemyNavigation : MonoBehaviour
     [SerializeField] float maxScanTime;
     [SerializeField] float minScanSpeed;
     [SerializeField] float maxScanSpeed;
+
+    [Header("Chase Variables")]
+    [SerializeField] float deAggroDistance;
 
     int toPlayerOrRand;
     float scanSpeed;
@@ -126,6 +130,7 @@ public class EnemyNavigation : MonoBehaviour
     {
         isStaggered = true;
         myAudio.PlayHurtAudio();
+        myAudio.StopPlayingChaseAudio();
         StartCoroutine(WaitForHitDuration());
         animator.Play("Hit");
         myNav.speed = movementSpeeds[2];
@@ -136,6 +141,9 @@ public class EnemyNavigation : MonoBehaviour
     {
         myState = EnemyState.Chase;
         yield return new WaitForSeconds(hit.length);
+        if(!isDead)
+            myAudio.PlayChaseAudio();
+        hasPlayedChaseAudio = false;
         isStaggered = false;
     }
 
@@ -197,10 +205,27 @@ public class EnemyNavigation : MonoBehaviour
                 myAudio.PlayPlayerSeenAudio();
                 myAudio.StopPlayingIdleAudio();
                 hasPlayedSeenAudio = true;
+                
             }
-
+            hasPlayedIdleAudio = false;
             myState = EnemyState.Chase;
             Debug.Log("Chasing");
+        }
+        else
+        {
+            if (Vector3.Distance(player.position, transform.position) > deAggroDistance && myState == EnemyState.Chase)
+            {
+                myState = EnemyState.Patrol;
+                hasPlayedChaseAudio = false;
+                hasPlayedSeenAudio = false;
+                animator.SetBool("isChasing", false);
+                myAudio.StopPlayingChaseAudio();
+                if(!hasPlayedIdleAudio)
+                {
+                    myAudio.PlayIdleAudio();
+                    hasPlayedIdleAudio = true;
+                }
+            }
         }
     }
 
@@ -321,15 +346,17 @@ public class EnemyNavigation : MonoBehaviour
     //Chase: Chase down the player
     void Chase()
     {
-        if(!isStaggered)
+        if (!isStaggered)
         {
             if(!hasPlayedChaseAudio)
             {
-                myAudio.PlayChaseAudio();
-                hasPlayedChaseAudio = true;
+                if(!isDead)
+                {
+                    myAudio.PlayChaseAudio();
+                    hasPlayedChaseAudio = true;
+                }
             }
 
-            Debug.Log("playing chase audio");
             GameSettingsManager gsm = GameSettingsManager.Instance;
             float modifier = 1f;
             if (gsm)
@@ -353,10 +380,6 @@ public class EnemyNavigation : MonoBehaviour
                         break;
 
                 }
-            }
-            else
-            {
-                myAudio.StopPlayingChaseAudio();
             }
 
             myNav.speed = movementSpeeds[1] * modifier;

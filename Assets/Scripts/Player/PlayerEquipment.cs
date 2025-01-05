@@ -25,7 +25,6 @@ public class PlayerEquipment : MonoBehaviour
         else
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
     }
 

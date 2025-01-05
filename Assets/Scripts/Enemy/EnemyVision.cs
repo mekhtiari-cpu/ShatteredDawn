@@ -26,8 +26,10 @@ public class EnemyVision : MonoBehaviour
     bool RayCheck ()
     {
         Vector3 dirToPlayer = (playerTransform.position) - (enemyTransform.transform.position + rayOffset);
-        Ray ray = new Ray(enemyTransform.transform.position + rayOffset, dirToPlayer.normalized * rayRange);
-        Debug.DrawRay(enemyTransform.transform.position + rayOffset, dirToPlayer.normalized * rayRange, Color.red);
+        float distanceToPlayer = Vector3.Distance(enemyTransform.position, playerTransform.position);
+
+        Ray ray = new Ray(enemyTransform.transform.position + rayOffset, dirToPlayer.normalized * distanceToPlayer);
+        Debug.DrawRay(enemyTransform.transform.position + rayOffset, dirToPlayer.normalized * distanceToPlayer, Color.red);
         RaycastHit[] hits = Physics.RaycastAll(ray, rayRange, validRayObjects);
 
         string objectsHitText = "Objects hit: ";
