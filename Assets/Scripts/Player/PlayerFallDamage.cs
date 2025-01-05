@@ -12,6 +12,7 @@ public class PlayerFallDamage : MonoBehaviour
     [SerializeField] Vector3 fallEndPosition;
     [SerializeField] float fallHeight;
     [SerializeField] float fallDamageMultiplier;
+    [SerializeField] AudioSource fallDamageSound;
 
     private void Start()
     {
@@ -24,7 +25,6 @@ public class PlayerFallDamage : MonoBehaviour
     {
         isGrounded = pm.GetIsGrounded();
         CheckFall();
-        
     }
 
     void CheckFall()
@@ -54,6 +54,7 @@ public class PlayerFallDamage : MonoBehaviour
         if(fallDistance.y > 6f)
         {
             myHealth.TakeDamage((int)fallDistance.y * fallDamageMultiplier);
+            fallDamageSound.Play();
         }
     }
 }

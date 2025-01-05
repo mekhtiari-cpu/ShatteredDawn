@@ -11,8 +11,8 @@ public class VSyncToggle : MonoBehaviour
         vsyncToggle.isOn = GameSettingsManager.Instance.Settings.VSync;
     }
 
-    public void OnVSyncToggleChanged(bool enabled)
+    public void OnVSyncToggleChanged()
     {
-        GameSettingsManager.Instance.SetVSync(enabled);
+        GameSettingsManager.Instance.SetVSync(!vsyncToggle.isOn);
     }
 }

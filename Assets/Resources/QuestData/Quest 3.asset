@@ -14,10 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questName: Find Green Truck
   description: You need to add the tyres to the truck.
-  prerequisiteQuests: []
+  startQuestDialogue: 'The car is on top of the hill. Go find it, and put the tyres
+    on. '
+  midQuestDialogue: 'The car is on top of the hill, near the back of the city.  It
+    broke down and I''ve never been able to fix it.  '
+  completionDialogue: 
+  rewardItemOnAccept: {fileID: 11400000, guid: 242cb5782abd94c9bbc64ea1a9d8828c, type: 2}
+  rewardItemOnComplete: {fileID: 0}
+  prerequisiteQuests:
+  - {fileID: 11400000, guid: 8f52cba596ff948c3a81cb0c7354a383, type: 2}
   isConfirmationRequired: 0
   isCompleted: 0
   turnedIn: 0
   completionConditions:
-  - completionType: 0
-    requiredAmount: 0
+  - completionType: 5
+    requiredAmount: 1
+    requiredItem: {fileID: 0}
+    targetInteract: Broken Car
+    enemyType: 

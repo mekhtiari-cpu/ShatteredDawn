@@ -8,6 +8,8 @@ public class BaseNPC : MonoBehaviour, INPC
     public List<Quest> allQuests = new List<Quest>();
     public Quest assignedQuest { get; private set; }
 
+    public GameObject pointOfInterest;
+
     [SerializeField] protected bool questGiven = false;
 
     public virtual void Interact(PlayerQuestHandler questHandler) {}
@@ -20,7 +22,11 @@ public class BaseNPC : MonoBehaviour, INPC
         UIHandlerManager uIHandler = GameManager.instance.UIHandler;
         DialogueUIHandler dialogueUI = uIHandler.dialogueUI;
 
-        dialogueUI.SetDialogueText("Thank you for accepting the task!", this);
+        string acceptanceText = assignedQuest.rewardItemOnAccept != null
+          ? $"Thank you for accepting the task! Here's {assignedQuest.rewardItemOnAccept.itemName} to help you get started."
+          : "Thank you for accepting the task!";
+
+        dialogueUI.SetDialogueText(assignedQuest.startQuestDialogue == string.Empty ? acceptanceText : assignedQuest.startQuestDialogue, this);
     }
 
     public void OnQuestDeclined()
@@ -39,10 +45,13 @@ public class BaseNPC : MonoBehaviour, INPC
             if (!quest.turnedIn && quest.ArePrerequisitesMet())
             {
                 assignedQuest = quest;
+                bool showInterest = assignedQuest.isCompleted;
+                pointOfInterest.SetActive(showInterest);
                 return;
             }
         }
 
+       
         assignedQuest = null;
     }
 
@@ -61,7 +70,10 @@ public class BaseNPC : MonoBehaviour, INPC
         UIHandlerManager uIHandler = GameManager.instance.UIHandler;
         DialogueUIHandler dialogueUI = uIHandler.dialogueUI;
 
-        dialogueUI.SetDialogueText("Keep working on the quest!", this);
+        string progressText = string.IsNullOrEmpty(assignedQuest.midQuestDialogue)
+            ? "Keep working on the quest!"
+            : assignedQuest.midQuestDialogue;
+        dialogueUI.SetDialogueText(progressText, this);
     }
 
     protected void ShowQuestCompletedDialogue()
@@ -69,14 +81,19 @@ public class BaseNPC : MonoBehaviour, INPC
         UIHandlerManager uIHandler = GameManager.instance.UIHandler;
         DialogueUIHandler dialogueUI = uIHandler.dialogueUI;
 
-        dialogueUI.SetDialogueText("Thanks for completing the quest!", this);
+        string completedText = string.IsNullOrEmpty(assignedQuest.completionDialogue)
+           ? "Thanks for completing the quest!"
+           : assignedQuest.completionDialogue;
+        dialogueUI.SetDialogueText(completedText, this);
     }
     protected void ShowQuestTurnInDialogue()
     {
         UIHandlerManager uIHandler = GameManager.instance.UIHandler;
         DialogueUIHandler dialogueUI = uIHandler.dialogueUI;
 
-        string turnInText = "Thank you for completing the quest!";
+        string turnInText = string.IsNullOrEmpty(assignedQuest.completionDialogue)
+            ? "Thank you for completing the quest!"
+            : assignedQuest.completionDialogue;
         dialogueUI.SetDialogueText(turnInText, this);
 
         Debug.Log($"Quest turned in: {assignedQuest.questName}");
@@ -93,7 +110,10 @@ public class BaseNPC : MonoBehaviour, INPC
         UIHandlerManager uIHandler = GameManager.instance.UIHandler;
         DialogueUIHandler dialogueUI = uIHandler.dialogueUI;
 
-        dialogueUI.SetDialogueText("Thanks for completing all my quests! Let's get back to business.", this);
+        string nextQuestText = assignedQuest == null
+            ? "Thanks for completing all my quests! Let's get back to business."
+            : "Great work! Here's your next task.";
+        dialogueUI.SetDialogueText(nextQuestText, this);
     }
 
     protected void PromptQuestConfirmation(PlayerQuestHandler questHandler)
@@ -109,11 +129,17 @@ public class BaseNPC : MonoBehaviour, INPC
         UIHandlerManager uIHandler = GameManager.instance.UIHandler;
         DialogueUIHandler dialogueUI = uIHandler.dialogueUI;
 
-        dialogueUI.SetDialogueText($"Here’s a quest: {assignedQuest.questName}", this);
+        string questStartText = string.IsNullOrEmpty(assignedQuest.description)
+            ? $"Here’s a quest: {assignedQuest.questName}"
+            : assignedQuest.description;
+        dialogueUI.SetDialogueText(questStartText, this);
 
         questHandler.AddQuest(assignedQuest);
         questGiven = true;
     }
 
-
+    public virtual string GetName()
+    {
+        return npcName;
+    }
 }

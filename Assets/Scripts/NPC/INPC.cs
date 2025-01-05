@@ -8,6 +8,7 @@ public interface INPC
     void UpdateAssignedQuest();
     
     string GetNPCType();
+    string GetName();
 
     bool HasQuest();
 }

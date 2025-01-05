@@ -6,6 +6,13 @@ public class Quest : ScriptableObject
 {
     public string questName;
     public string description;
+    
+    public string startQuestDialogue;
+    public string midQuestDialogue;
+    public string completionDialogue;
+
+    public Item rewardItemOnAccept;
+    public Item rewardItemOnComplete;
 
     public Quest[] prerequisiteQuests;
 

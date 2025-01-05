@@ -870,7 +870,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 100
+    maxNumParticles: 50
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 1
     rotation3D: 0
@@ -1136,7 +1136,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 30
+      scalar: 10
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -5114,6 +5114,8 @@ GameObject:
   - component: {fileID: 7197351655440284392}
   - component: {fileID: 7645541746148721305}
   - component: {fileID: 2455098124611979558}
+  - component: {fileID: 2133191868326662837}
+  - component: {fileID: 185964234477753802}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -5347,6 +5349,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   brokenCar: {fileID: 0}
+  myHealthManager: {fileID: 0}
+  damageInterval: 0
 --- !u!114 &3801411727346241221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5368,6 +5372,7 @@ MonoBehaviour:
   isNearCampfire: 0
   deathCamera: {fileID: 0}
   deathPanel: {fileID: 0}
+  frostEffect: {fileID: 0}
 --- !u!114 &9070237152309048391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5384,6 +5389,7 @@ MonoBehaviour:
   equippedUtility: {fileID: 0}
   equippedClothing: {fileID: 0}
   utilityHolder: {fileID: 8919536571285857694}
+  gunHolder: {fileID: 0}
 --- !u!114 &7197351655440284392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5417,15 +5423,9 @@ MonoBehaviour:
   canBeShot:
     serializedVersion: 2
     m_Bits: 64
-  isSwitching: 0
+  gunRange: 0
   pickUp: 0
-  anchor: {fileID: 0}
-  stateAds: {fileID: 0}
-  stateHip: {fileID: 0}
   sfx: {fileID: 0}
-  ui_HitMarker: {fileID: 0}
-  hitMarkerImage: {fileID: 0}
-  hitMarkerWait: 0
   hitMarkerSound: {fileID: 8300000, guid: 9ef04968513afd94bb32fc97bf45e194, type: 3}
 --- !u!114 &2455098124611979558
 MonoBehaviour:
@@ -5443,7 +5443,43 @@ MonoBehaviour:
   damageMultiplier: 0
   score: 0
   killCounter: 0
+  zombiesKilled: 0
   isAiming: 0
+--- !u!114 &2133191868326662837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5470818463489808218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df249778547b74914b526b9eff275ec1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 100
+  CurrentHealth: 0
+  health: {fileID: 0}
+--- !u!114 &185964234477753802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5470818463489808218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e399fc793f6a49a4093fcc1f310c40c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pm: {fileID: 0}
+  myHealth: {fileID: 0}
+  isGrounded: 0
+  hasAlreadyChecked: 0
+  fallStartPosition: {x: 0, y: 0, z: 0}
+  fallEndPosition: {x: 0, y: 0, z: 0}
+  fallHeight: 0
+  fallDamageMultiplier: 2
 --- !u!1 &5660817331235302589
 GameObject:
   m_ObjectHideFlags: 0

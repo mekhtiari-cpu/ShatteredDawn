@@ -14,10 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questName: Find Old Man Jenkins
   description: There's another survivor in this world. Go find him.
+  startQuestDialogue: 
+  midQuestDialogue: 
+  completionDialogue: I remember your brother, Paul right? He was a good man.  I
+    trust you to find him.
+  rewardItemOnAccept: {fileID: 0}
+  rewardItemOnComplete: {fileID: 0}
   prerequisiteQuests: []
   isConfirmationRequired: 0
   isCompleted: 0
   turnedIn: 0
   completionConditions:
-  - completionType: 0
-    requiredAmount: 0
+  - completionType: 5
+    requiredAmount: 1
+    requiredItem: {fileID: 0}
+    targetInteract: Old Man Jenkins
+    enemyType: 

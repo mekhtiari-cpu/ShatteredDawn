@@ -93,6 +93,28 @@ public class BrokenCar : Interactable
 
     public string GetCarInfo()
     {
+        PlayerQuestHandler questHandler = GameManager.instance.playerQuest;
+        if (questHandler != null)
+        {
+            foreach (Quest quest in questHandler.activeQuests)
+            {
+                if (quest.isCompleted || quest.turnedIn)
+                {
+                    continue;
+                }
+
+                foreach (QuestCompletionCondition condition in quest.completionConditions)
+                {
+                    if (condition.completionType == QuestCompletionType.InteractWith)
+                    {
+                        condition.RegisterInteraction(this);
+                        questHandler.CheckQuestCompletionConditions();
+                    }
+
+                }
+            }
+
+        }
         string tireStatus = "• "+tiresReplaced+" Tire Replaced, " + (2-tiresReplaced) + " Remaining" + "\n";
         string batteryStatus = "• Battery Replaced: " + hasReplacedBattery + "\n";
         string oilStatus = "• Has Filled Oil: " + hasFilledOil + "\n";

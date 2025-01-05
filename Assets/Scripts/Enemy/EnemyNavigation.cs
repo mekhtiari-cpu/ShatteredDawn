@@ -15,6 +15,10 @@ public class EnemyNavigation : MonoBehaviour
     [SerializeField] AnimationClip hit;
     [SerializeField] bool isStaggered;
     [SerializeField] bool isDead;
+    [SerializeField] ZombieAudio myAudio;
+    bool hasPlayedSeenAudio;
+    bool hasPlayedDeathAudio;
+    bool hasPlayedChaseAudio;
 
     Animator animator;
     private AnimatorClipInfo[] animatorinfo;
@@ -29,6 +33,9 @@ public class EnemyNavigation : MonoBehaviour
     [SerializeField] bool isPatrolling;
     [SerializeField] bool isMovingTowardsPoint = false;
     [SerializeField] GameObject lastPoint;
+    [SerializeField] float patrolTimeout;
+    [SerializeField] float patrolTimeoutTime;
+    bool hasSetPatrolTime;
     Vector3 randomPoint;
 
     [Header("Scan Variables")]
@@ -50,6 +57,10 @@ public class EnemyNavigation : MonoBehaviour
         animator = GetComponent<Animator>();
         myState = EnemyState.Patrol;
         pm = FindFirstObjectByType<Player_Movement>();
+        hasPlayedSeenAudio = false;
+        hasPlayedDeathAudio = false;
+        myAudio.PlayIdleAudio();
+        patrolTimeoutTime = patrolTimeout;
     }
 
     private void FixedUpdate()
@@ -69,16 +80,52 @@ public class EnemyNavigation : MonoBehaviour
 
     public void Die()
     {
+        if(!hasPlayedDeathAudio)
+        {
+            myAudio.StopPlayingChaseAudio();
+            myAudio.PlayDeathAudio();
+            hasPlayedDeathAudio = true;
+        }
         animator.SetInteger("rand",Random.Range(1, 3));
         animator.SetBool("IsDead", true);
         isDead = true;
         myNav.speed = movementSpeeds[2];
+
+        PlayerController pc = FindFirstObjectByType<PlayerController>();
+        if (pc)
+        {
+            pc.zombiesKilled++;
+            PlayerQuestHandler questHandler = GameManager.instance.playerQuest;
+            if (questHandler != null)
+            {
+                foreach (Quest quest in questHandler.activeQuests)
+                {
+                    if (quest.isCompleted || quest.turnedIn)
+                    {
+                        continue;
+                    }
+
+                    foreach (QuestCompletionCondition condition in quest.completionConditions)
+                    {
+                        if (condition.completionType == QuestCompletionType.KillEnemies)
+                        {
+                            condition.RegisterEnemyKilled(pc.zombiesKilled);
+
+                            questHandler.UpdateQuestDisplay();
+                            questHandler.CheckQuestCompletionConditions();
+                        }
+                    }
+                }
+            }
+        }
+
         Destroy(gameObject, 5f);
     }
 
     public void Hit()
     {
         isStaggered = true;
+        myAudio.PlayHurtAudio();
         StartCoroutine(WaitForHitDuration());
         animator.Play("Hit");
         myNav.speed = movementSpeeds[2];
@@ -143,8 +190,15 @@ public class EnemyNavigation : MonoBehaviour
     //Constantly check whether the player is in the enemy's vision
     void CheckEyesight()
     {
-        if(vision.playerInView)
+        if(vision.GetConditionsForChase())
         {
+            if(!hasPlayedSeenAudio)
+            {
+                myAudio.PlayPlayerSeenAudio();
+                myAudio.StopPlayingIdleAudio();
+                hasPlayedSeenAudio = true;
+            }
+
             myState = EnemyState.Chase;
             Debug.Log("Chasing");
         }
@@ -160,12 +214,24 @@ public class EnemyNavigation : MonoBehaviour
 
         if (isPatrolling)
         {
-            if(Vector3.Distance(transform.position, randomPoint) <= 5f)
+            if (!hasSetPatrolTime)
             {
+                patrolTimeoutTime = patrolTimeout;
+                hasSetPatrolTime = true;
+            }
+            else
+            {
+                patrolTimeoutTime -= Time.deltaTime;
+            }
+
+            if(Vector3.Distance(transform.position, randomPoint) <= 5f || patrolTimeoutTime <= 0f)
+            {
+                patrolTimeoutTime = patrolTimeout;
                 isPatrolling = false;
                 isMovingTowardsPoint = false;
                 Destroy(lastPoint);
                 myNav.speed = 0f;
+                hasSetPatrolTime = false;
                 return true;
             }
             else
@@ -257,8 +323,44 @@ public class EnemyNavigation : MonoBehaviour
     {
         if(!isStaggered)
         {
-            myNav.speed = movementSpeeds[1];
-            myNav.acceleration = 800;
+            if(!hasPlayedChaseAudio)
+            {
+                myAudio.PlayChaseAudio();
+                hasPlayedChaseAudio = true;
+            }
+
+            Debug.Log("playing chase audio");
+            GameSettingsManager gsm = GameSettingsManager.Instance;
+            float modifier = 1f;
+            if (gsm)
+            {
+                switch (gsm.Settings.Difficulty)
+                {
+                    case "Easy":
+                        modifier = 0.8f;
+                        break;
+
+                    case "Normal":
+                        modifier = 1;
+                        break;
+
+                    case "Hard":
+                        modifier = 1.25f;
+                        break;
+
+                    default:
+                        modifier = 1;
+                        break;
+
+                }
+            }
+            else
+            {
+                myAudio.StopPlayingChaseAudio();
+            }
+
+            myNav.speed = movementSpeeds[1] * modifier;
+            myNav.acceleration = 1000;
             myNav.SetDestination(player.position);
         }
     }

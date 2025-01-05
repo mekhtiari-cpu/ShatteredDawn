@@ -65,5 +65,24 @@ public class LoadingScreenManager : MonoBehaviour
         }
 
         currentActiveScene = newSceneName;
+
+        if (currentActiveScene == MAINMENUSCENE)
+        {
+            SoundManager.Instance.PlayMusic(SoundManager.Instance.mainMenuMusic);
+        }
+        else
+        {
+            SoundManager.Instance.StopMusic();
+        }
+
+        if (currentActiveScene == "Main Scene")
+        {
+            SoundManager.Instance.PlayAmbience(SoundManager.Instance.ambianceMusic);
+        }
+        else
+        {
+            SoundManager.Instance.StopAmbience();
+        }
+
     }
 }

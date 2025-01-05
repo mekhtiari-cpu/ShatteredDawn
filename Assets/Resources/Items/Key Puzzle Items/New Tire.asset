@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e9cc00c90bbb1468941ade2385d757, type: 3}
   m_Name: New Tire
   m_EditorClassIdentifier: 
+  itemId: 0
   itemName: New Tire
   itemDescription: A large tire which appears to be perfectly intact.
-  isStackable: 0
+  isStackable: 1
   count: 0
+  keyItemType: 0

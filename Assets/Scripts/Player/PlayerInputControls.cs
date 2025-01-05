@@ -74,17 +74,4 @@ public class PlayerInputControls : MonoBehaviour
 
         pi = GetComponent<Player_Interact>();
     }
-
-    void OnDebug(InputValue value)
-    {
-        if(DebugManager.instance)
-        {
-            if (value.isPressed)
-            {
-                GameManager.instance.inDebug = !GameManager.instance.inDebug;
-                DebugManager.instance.gameObject.SetActive(GameManager.instance.inDebug);
-                Cursor.lockState = GameManager.instance.inDebug ? CursorLockMode.None : CursorLockMode.Locked;
-            }
-        }
-    }
 }

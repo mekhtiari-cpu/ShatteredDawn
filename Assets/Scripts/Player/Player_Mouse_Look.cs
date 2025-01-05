@@ -83,11 +83,6 @@ public class Player_Mouse_Look : MonoBehaviour
     {
         weaponCamera.transform.rotation = myCamera.transform.rotation;
 
-        if (GameManager.instance.inDebug)
-        {
-            return;
-        }
-
         CameraControls();
         WeaponCameraControls();
         RaycastForNPC();
@@ -197,7 +192,7 @@ public class Player_Mouse_Look : MonoBehaviour
                     // Display a prompt to the player
                     if (promptUI)
                     {
-                        promptUI.SetDisplayText("Press E to interact with " + npc.GetNPCType());
+                        promptUI.SetDisplayText("Press E to interact with " + npc.GetName());
                     }
                 }
                 else

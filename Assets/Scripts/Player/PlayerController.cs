@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 public enum playerFiringState
 {
@@ -24,6 +25,9 @@ public class PlayerController : MonoBehaviour
     public float damageMultiplier, score;
     public int killCounter; // Move to master/manager
     #endregion
+
+    [Header("Data")]
+    public int zombiesKilled = 0;
 
     private float aimAngle;
     public bool isAiming;
@@ -58,10 +62,30 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    void OnPause(InputValue value)
     {
-        
+        if (value.isPressed)
+        {
+            GameSettingsManager gsm = GameSettingsManager.Instance;
+            if (gsm)
+            {
+                if(gsm.isSettingOpen == true)
+                    return;
+            }
+
+            if(FindFirstObjectByType<PauseManager>())
+            {
+                PauseManager pm = FindFirstObjectByType<PauseManager>();
+                if (GameManager.instance.paused)
+                {
+                    pm.ClosePause();
+                }
+                else
+                {
+                    pm.OpenPause();
+                }
+            }
+        }
     }
 
     // Update is called once per frame
