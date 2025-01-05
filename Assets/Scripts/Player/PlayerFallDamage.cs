@@ -52,7 +52,7 @@ public class PlayerFallDamage : MonoBehaviour
     void CalculateFallDamage()
     {
         Vector3 fallDistance = fallStartPosition - fallEndPosition;
-        if(fallDistance.y > 6f)
+        if(fallDistance.y > 7f)
         {
             myHealth.TakeDamage((int)fallDistance.y * fallDamageMultiplier);
             if(myHealth.GetCurrentHealth() <= 0f)

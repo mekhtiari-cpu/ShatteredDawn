@@ -46,11 +46,11 @@ public class RandomItemSpawn : MonoBehaviour
             openSlots[randSlot] = true;
 
             if (consumableToBeSpawned <= 10)
-                Instantiate(consumablePickups[2],transform.GetChild(randSlot));
+                Instantiate(consumablePickups[2], transform.GetChild(randSlot).position, Quaternion.identity, transform.GetChild(randSlot));
             else if(consumableToBeSpawned <= 20)
-                Instantiate(consumablePickups[1], transform.GetChild(randSlot));
+                Instantiate(consumablePickups[1], transform.GetChild(randSlot).position, Quaternion.identity, transform.GetChild(randSlot));
             else
-                Instantiate(consumablePickups[0], transform.GetChild(randSlot));
+                Instantiate(consumablePickups[0], transform.GetChild(randSlot).position, Quaternion.identity, transform.GetChild(randSlot));
         }
         SpawnUtilities();
     }
@@ -67,7 +67,7 @@ public class RandomItemSpawn : MonoBehaviour
             }
 
             openSlots[randSlot] = true;
-            Instantiate(utilityPickups[0], transform.GetChild(randSlot));
+            Instantiate(utilityPickups[0], transform.GetChild(randSlot).position, Quaternion.identity, transform.GetChild(randSlot));
         }
         SpawnGuns();
     }
@@ -87,13 +87,13 @@ public class RandomItemSpawn : MonoBehaviour
             openSlots[randSlot] = true;
 
             if (gunToBeSpawned <= 10)
-                Instantiate(gunPickups[3], transform.GetChild(randSlot));
+                Instantiate(gunPickups[3], transform.GetChild(randSlot).position, Quaternion.identity, transform.GetChild(randSlot));
             else if (gunToBeSpawned <= 20)
-                Instantiate(consumablePickups[2], transform.GetChild(randSlot));
+                Instantiate(consumablePickups[2], transform.GetChild(randSlot).position, Quaternion.identity, transform.GetChild(randSlot));
             else if (gunToBeSpawned <= 30)
-                Instantiate(consumablePickups[1], transform.GetChild(randSlot));
+                Instantiate(consumablePickups[1], transform.GetChild(randSlot).position, Quaternion.identity, transform.GetChild(randSlot));
             else
-                Instantiate(consumablePickups[0], transform.GetChild(randSlot));
+                Instantiate(consumablePickups[0], transform.GetChild(randSlot).position, Quaternion.identity, transform.GetChild(randSlot));
         }
         SpawnClothing();
     }
@@ -113,9 +113,9 @@ public class RandomItemSpawn : MonoBehaviour
             openSlots[randSlot] = true;
 
             if (gunToBeSpawned <= 50)
-                Instantiate(clothingPickups[1], transform.GetChild(randSlot));
+                Instantiate(clothingPickups[1], transform.GetChild(randSlot).position, Quaternion.identity, transform.GetChild(randSlot));
             else
-                Instantiate(clothingPickups[0], transform.GetChild(randSlot));
+                Instantiate(clothingPickups[0], transform.GetChild(randSlot).position, Quaternion.identity, transform.GetChild(randSlot));
         }
     }
 }
