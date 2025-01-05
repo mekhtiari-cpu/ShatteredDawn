@@ -83,7 +83,10 @@ public class Player_Interact : MonoBehaviour
         if(brokenCar.GetPlayerNearCar())
         {
             Debug.Log("Toggling car status");
-            UI_Manager.instance.GetCarUI().ToggleCarInfoText();
+            if (brokenCar.GetNumPartsFixed() < 5)
+                UI_Manager.instance.GetCarUI().ToggleCarInfoText();
+            else
+                Debug.Log("Escaping the city");
         }        
     }
 
