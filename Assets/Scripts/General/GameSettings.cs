@@ -17,9 +17,7 @@ public class GameSettings
     public float EnvironmentVolume { get; set; }
 
     // Display
-    public int ResolutionIndex { get; set; }
     public int QualityLevel { get; set; }
-    public bool Fullscreen { get; set; }
 
     // Performance
     public int TargetFPS { get; set; }
@@ -40,9 +38,7 @@ public class GameSettings
         UISoundVolume = 1.0f;
         HostileVolume = 1.0f;
         EnvironmentVolume = 1.0f;
-        ResolutionIndex = 0;
         QualityLevel = 2;
-        Fullscreen = true;
         Brightness = 1.0f;
         TargetFPS = 60;
         VSync = true;
@@ -61,9 +57,7 @@ public class GameSettings
         PlayerPrefs.SetFloat("UISoundVolume", UISoundVolume);
         PlayerPrefs.SetFloat("HostileVolume", HostileVolume);
         PlayerPrefs.SetFloat("EnvironmentVolume", EnvironmentVolume);
-        PlayerPrefs.SetInt("ResolutionIndex", ResolutionIndex);
         PlayerPrefs.SetInt("QualityLevel", QualityLevel);
-        PlayerPrefs.SetInt("Fullscreen", Fullscreen ? 1 : 0);
         PlayerPrefs.SetFloat("Brightness", Brightness);
         PlayerPrefs.SetInt("TargetFPS", TargetFPS);
         PlayerPrefs.SetInt("VSync", VSync ? 1 : 0);
@@ -83,9 +77,7 @@ public class GameSettings
         UISoundVolume = PlayerPrefs.GetFloat("UISoundVolume", 1.0f);
         HostileVolume = PlayerPrefs.GetFloat("HostileVolume", 1.0f);
         EnvironmentVolume = PlayerPrefs.GetFloat("EnvironmentVolume", 1.0f);
-        ResolutionIndex = PlayerPrefs.GetInt("ResolutionIndex", 0);
         QualityLevel = PlayerPrefs.GetInt("QualityLevel", 2);
-        Fullscreen = PlayerPrefs.GetInt("Fullscreen", 1) == 1;
         Brightness = PlayerPrefs.GetFloat("Brightness", 1.0f);
         TargetFPS = PlayerPrefs.GetInt("TargetFPS", 60);
         VSync = PlayerPrefs.GetInt("VSync", 1) == 1;
