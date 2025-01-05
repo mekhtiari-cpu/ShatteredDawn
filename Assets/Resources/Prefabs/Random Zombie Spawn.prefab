@@ -145,7 +145,7 @@ MonoBehaviour:
   hasActivatedSpawner: 0
   spawnInterval: 60
   currentZombieCount: 0
-  maxZombieCount: 11
+  maxZombieCount: 12
 --- !u!1 &696292532297103827
 GameObject:
   m_ObjectHideFlags: 0

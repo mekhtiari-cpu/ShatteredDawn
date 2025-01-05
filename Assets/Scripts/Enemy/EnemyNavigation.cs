@@ -61,6 +61,7 @@ public class EnemyNavigation : MonoBehaviour
         animator = GetComponent<Animator>();
         myState = EnemyState.Patrol;
         pm = FindFirstObjectByType<Player_Movement>();
+        player = FindAnyObjectByType<Player_Movement>().gameObject.transform;
         hasPlayedSeenAudio = false;
         hasPlayedDeathAudio = false;
         myAudio.PlayIdleAudio();

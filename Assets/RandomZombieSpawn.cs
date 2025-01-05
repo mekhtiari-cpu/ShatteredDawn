@@ -15,6 +15,7 @@ public class RandomZombieSpawn : MonoBehaviour
 
     private void Update()
     {
+        currentZombieCount = zombieParent.transform.childCount;
         if (!hasActivatedSpawner)
         {
             StartCoroutine(SpawnZombie());
@@ -30,8 +31,8 @@ public class RandomZombieSpawn : MonoBehaviour
             {
                 int randomSpawnPoint = Random.Range(0, spawnPoints.childCount - 1);
                 Instantiate(zombiePrefab, spawnPoints.GetChild(randomSpawnPoint).position, Quaternion.identity, zombieParent.transform);
-                yield return new WaitForSeconds(spawnInterval);
             }
+            yield return new WaitForSeconds(spawnInterval);
         }
     }
 }

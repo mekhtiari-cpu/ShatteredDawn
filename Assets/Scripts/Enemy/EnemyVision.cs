@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class EnemyVision : MonoBehaviour
 {
@@ -12,7 +11,11 @@ public class EnemyVision : MonoBehaviour
     [SerializeField] Vector3 rayOffset;
     [SerializeField] LayerMask validRayObjects;
     [SerializeField] float rayRange;
-    [SerializeField] TMP_Text objectsHit;
+
+    private void Start()
+    {
+        playerTransform = FindFirstObjectByType<Player_Movement>().transform;    
+    }
 
     private void Update()
     {
@@ -29,29 +32,7 @@ public class EnemyVision : MonoBehaviour
         float distanceToPlayer = Vector3.Distance(enemyTransform.position, playerTransform.position);
 
         Ray ray = new Ray(enemyTransform.transform.position + rayOffset, dirToPlayer.normalized * distanceToPlayer);
-        Debug.DrawRay(enemyTransform.transform.position + rayOffset, dirToPlayer.normalized * distanceToPlayer, Color.red);
         RaycastHit[] hits = Physics.RaycastAll(ray, rayRange, validRayObjects);
-
-        string objectsHitText = "Objects hit: ";
-
-        foreach (RaycastHit hit in hits)
-        {
-            // Append the name of the object hit to the string
-            objectsHitText += hit.collider.name + ", ";
-        }
-
-        // Remove the trailing comma and space if there are any hits
-        if (hits.Length > 0)
-        {
-            objectsHitText = objectsHitText.TrimEnd(',', ' ');
-        }
-        else
-        {
-            objectsHitText += "None";
-        }
-
-        objectsHit.text = objectsHitText;
-
 
         if (hits.Length > 0)
         {
