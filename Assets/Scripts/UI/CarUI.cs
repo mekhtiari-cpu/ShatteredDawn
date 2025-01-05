@@ -21,4 +21,10 @@ public class CarUI : MonoBehaviour
         ToggleCarInteractText();
         carInfoText.text = brokenCar.GetCarInfo();
     }
+
+    public void DisableCarInfo()
+    {
+        carInfo.SetActive(false);
+        carInteractText.SetActive(false);
+    }
 }

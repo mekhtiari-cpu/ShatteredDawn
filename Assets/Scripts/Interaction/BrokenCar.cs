@@ -15,7 +15,7 @@ public class BrokenCar : Interactable
 
     private void Update()
     {
-        //CloseUIIfPlayerFar();
+        CloseUIIfPlayerFar();
     }
 
     public override void Interact()
@@ -87,7 +87,7 @@ public class BrokenCar : Interactable
     {
         if(!playerNearCar)
         {
-            UI_Manager.instance.GetCarUI().ToggleCarInfoText();
+            UI_Manager.instance.GetCarUI().DisableCarInfo();
         }
     }
 
