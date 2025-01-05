@@ -208,11 +208,6 @@ public class EnemyNavigation : MonoBehaviour
             myState = EnemyState.Chase;
             Debug.Log("Chasing");
         }
-
-        if(myState == EnemyState.Chase && Vector3.Distance(player.position, transform.position) > deAggroDistance)
-        {
-            myState = EnemyState.Scan;
-        }
     }
 
     //Patrol: Enemy walks to a random location in search of player
@@ -332,12 +327,19 @@ public class EnemyNavigation : MonoBehaviour
     //Chase: Chase down the player
     void Chase()
     {
-        if(!isStaggered)
+        Debug.Log(Vector3.Distance(player.position, transform.position));
+        if (Vector3.Distance(player.position, transform.position) > deAggroDistance && myState == EnemyState.Chase)
+        {
+            myState = EnemyState.Patrol;
+            myAudio.StopPlayingChaseAudio();
+            animator.SetBool("isChasing", false);
+        }
+
+        if (!isStaggered)
         {
             if(!hasPlayedChaseAudio)
             {
                 myAudio.PlayChaseAudio();
-                Debug.Log("playing chase audio");
                 hasPlayedChaseAudio = true;
             }
 

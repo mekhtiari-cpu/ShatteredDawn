@@ -1771,7 +1771,7 @@ MonoBehaviour:
   maxScanTime: 3
   minScanSpeed: 1
   maxScanSpeed: 1.5
-  deAggroDistance: 8
+  deAggroDistance: 5
 --- !u!114 &1840150391661098368
 MonoBehaviour:
   m_ObjectHideFlags: 0
