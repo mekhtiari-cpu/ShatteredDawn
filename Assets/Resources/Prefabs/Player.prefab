@@ -870,7 +870,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 100
+    maxNumParticles: 50
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 1
     rotation3D: 0
@@ -1136,7 +1136,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 30
+      scalar: 10
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -5347,6 +5347,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   brokenCar: {fileID: 0}
+  myHealthManager: {fileID: 0}
+  damageInterval: 0
 --- !u!114 &3801411727346241221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5384,6 +5386,7 @@ MonoBehaviour:
   equippedUtility: {fileID: 0}
   equippedClothing: {fileID: 0}
   utilityHolder: {fileID: 8919536571285857694}
+  gunHolder: {fileID: 0}
 --- !u!114 &7197351655440284392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5417,15 +5420,9 @@ MonoBehaviour:
   canBeShot:
     serializedVersion: 2
     m_Bits: 64
-  isSwitching: 0
+  gunRange: 0
   pickUp: 0
-  anchor: {fileID: 0}
-  stateAds: {fileID: 0}
-  stateHip: {fileID: 0}
   sfx: {fileID: 0}
-  ui_HitMarker: {fileID: 0}
-  hitMarkerImage: {fileID: 0}
-  hitMarkerWait: 0
   hitMarkerSound: {fileID: 8300000, guid: 9ef04968513afd94bb32fc97bf45e194, type: 3}
 --- !u!114 &2455098124611979558
 MonoBehaviour:
@@ -5443,6 +5440,7 @@ MonoBehaviour:
   damageMultiplier: 0
   score: 0
   killCounter: 0
+  zombiesKilled: 0
   isAiming: 0
 --- !u!1 &5660817331235302589
 GameObject:

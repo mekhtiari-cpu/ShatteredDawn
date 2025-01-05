@@ -25,7 +25,7 @@ public class GameSettingsManager : MonoBehaviour
     public void ApplySettings()
     {
         // Apply color blindness mode
-        FindObjectOfType<ColorBlindnessManager>()?.SetColorBlindMode(Settings.ColorBlindMode);
+        FindObjectOfType<PostProcessorManager>()?.SetColorBlindMode(Settings.ColorBlindMode);
 
         // Apply volume
         AudioListener.volume = Settings.MasterVolume;

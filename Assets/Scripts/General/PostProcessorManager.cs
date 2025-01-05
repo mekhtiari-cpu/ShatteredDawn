@@ -1,16 +1,19 @@
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
-public class ColorBlindnessManager : MonoBehaviour
+public class PostProcessorManager : MonoBehaviour
 {
     public PostProcessVolume postProcessVolume;
 
+    #region ColorGrading - Color Blindness
     private ColorGrading defaultColorGrading;
     private ColorGrading protanopiaColorGrading;
     private ColorGrading deuteranopiaColorGrading;
     private ColorGrading tritanopiaColorGrading;
 
     private ColorGrading activeColorGrading;
+    #endregion
+
 
     private void Start()
     {
