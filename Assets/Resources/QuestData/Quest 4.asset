@@ -18,16 +18,16 @@ MonoBehaviour:
   midQuestDialogue: 
   completionDialogue: You're a survivor if you've made it this far. Put the battery
     in, lets see if this old truck still runs.
-  rewardItemOnAccept: {fileID: 0}
+  rewardItemOnAccept: {fileID: 11400000, guid: 302c4607064ffd84891744cacbe5b158, type: 2}
   rewardItemOnComplete: {fileID: 11400000, guid: 3aa1e273d8b5b664dac06fffbc04b41d, type: 2}
   prerequisiteQuests:
   - {fileID: 11400000, guid: 1b67aa69e8cd6214481a252173743e82, type: 2}
-  isConfirmationRequired: 1
+  isConfirmationRequired: 0
   isCompleted: 0
   turnedIn: 0
   completionConditions:
   - completionType: 4
     requiredAmount: 10
     requiredItem: {fileID: 0}
-    targetNPC: 
+    targetInteract: 
     enemyType: Zombie

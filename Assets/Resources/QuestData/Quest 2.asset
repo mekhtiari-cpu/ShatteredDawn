@@ -23,9 +23,9 @@ MonoBehaviour:
   rewardItemOnComplete: {fileID: 0}
   prerequisiteQuests:
   - {fileID: 11400000, guid: c6a3f203a72c64df3b0c0770eea67e48, type: 2}
-  isConfirmationRequired: 1
-  isCompleted: 0
-  turnedIn: 0
+  isConfirmationRequired: 0
+  isCompleted: 1
+  turnedIn: 1
   completionConditions:
   - completionType: 2
     requiredAmount: 2
