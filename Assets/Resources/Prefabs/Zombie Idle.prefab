@@ -723,6 +723,37 @@ Transform:
   m_Father: {fileID: 6464030621120944734}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 18.943424, y: 0.99121946, z: 1.5122781}
+--- !u!1 &1842142506851404459
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5430490185709950631}
+  m_Layer: 0
+  m_Name: Eyes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5430490185709950631
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842142506851404459}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.31, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3275316606026812341}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2015584481560431361
 GameObject:
   m_ObjectHideFlags: 0
@@ -1771,7 +1802,7 @@ MonoBehaviour:
   maxScanTime: 3
   minScanSpeed: 1
   maxScanSpeed: 1.5
-  deAggroDistance: 5
+  deAggroDistance: 30
 --- !u!114 &1840150391661098368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2285,7 +2316,10 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: -8700617353114198275, guid: 1c36a42c2eda04b478542d50ff493110, type: 3}
     - {fileID: 65702495048144492, guid: 1c36a42c2eda04b478542d50ff493110, type: 3}
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1c36a42c2eda04b478542d50ff493110, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5430490185709950631}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 9013638940889411661, guid: 1c36a42c2eda04b478542d50ff493110, type: 3}
       insertIndex: -1
@@ -2340,7 +2374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInView: 0
   playerObstructed: 0
-  enemyTransform: {fileID: 8000145460650119319}
+  enemyTransform: {fileID: 5430490185709950631}
   playerTransform: {fileID: 0}
   rayOffset: {x: 0, y: 0, z: 0}
   validRayObjects:
