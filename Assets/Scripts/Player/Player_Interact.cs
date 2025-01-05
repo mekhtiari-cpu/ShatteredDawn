@@ -22,6 +22,9 @@ public class Player_Interact : MonoBehaviour
     private float interactionCheckInterval = 0.1f;
     private float timer = 0;
 
+    [SerializeField] HealthManager myHealth;
+    [SerializeField] Player_Death myDeath;
+
     private void Awake()
     {
         //Singleton
@@ -125,6 +128,10 @@ public class Player_Interact : MonoBehaviour
         while(isTakingDamage)
         {
             myHealthManager.TakeDamage(enemy.GetComponent<Enemy_Damage>().GetDamage());
+            if (myHealth.GetCurrentHealth() <= 0f)
+            {
+                myDeath.SetCauseOfDeath("You died to a zombie.");
+            }
             yield return new WaitForSeconds(damageInterval);
         }
     }

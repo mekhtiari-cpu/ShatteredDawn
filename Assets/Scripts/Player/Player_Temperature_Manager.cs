@@ -15,8 +15,9 @@ public class Player_Temperature_Manager : MonoBehaviour
     [SerializeField] float waitInterval;
     [SerializeField] bool isNearWarmth;
     [SerializeField] bool isNearCampfire;
-    [SerializeField] GameObject deathCamera;
-    [SerializeField] GameObject deathPanel;
+
+    [SerializeField] HealthManager myHealth;
+    [SerializeField] Player_Death myDeath;
 
     private IEnumerator coroutine;
     private float elpasedTime;
@@ -54,8 +55,12 @@ public class Player_Temperature_Manager : MonoBehaviour
             }
             else 
             {
-            elpasedTime = healthDecay;
-            gameObject.SendMessage("TakeDamage", 5);
+                elpasedTime = healthDecay;
+                gameObject.SendMessage("TakeDamage", 5);
+                if (myHealth.GetCurrentHealth() <= 0f)
+                {
+                    myDeath.SetCauseOfDeath("You died of hypothermia.");
+                }
             }
         }
     }
@@ -159,12 +164,5 @@ public class Player_Temperature_Manager : MonoBehaviour
     public bool GetIsNearWarmth()
     {
         return isNearWarmth;
-    }
-
-    public void Die()
-    {
-        deathCamera.SetActive(true);
-        deathPanel.SetActive(true);
-        Destroy(this.gameObject);
     }
 }

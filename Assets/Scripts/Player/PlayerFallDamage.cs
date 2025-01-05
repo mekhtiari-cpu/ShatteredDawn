@@ -6,6 +6,7 @@ public class PlayerFallDamage : MonoBehaviour
 {
     [SerializeField] Player_Movement pm;
     [SerializeField] HealthManager myHealth;
+    [SerializeField] Player_Death myDeath;
     [SerializeField] bool isGrounded;
     [SerializeField] bool hasAlreadyChecked;
     [SerializeField] Vector3 fallStartPosition;
@@ -54,6 +55,10 @@ public class PlayerFallDamage : MonoBehaviour
         if(fallDistance.y > 6f)
         {
             myHealth.TakeDamage((int)fallDistance.y * fallDamageMultiplier);
+            if(myHealth.GetCurrentHealth() <= 0f)
+            {
+                myDeath.SetCauseOfDeath("You fell to your death.");
+            }
             fallDamageSound.Play();
         }
     }
