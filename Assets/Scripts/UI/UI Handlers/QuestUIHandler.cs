@@ -34,8 +34,43 @@ public class QuestUIHandler : UIHandler
                 GameObject newObj = Instantiate(prefab, parentTransform);
                 TextMeshProUGUI textMesh = newObj.GetComponent<TextMeshProUGUI>();
 
-                string suffix = item.isCompleted ? "(Completed)" : "";
-                textMesh.text = $"{item.questName + suffix}";
+                string completeSuffix = item.isCompleted ? "(Completed)" : "";
+                textMesh.text = $"{item.questName + completeSuffix}";
+                
+                if(item.isCompleted || item.turnedIn)
+                {
+                    continue;
+                }
+
+                foreach (QuestCompletionCondition condition in item.completionConditions)
+                {
+                    if (condition.completionType == QuestCompletionType.GiveItems || condition.completionType == QuestCompletionType.CollectItems || condition.completionType == QuestCompletionType.PickUpItem)
+                    {
+                        if (condition.requiredAmount > 0)
+                        {
+                            string progressSuffix = $"({condition.requiredItem.name}: {condition.GetItemPickupCount()} / {condition.requiredAmount})";
+                            textMesh.text = textMesh.text + progressSuffix;
+                        }
+                    }
+
+                    if (condition.completionType == QuestCompletionType.KillEnemies)
+                    {
+                        if (condition.requiredAmount > 0)
+                        {
+                            string progressSuffix = $"({condition.enemyType} Killed: {condition.GetKillCount()} / {condition.requiredAmount})";
+                            textMesh.text = textMesh.text + progressSuffix;
+                        }
+                    }
+
+                    if (condition.GetInteractionCount() > 0)
+                    {
+                        if (condition.requiredAmount > 0)
+                        {
+                            string progressSuffix = $"({condition.targetNPC}: {condition.GetInteractionCount()} / {condition.requiredAmount})";
+                            textMesh.text = textMesh.text + progressSuffix;
+                        }
+                    }
+                }
             }
             HideUI(false);
 

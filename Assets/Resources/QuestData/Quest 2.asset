@@ -14,10 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questName: Find Both Tyres
   description: A truck can only run with all tyres intact.
-  prerequisiteQuests: []
-  isConfirmationRequired: 0
+  startQuestDialogue: Here, take the keys.  That's the key to my old GREEN TRUCK. 
+    She needs a few parts
+  midQuestDialogue: ' I think you''ll be able to find a few tyres laying around these
+    parts.  Once you do, come back to me, and I''ll tell you where to find my car. '
+  completionDialogue: Impressive! I knew you could do it.
+  rewardItemOnAccept: {fileID: 11400000, guid: 224e7139d931d43c7a59d57fffe775ad, type: 2}
+  rewardItemOnComplete: {fileID: 0}
+  prerequisiteQuests:
+  - {fileID: 11400000, guid: c6a3f203a72c64df3b0c0770eea67e48, type: 2}
+  isConfirmationRequired: 1
   isCompleted: 0
   turnedIn: 0
   completionConditions:
-  - completionType: 0
+  - completionType: 2
     requiredAmount: 2
+    requiredItem: {fileID: 11400000, guid: b15e3fcc797182246b0e07e955a74397, type: 2}
+    targetNPC: 
+    enemyType: 

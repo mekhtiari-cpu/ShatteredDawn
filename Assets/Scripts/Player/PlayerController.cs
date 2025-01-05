@@ -25,6 +25,9 @@ public class PlayerController : MonoBehaviour
     public int killCounter; // Move to master/manager
     #endregion
 
+    [Header("Data")]
+    public int zombiesKilled = 0;
+
     private float aimAngle;
     public bool isAiming;
 

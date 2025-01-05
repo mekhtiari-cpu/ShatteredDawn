@@ -54,6 +54,13 @@ public class PlayerQuestHandler : MonoBehaviour
         return activeQuests.Contains(quest);
     }
 
+    public bool HasItem(Item item, int requiredAmount = 1)
+    {
+        InventoryItem inventoryItem = Inventory.instance.FindItem(item);
+        UpdateQuestDisplay();
+        return inventoryItem != null && inventoryItem.count >= requiredAmount;
+    }
+
     public void CheckQuestCompletionConditions()
     {
         if(activeQuests.Count == 0)
@@ -63,7 +70,7 @@ public class PlayerQuestHandler : MonoBehaviour
 
         foreach (Quest quest in activeQuests)
         {
-            if (quest == null)
+            if (quest == null || quest.isCompleted)
             {
                 Debug.LogWarning($"A quest is null in {quest.name}.");
                 continue;  // Skip null conditions and move to the next one
@@ -110,7 +117,7 @@ public class PlayerQuestHandler : MonoBehaviour
         }
     }
 
-    private void UpdateQuestDisplay()
+    public void UpdateQuestDisplay()
     {
         if (GameManager.instance.UIHandler != null && GameManager.instance.UIHandler.questUI != null)
         {

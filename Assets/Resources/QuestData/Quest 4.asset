@@ -13,11 +13,21 @@ MonoBehaviour:
   m_Name: Quest 4
   m_EditorClassIdentifier: 
   questName: Obtain A Car Battery
-  description: Kill 5 zombies to obtain a car battery.
-  prerequisiteQuests: []
-  isConfirmationRequired: 0
+  description: Kill 10 zombies to obtain a car battery.
+  startQuestDialogue: 
+  midQuestDialogue: 
+  completionDialogue: You're a survivor if you've made it this far. Put the battery
+    in, lets see if this old truck still runs.
+  rewardItemOnAccept: {fileID: 0}
+  rewardItemOnComplete: {fileID: 11400000, guid: 3aa1e273d8b5b664dac06fffbc04b41d, type: 2}
+  prerequisiteQuests:
+  - {fileID: 11400000, guid: 1b67aa69e8cd6214481a252173743e82, type: 2}
+  isConfirmationRequired: 1
   isCompleted: 0
   turnedIn: 0
   completionConditions:
-  - completionType: 0
+  - completionType: 4
     requiredAmount: 10
+    requiredItem: {fileID: 0}
+    targetNPC: 
+    enemyType: Zombie

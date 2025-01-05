@@ -26,10 +26,15 @@ public class GameManager : MonoBehaviour
     {
         Quest[] allQuests = Resources.LoadAll(QUESTFILEPATH).Cast<Quest>().ToArray();
 
-        foreach (Quest item in allQuests) 
+        foreach (Quest item in allQuests)
         {
             item.isCompleted = false;
             item.turnedIn = false;
+
+            foreach (QuestCompletionCondition condition in item.completionConditions)
+            {
+                condition.Reset();
+            }
         }
     }
 

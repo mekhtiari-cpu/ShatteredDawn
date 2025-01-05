@@ -73,6 +73,35 @@ public class EnemyNavigation : MonoBehaviour
         animator.SetBool("IsDead", true);
         isDead = true;
         myNav.speed = movementSpeeds[2];
+
+        PlayerController pc = FindFirstObjectByType<PlayerController>();
+        if (pc)
+        {
+            pc.zombiesKilled++;
+            PlayerQuestHandler questHandler = GameManager.instance.playerQuest;
+            if (questHandler != null)
+            {
+                foreach (Quest quest in questHandler.activeQuests)
+                {
+                    if (quest.isCompleted || quest.turnedIn)
+                    {
+                        continue;
+                    }
+
+                    foreach (QuestCompletionCondition condition in quest.completionConditions)
+                    {
+                        if (condition.completionType == QuestCompletionType.KillEnemies)
+                        {
+                            condition.RegisterEnemyKilled(pc.zombiesKilled);
+
+                            questHandler.UpdateQuestDisplay();
+                            questHandler.CheckQuestCompletionConditions();
+                        }
+                    }
+                }
+            }
+        }
+
         Destroy(gameObject, 5f);
     }
 

@@ -21,6 +21,28 @@ public class StandardNPC : BaseNPC
 
     public override void Interact(PlayerQuestHandler questHandler)
     {
+        if (questHandler != null)
+        {
+            foreach (Quest quest in questHandler.activeQuests)
+            {
+                if (quest.isCompleted || quest.turnedIn)
+                {
+                    continue;
+                }
+
+                foreach (QuestCompletionCondition condition in quest.completionConditions)
+                {
+                    if (condition.completionType == QuestCompletionType.InteractWithNPC)
+                    {
+                        condition.RegisterNPCInteraction(this);
+                        questHandler.CheckQuestCompletionConditions();
+                    }
+                        
+                }
+            }
+
+        }
+
         UpdateAssignedQuest();
 
         if (assignedQuest != null && !questGiven)
@@ -32,6 +54,11 @@ public class StandardNPC : BaseNPC
             else
             {
                 GiveQuest(questHandler);
+                if (assignedQuest.rewardItemOnAccept != null)
+                {
+                    Inventory.instance.AddItem(assignedQuest.rewardItemOnAccept);
+                    Debug.Log($"Received item {assignedQuest.rewardItemOnAccept.itemName} for accepting the quest.");
+                }
             }
         }
         else if (assignedQuest != null && questGiven && !assignedQuest.isCompleted)
@@ -42,6 +69,11 @@ public class StandardNPC : BaseNPC
         {
             ShowQuestTurnInDialogue();
             questHandler.TurnInQuest(assignedQuest, this);
+            if (assignedQuest.rewardItemOnComplete != null)
+            {
+                Inventory.instance.AddItem(assignedQuest.rewardItemOnComplete);
+                Debug.Log($"Received item {assignedQuest.rewardItemOnComplete.itemName} for completing the quest.");
+            }
             questGiven = false;
         }
         else
