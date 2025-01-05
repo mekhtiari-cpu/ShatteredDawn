@@ -26,6 +26,11 @@ public class GameSettingsManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        ApplySettings();
+    }
+
     public void OpenSettings()
     {
         transform.GetChild(0).gameObject.SetActive(true);
@@ -34,11 +39,13 @@ public class GameSettingsManager : MonoBehaviour
 
     public void CloseSettings()
     {
+        SoundManager.Instance.PlayUI(SoundManager.Instance.uiClick);
         transform.GetChild(0).gameObject.SetActive(false);
     }
 
     public void OpenTab(int index)
     {
+        SoundManager.Instance.PlayUI(SoundManager.Instance.uiClick);
         settingTabs[currentIndex].gameObject.SetActive(false);
         currentIndex = index;
         settingTabs[currentIndex].gameObject.SetActive(true);
@@ -65,6 +72,9 @@ public class GameSettingsManager : MonoBehaviour
 
         // Apply brightness
         RenderSettings.ambientLight = Color.white * Settings.Brightness;
+
+        SoundManager.Instance.music.volume = 1 * Settings.MasterVolume * Settings.MusicVolume;
+        SoundManager.Instance.environment.volume = 1 * Settings.MasterVolume * Settings.EnvironmentVolume;
 
         // Apply mouse sensitivity
         // This would need to be applied in your input handler.
