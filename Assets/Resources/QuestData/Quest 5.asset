@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d966cb8ceb949641b8d31d4ead8ae3e, type: 3}
+  m_Name: Quest 5
+  m_EditorClassIdentifier: 
+  questName: Obtain A Car Battery
+  description: Kill 10 zombies to obtain a car battery.
+  startQuestDialogue: All you need now is the car battery - if you can kill 10 zombies,
+    I'll give it to ya.
+  midQuestDialogue: 
+  completionDialogue: You're a survivor if you've made it this far. Put the battery
+    in the car, go find your brother. I know you can do this.
+  rewardItemOnAccept: {fileID: 11400000, guid: 302c4607064ffd84891744cacbe5b158, type: 2}
+  rewardItemOnComplete: {fileID: 11400000, guid: 3aa1e273d8b5b664dac06fffbc04b41d, type: 2}
+  prerequisiteQuests:
+  - {fileID: 11400000, guid: 52a9ca4e975a9f54596350c4aae1b953, type: 2}
+  isConfirmationRequired: 0
+  isCompleted: 0
+  turnedIn: 0
+  completionConditions:
+  - completionType: 4
+    requiredAmount: 10
+    requiredItem: {fileID: 0}
+    targetInteract: 
+    enemyType: Zombie

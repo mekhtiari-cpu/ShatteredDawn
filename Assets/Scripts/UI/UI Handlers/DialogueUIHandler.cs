@@ -8,7 +8,7 @@ public class DialogueUIHandler : UIHandler
     private BaseNPC speaker;
     public TextMeshProUGUI dialogueText;
 
-    [SerializeField] private float dialogueDisplayTime = 3f;
+    [SerializeField] private float dialogueDisplayTime = 7f;
     private Coroutine hideDialogueCoroutine;
     // Start is called before the first frame update
     void Start()

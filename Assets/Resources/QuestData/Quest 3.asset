@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d966cb8ceb949641b8d31d4ead8ae3e, type: 3}
   m_Name: Quest 3
   m_EditorClassIdentifier: 
-  questName: Find Green Truck
-  description: You need to add the tyres to the truck.
-  startQuestDialogue: 'The car is on top of the hill. Go find it, and put the tyres
-    on. '
-  midQuestDialogue: 'The car is on top of the hill, near the back of the city.  It
-    broke down and I''ve never been able to fix it.  '
+  questName: Find Broken Car And Add Tyres
+  description: You need to add the tyres to Old Man Jenkin's broken car
+  startQuestDialogue: 'My car is in the back of the city, in front of the tunnel.
+    Go put the tyres on. Once you do, come back to me. '
+  midQuestDialogue: The car is near the city corner, it's brown. You can find it!
   completionDialogue: 
   rewardItemOnAccept: {fileID: 11400000, guid: 242cb5782abd94c9bbc64ea1a9d8828c, type: 2}
   rewardItemOnComplete: {fileID: 0}

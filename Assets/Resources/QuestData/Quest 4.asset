@@ -12,22 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d966cb8ceb949641b8d31d4ead8ae3e, type: 3}
   m_Name: Quest 4
   m_EditorClassIdentifier: 
-  questName: Obtain A Car Battery
-  description: Kill 10 zombies to obtain a car battery.
-  startQuestDialogue: 
-  midQuestDialogue: 
-  completionDialogue: You're a survivor if you've made it this far. Put the battery
-    in, lets see if this old truck still runs.
-  rewardItemOnAccept: {fileID: 11400000, guid: 302c4607064ffd84891744cacbe5b158, type: 2}
-  rewardItemOnComplete: {fileID: 11400000, guid: 3aa1e273d8b5b664dac06fffbc04b41d, type: 2}
+  questName: Find a Gas Canister In The Woods
+  description: There's an crashed gas truck in the forest, find it and retrieve a
+    gas canister
+  startQuestDialogue: There's an crashed gas truck in the forest, I'm sure you can
+    find gas for the car there. ter
+  midQuestDialogue: If I recall correctly, it's by the East Mountains behind large
+    rocks.
+  completionDialogue: Well done! You're so close.
+  rewardItemOnAccept: {fileID: 0}
+  rewardItemOnComplete: {fileID: 0}
   prerequisiteQuests:
   - {fileID: 11400000, guid: 1b67aa69e8cd6214481a252173743e82, type: 2}
   isConfirmationRequired: 0
   isCompleted: 0
   turnedIn: 0
   completionConditions:
-  - completionType: 4
-    requiredAmount: 10
-    requiredItem: {fileID: 0}
+  - completionType: 2
+    requiredAmount: 1
+    requiredItem: {fileID: 11400000, guid: 90e52b4826fde7b4f9564843dbfa2406, type: 2}
     targetInteract: 
-    enemyType: Zombie
+    enemyType: 
