@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7384496257640937197}
   - component: {fileID: 2180496274204659404}
   - component: {fileID: 8418030160057796689}
-  - component: {fileID: 7663713528709763675}
+  - component: {fileID: 7266250854905837344}
   m_Layer: 0
   m_Name: End
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7663713528709763675
+--- !u!65 &7266250854905837344
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,8 +103,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 5.636239, z: 1}
+  m_Center: {x: 0, y: -2.0790648, z: 0}
 --- !u!1 &4765171579067298193
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,7 +118,6 @@ GameObject:
   - component: {fileID: 5429988815089619128}
   - component: {fileID: 76477729752095150}
   - component: {fileID: 678501934182344396}
-  - component: {fileID: 1676434519556447607}
   - component: {fileID: 4319104851730595740}
   m_Layer: 0
   m_Name: Torch_Pickup
@@ -141,7 +140,7 @@ Transform:
   m_Children:
   - {fileID: 7384496257640937197}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5609247600347336692
 MeshFilter:
@@ -235,27 +234,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &1676434519556447607
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4765171579067298193}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1.239053, z: 1}
-  m_Center: {x: 0, y: 0.119526386, z: 0}
 --- !u!135 &4319104851730595740
 SphereCollider:
   m_ObjectHideFlags: 0
