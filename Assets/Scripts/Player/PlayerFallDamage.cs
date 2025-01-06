@@ -61,6 +61,8 @@ public class PlayerFallDamage : MonoBehaviour
             {
                 myDeath.SetCauseOfDeath("You fell to your death.");
             }
+            GameSettingsManager gsm = GameSettingsManager.Instance;
+            fallDamageSound.volume = gsm ? 1 * gsm.Settings.MasterVolume * gsm.Settings.EffectsVolume : 1f;
             fallDamageSound.Play();
         }
     }

@@ -267,7 +267,7 @@ public class Weapon : MonoBehaviour
 
         //cooldown
         currentCooldown = loadOut.fireRate;
-
+        GameSettingsManager gsm = GameSettingsManager.Instance;
         for (int i = 0; i < Mathf.Max(1, loadOut.pellets); i++)
         {
             //Setup Bloom
@@ -283,7 +283,7 @@ public class Weapon : MonoBehaviour
             //Raycast
             RaycastHit temp_hit = new RaycastHit();
             if (Physics.Raycast(temp_spawnPoint.position, temp_Bloom, out temp_hit, gunRange, canBeShot))
-            {              
+            {
                 // Change this to be layer for enemies
                 if (temp_hit.collider.gameObject.tag == "Enemy")
                 {
@@ -291,7 +291,7 @@ public class Weapon : MonoBehaviour
 
                     //Hit Marker
                     hitMarkerImage.color = Color.white;
-                    sfx.PlayOneShot(hitMarkerSound);
+                    sfx.PlayOneShot(hitMarkerSound, gsm ? 1 * gsm.Settings.MasterVolume * gsm.Settings.UISoundVolume : 1f);
                     hitMarkerWait = 1f;
                 }
                 else if(temp_hit.collider.gameObject.tag == "Head")
@@ -300,7 +300,7 @@ public class Weapon : MonoBehaviour
 
                     //Hit Marker
                     hitMarkerImage.color = Color.red;
-                    sfx.PlayOneShot(hitMarkerSound);
+                    sfx.PlayOneShot(hitMarkerSound, gsm ? 1 * gsm.Settings.MasterVolume * gsm.Settings.UISoundVolume : 1f);
                     hitMarkerWait = 1f;
                 }
                 else
@@ -324,7 +324,7 @@ public class Weapon : MonoBehaviour
         //Sound
         sfx.clip = currentGunData.gunShotSound;
         sfx.pitch = currentGunData.basepitch - currentGunData.pitchRandomisation + Random.Range(-currentGunData.pitchRandomisation, currentGunData.pitchRandomisation);
-        sfx.volume = currentGunData.gunSoundVolume;
+        sfx.volume = gsm ? currentGunData.gunSoundVolume * gsm.Settings.MasterVolume * gsm.Settings.EffectsVolume : currentGunData.gunSoundVolume;
         sfx.PlayOneShot(sfx.clip);
 
         //Gun FX
