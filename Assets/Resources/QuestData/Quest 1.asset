@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d966cb8ceb949641b8d31d4ead8ae3e, type: 3}
   m_Name: Quest 1
   m_EditorClassIdentifier: 
-  questName: Find Old Man Jenkins
-  description: There's another survivor in this world. Go find him.
+  questName: Locate Old Man Jenkins in the City
+  description: Welcome stranger
   startQuestDialogue: 
   midQuestDialogue: 
   completionDialogue: I remember your brother, Paul right? He was a good man.  I
-    trust you to find him.
+    trust you to find him- here's a key to my old car. Find her and fix her up.
   rewardItemOnAccept: {fileID: 0}
-  rewardItemOnComplete: {fileID: 0}
+  rewardItemOnComplete: {fileID: 11400000, guid: 797266b2c09f71a47970bdc72e23b5f8, type: 2}
   prerequisiteQuests: []
   isConfirmationRequired: 0
   isCompleted: 0
