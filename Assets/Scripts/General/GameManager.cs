@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
 
     public bool paused;
 
+    public Transform player;
+
     // Reset Scriptable Objects so all quest appear as incomplete
 #if UNITY_EDITOR
     [MenuItem("Shattered Down/Quest Data/Reset All Quest Data")]
@@ -55,5 +57,10 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+    }
+
+    private void Start()
+    {
+        player = FindFirstObjectByType<PlayerController>().transform;
     }
 }

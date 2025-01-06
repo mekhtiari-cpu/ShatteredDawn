@@ -139,11 +139,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 487964b977a3c59468316759be579830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombiePrefab: {fileID: 7921240314299885267, guid: 657a26474869da3418bfa357ad63fb56, type: 3}
+  zombiePrefab: {fileID: 8417944900223005077, guid: c1a21dc7db9a31c45ad79c88e2ec55c3, type: 3}
   zombieParent: {fileID: 0}
   spawnPoints: {fileID: 161642856509657494}
   hasActivatedSpawner: 0
-  spawnInterval: 60
+  spawnInterval: 30
   currentZombieCount: 0
   maxZombieCount: 12
 --- !u!1 &696292532297103827

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8594367259206420083}
   - component: {fileID: 9104588809410691649}
   - component: {fileID: 438238563243305344}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 2051290902697377599}
   - component: {fileID: 1523025785102875116}
   - component: {fileID: 1648547940261676304}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 2125096838150970642}
   - component: {fileID: 469499720843453563}
   - component: {fileID: 8864858423215709746}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 3552666305889546274}
   - component: {fileID: 2652831349851017171}
   - component: {fileID: 7478442558913713117}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,8 +343,8 @@ GameObject:
   - component: {fileID: 4571254600452155574}
   - component: {fileID: 3241301529706058162}
   - component: {fileID: 9214863641506745459}
-  - component: {fileID: 7361257749813170150}
-  m_Layer: 0
+  - component: {fileID: 1066196434990750519}
+  m_Layer: 6
   m_Name: Low Poly Tree Small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,7 +369,7 @@ Transform:
   - {fileID: 2051290902697377599}
   - {fileID: 5588200921284177070}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &3241301529706058162
 MeshRenderer:
@@ -441,8 +441,8 @@ LODGroup:
     renderers:
     - renderer: {fileID: 3241301529706058162}
   m_Enabled: 1
---- !u!64 &7361257749813170150
-MeshCollider:
+--- !u!65 &1066196434990750519
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -459,10 +459,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8691780276856062721, guid: 5f6b8461f5e215740812b81db75da103, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.7742825, y: 4.206579, z: 0.7143153}
+  m_Center: {x: 0.004537909, y: 1.6032705, z: 0.031002935}
 --- !u!1 &7707257507322377118
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,7 +474,7 @@ GameObject:
   - component: {fileID: 1836239365664085003}
   - component: {fileID: 5723198240812905765}
   - component: {fileID: 7961007260068750180}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
