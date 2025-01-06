@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerQuestHandler : MonoBehaviour
 {
     public List<Quest> activeQuests = new List<Quest>();
+    public GameObject questItems;
 
     private void Start()
     {
@@ -29,6 +30,15 @@ public class PlayerQuestHandler : MonoBehaviour
             }
 
             UpdateQuestDisplay();
+            BroadcastPOI();
+        }
+    }
+
+    public void BroadcastPOI()
+    {
+        if (questItems)
+        {
+            questItems.BroadcastMessage("DisplayPOI");
         }
     }
 

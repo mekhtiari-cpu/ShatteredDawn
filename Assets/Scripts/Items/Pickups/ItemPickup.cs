@@ -5,19 +5,51 @@ using UnityEngine;
 public class ItemPickup : Interactable
 {
     [SerializeField] Item itemObj;
-    public Quest quest;
+    public Quest questToGive;
+    public Quest relatedQuest;
 
+    public GameObject poi;
+    private void Start()
+    {
+        DisplayPOI();
+    }
+
+    public void DisplayPOI()
+    {
+        PlayerQuestHandler questHandler = GameManager.instance.playerQuest;
+        if (!questHandler.activeQuests.Contains(relatedQuest))
+        {
+            if (poi)
+            {
+                poi.SetActive(false);
+            }
+        }
+        else
+        {
+            if(poi)
+            { 
+                poi.SetActive(true); 
+            }
+        }
+    }
     public override void Interact()
     {
         base.Interact();
-        Inventory.instance.AddItem(itemObj);
-
         PlayerQuestHandler questHandler = GameManager.instance.playerQuest;
-        if(questHandler != null)
+        
+        if (questHandler != null)
         {
-            if (quest != null)
+            if (relatedQuest)
             {
-                questHandler.AddQuest(quest);
+                if (!questHandler.activeQuests.Contains(relatedQuest))
+                {
+                    return;
+                }
+            }
+
+            if (questToGive != null)
+            {
+                questHandler.AddQuest(questToGive);
             }
 
             foreach (Quest quest in questHandler.activeQuests)
@@ -40,7 +72,8 @@ public class ItemPickup : Interactable
             }
             
         }
-        
+        Inventory.instance.AddItem(itemObj);
+
 
         Destroy(this.gameObject);
     }
