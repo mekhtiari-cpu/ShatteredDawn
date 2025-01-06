@@ -12,15 +12,17 @@ public class RandomZombieSpawn : MonoBehaviour
     [SerializeField] float spawnInterval;
     [SerializeField] int currentZombieCount;
     [SerializeField] int maxZombieCount;
+    private IEnumerator coroutine;
 
     private void Update()
     {
         currentZombieCount = zombieParent.transform.childCount;
-        if (!hasActivatedSpawner)
-        {
-            StartCoroutine(SpawnZombie());
-            hasActivatedSpawner = true;
-        }
+    }
+
+    private void Start()
+    {
+        coroutine = SpawnZombie();
+        StartCoroutine(coroutine);
     }
 
     IEnumerator SpawnZombie()
