@@ -1715,7 +1715,7 @@ Transform:
   - {fileID: 3275316606026812341}
   - {fileID: 672767241740247508}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 147.305, z: 0}
 --- !u!95 &3630285972270419361
 Animator:
@@ -1787,6 +1787,7 @@ MonoBehaviour:
   isStaggered: 0
   isDead: 0
   myAudio: {fileID: 2439681674007312967}
+  myHurtbox: {fileID: 3881627845877601903}
   hasPlayedChaseAudio: 0
   current_animation: 
   myState: 0
@@ -2187,7 +2188,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   rayRange: 20
-  objectsHit: {fileID: 0}
 --- !u!1001 &3098188905167973470
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2381,4 +2381,3 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   rayRange: 40
-  objectsHit: {fileID: 0}
