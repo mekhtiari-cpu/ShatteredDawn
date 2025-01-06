@@ -25,6 +25,7 @@ public class RandomZombieSpawn : MonoBehaviour
         StartCoroutine(coroutine);
     }
 
+    //Spawn zombies at regular intervals when the total number alive is less than the max number.
     IEnumerator SpawnZombie()
     {
         while(true)

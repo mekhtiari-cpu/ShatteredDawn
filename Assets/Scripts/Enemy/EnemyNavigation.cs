@@ -84,6 +84,7 @@ public class EnemyNavigation : MonoBehaviour
         HandleState();
     }
 
+    //Logic for when the zombie dies
     public void Die()
     {
         if(!hasPlayedDeathAudio)
@@ -129,6 +130,7 @@ public class EnemyNavigation : MonoBehaviour
         Destroy(gameObject, 5f);
     }
 
+    //Logic for when the zombie is hit
     public void Hit()
     {
         isStaggered = true;
@@ -139,6 +141,7 @@ public class EnemyNavigation : MonoBehaviour
         myNav.speed = movementSpeeds[2];
     }
 
+    //Stagger time when hit
     IEnumerator WaitForHitDuration()
     {
         myState = EnemyState.Chase;

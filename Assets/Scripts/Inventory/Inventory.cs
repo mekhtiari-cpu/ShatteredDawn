@@ -27,11 +27,13 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    //Get all the items from the inventory
     public InventoryItem[] GetAllItems()
     {
         return inventory.ToArray();
     }
 
+    //Add an item to the inventory
     public void AddItem(Item newItem)
     {
         InventoryItem existingItem = FindItem(newItem);
@@ -49,6 +51,7 @@ public class Inventory : MonoBehaviour
         ui.GenerateInventorySlots();
     }
 
+    //Creates new inventory item
     InventoryItem CreateNewInventoryItem(Item newItem)
     {
         InventoryItem newInventoryItem = Instantiate(inventoryItem, transform.position, Quaternion.identity, itemsInInventory);

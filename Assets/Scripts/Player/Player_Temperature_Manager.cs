@@ -44,6 +44,7 @@ public class Player_Temperature_Manager : MonoBehaviour
         StartCoroutine(coroutine);
     }
 
+    //Deplete health when temperature falls below zero
     void Update()
     {
         if (temperature <= 0) 
@@ -64,6 +65,7 @@ public class Player_Temperature_Manager : MonoBehaviour
         }
     }
 
+    //Set whether player is near warmth area or not
     public void SetWarmthStatus(bool state, bool setIsNearCampfire, float newTempScalar)
     {
         tempScalar = newTempScalar;
@@ -71,26 +73,31 @@ public class Player_Temperature_Manager : MonoBehaviour
         isNearWarmth = state;
     }
 
+    //Return whether the player is near warmth or not
     public bool GetIsNearCampfire()
     {
         return isNearCampfire;
     }
 
+    //Set temperature decay rate
     public void SetTempDecayRate(float newDecayRate)
     {
         temperatureDecayRate = newDecayRate;
     }
 
+    //Get temperature decay rate
     public float GetDecayRate()
     {
         return temperatureDecayRate;
     }
 
+    //Get temperature scalar
     public float GetTempScalar()
     {
         return tempScalar;
     }
 
+    //Resets decay rate
     public void ResetDecayRate()
     {
         GameSettingsManager gsm = GameSettingsManager.Instance;
@@ -120,6 +127,7 @@ public class Player_Temperature_Manager : MonoBehaviour
         temperatureDecayRate = baseDecayRate * modifier;
     }
 
+    //Deplete or increase temperature in fixed intervals
     IEnumerator ManageTemperature()
     {
         while (true)
