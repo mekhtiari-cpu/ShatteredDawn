@@ -16,12 +16,6 @@ public class LoadingScreenManager : MonoBehaviour
         LoadSceneWithTransition(MAINMENUSCENE);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     // We Call this function for any scene transitions @maryam.ekihtiari. This should allow use to use the loading scene to appear inbetween scenes
     public void LoadSceneWithTransition(string sceneName)
     {

@@ -14,12 +14,6 @@ public class QuestUIHandler : UIHandler
         HideUI();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void UpdateDisplay(ref List<Quest> allQuests)
     {
         foreach (Transform child in parentTransform)

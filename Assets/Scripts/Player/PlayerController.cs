@@ -81,15 +81,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //weaponScript.RefreshAmmo(ui_Ammo);
-
-        //weaponScript.RefreshAmmo(ui_Ammo);
-    }
-
-
     public Player_Movement GetPlayerMovementScript() { return pm; }
     public UI_Manager GetUIManagerScript() { return ui_Manager; }
     public Weapon GetWeaponScript() { return weaponScript; }
