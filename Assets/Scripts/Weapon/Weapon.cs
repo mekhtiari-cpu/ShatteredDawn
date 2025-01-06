@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -37,6 +38,8 @@ public class Weapon : MonoBehaviour
     private Color CLEARWHITE = new Color(1, 1, 1, 0);
 
     bool fireShots;
+
+    public TextMeshProUGUI ammoText;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,7 +56,6 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawRay(transform.position, transform.forward * gunRange, Color.cyan);
         if (ui_HitMarker != null)
         {
             if (hitMarkerWait > 0)
@@ -146,6 +148,12 @@ public class Weapon : MonoBehaviour
         stateHip = currentEquipment.transform.Find("States/Hip");
 
         loadOut.Initialize();
+
+        if(ammoText)
+        {
+            ammoText.enabled = true;
+            RefreshAmmo();
+        }
     }
     public void DropWeapon()
     {
@@ -153,6 +161,11 @@ public class Weapon : MonoBehaviour
         {
             loadOut = null;
             currentGunData = null;
+        }
+
+        if (ammoText)
+        {
+            ammoText.enabled = false;
         }
     }
     private void ChangeLayerRecursivly(GameObject target, int layer)
@@ -328,6 +341,7 @@ public class Weapon : MonoBehaviour
         {
             // @note nathanael.hondi 25/11/24. Play recovery animation
         }
+        RefreshAmmo();
     }
 
     IEnumerator Reload(float reloadTime)
@@ -338,6 +352,8 @@ public class Weapon : MonoBehaviour
         currentEquipment.SetActive(true);
         currentGunData.Reload();
         isReloading = false;
+
+        RefreshAmmo();
     }
 
     #region New Input System
@@ -373,8 +389,12 @@ public class Weapon : MonoBehaviour
     }
     #endregion
 
-    public void RefreshAmmo(Text ammoText)
+    public void RefreshAmmo()
     {
+        if(!ammoText)
+        {
+            return;
+        }
         int clip = currentGunData.GetClip();
         int stash = currentGunData.GetStash();
 

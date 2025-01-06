@@ -95,8 +95,6 @@ public class BaseNPC : MonoBehaviour, INPC
             ? "Thank you for completing the quest!"
             : assignedQuest.completionDialogue;
         dialogueUI.SetDialogueText(turnInText, this);
-
-        Debug.Log($"Quest turned in: {assignedQuest.questName}");
     }
 
     protected void CompleteQuestAndCheckForNext(PlayerQuestHandler questHandler)
