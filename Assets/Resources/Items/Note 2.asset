@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Note 2
   m_EditorClassIdentifier: 
   itemId: 0
-  itemName: Note from OMJ
-  itemDescription: Old Man Jenkins remembers you...
+  itemName: Old Man Jenkins Interaction 1
+  itemDescription: 
   isStackable: 0
   count: 0
-  infoTitle: Note from OMJ
+  infoTitle: Old Man jenkins Interaction 1
   infoDate: 
   info: I remember your brother, Paul right? He was a good man. I trust you to find
     him. Here, take the keys. That's the key to my old GREEN TRUCK. She needs a few

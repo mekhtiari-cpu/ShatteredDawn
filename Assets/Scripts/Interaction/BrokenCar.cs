@@ -12,8 +12,6 @@ public class BrokenCar : Interactable
     [SerializeField] bool hasFilledOil;
     [SerializeField] bool hasReplacedHeadlights;
     [SerializeField] bool hasObtainedIgnitionKey;
-    [SerializeField] GameObject[] tiresToReplace;
-    int lastTireReplacedIndex;
     int numPartsFixed;
 
     private void Update()
@@ -68,22 +66,6 @@ public class BrokenCar : Interactable
     public void ReplaceTire()
     {
         tiresReplaced++;
-        int randTire = Random.Range(0, 2);
-        if(tiresToReplace[randTire].activeSelf == false)
-        {
-            tiresToReplace[randTire].SetActive(true);
-        }
-        else
-        {
-            if (lastTireReplacedIndex == 0)
-            {
-                tiresToReplace[1].SetActive(true);
-            }
-            else
-            {
-                tiresToReplace[0].SetActive(true);
-            }
-        }
     }
 
     public void ReplaceBattery()
