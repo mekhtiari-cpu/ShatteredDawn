@@ -58,10 +58,97 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: ce55de821487d65489f1d5994883cb08, type: 2}
     - target: {fileID: 919132149155446097, guid: fe4bee4eae97536448e4675f04314d56, type: 3}
       propertyPath: m_Name
-      value: Low Poly Old Man Variant
+      value: Low Poly Old Man
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fe4bee4eae97536448e4675f04314d56, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6038825181304551519}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fe4bee4eae97536448e4675f04314d56, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4278294309490735300}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fe4bee4eae97536448e4675f04314d56, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2968761469346229979}
   m_SourcePrefab: {fileID: 100100000, guid: fe4bee4eae97536448e4675f04314d56, type: 3}
+--- !u!1 &8846309435256656074 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fe4bee4eae97536448e4675f04314d56, type: 3}
+  m_PrefabInstance: {fileID: 8504219268813286811}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6038825181304551519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8846309435256656074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c5f87d5671b35f409f62c32b5a7c9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcName: Old Man Jenkins
+  allQuests:
+  - {fileID: 11400000, guid: c6a3f203a72c64df3b0c0770eea67e48, type: 2}
+  - {fileID: 11400000, guid: 8f52cba596ff948c3a81cb0c7354a383, type: 2}
+  - {fileID: 11400000, guid: 1b67aa69e8cd6214481a252173743e82, type: 2}
+  - {fileID: 11400000, guid: c3aa2e4770a3a4fa182bc6ff506ef203, type: 2}
+  pointOfInterest: {fileID: 0}
+  questGiven: 0
+  dialogueLines:
+  - 'I remember your brother, Paul right? He was a good man. '
+  - I trust you to find him.
+--- !u!136 &4278294309490735300
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8846309435256656074}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 4.316061
+  m_Height: 10.410293
+  m_Direction: 1
+  m_Center: {x: 6.175503e-10, y: -4.465092, z: 0.23386711}
+--- !u!54 &2968761469346229979
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8846309435256656074}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 122
+  m_CollisionDetection: 2
