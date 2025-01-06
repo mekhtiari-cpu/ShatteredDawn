@@ -5351,6 +5351,9 @@ MonoBehaviour:
   brokenCar: {fileID: 0}
   myHealthManager: {fileID: 0}
   damageInterval: 0
+  myHealth: {fileID: 0}
+  myDeath: {fileID: 0}
+  escapePanel: {fileID: 0}
 --- !u!114 &3801411727346241221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5370,8 +5373,8 @@ MonoBehaviour:
   waitInterval: 1.5
   isNearWarmth: 0
   isNearCampfire: 0
-  deathCamera: {fileID: 0}
-  deathPanel: {fileID: 0}
+  myHealth: {fileID: 0}
+  myDeath: {fileID: 0}
   frostEffect: {fileID: 0}
 --- !u!114 &9070237152309048391
 MonoBehaviour:
@@ -5422,11 +5425,12 @@ MonoBehaviour:
   bulletHolePrefab: {fileID: 6651055062465703499, guid: 75648ee36f93e2941a8f312c6c0d2672, type: 3}
   canBeShot:
     serializedVersion: 2
-    m_Bits: 64
-  gunRange: 0
+    m_Bits: 8
+  gunRange: 100
   pickUp: 0
   sfx: {fileID: 0}
   hitMarkerSound: {fileID: 8300000, guid: 9ef04968513afd94bb32fc97bf45e194, type: 3}
+  ammoText: {fileID: 0}
 --- !u!114 &2455098124611979558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5474,12 +5478,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pm: {fileID: 0}
   myHealth: {fileID: 0}
+  myDeath: {fileID: 0}
   isGrounded: 0
   hasAlreadyChecked: 0
   fallStartPosition: {x: 0, y: 0, z: 0}
   fallEndPosition: {x: 0, y: 0, z: 0}
   fallHeight: 0
   fallDamageMultiplier: 2
+  fallDamageSound: {fileID: 0}
 --- !u!1 &5660817331235302589
 GameObject:
   m_ObjectHideFlags: 0
