@@ -20,7 +20,7 @@ public class Player_Death : MonoBehaviour
     [SerializeField] GameObject frostEffect;
     [SerializeField] TMP_Text deathText; 
 
-
+    //Method for when the player dies
     void Die()
     {
         mainCamera.gameObject.SetActive(false);

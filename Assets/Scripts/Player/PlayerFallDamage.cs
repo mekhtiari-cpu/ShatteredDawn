@@ -28,6 +28,7 @@ public class PlayerFallDamage : MonoBehaviour
         CheckFall();
     }
 
+    //Check whether the player has fallen far enough to receive fall damage
     void CheckFall()
     {
         if(!isGrounded)
@@ -49,6 +50,7 @@ public class PlayerFallDamage : MonoBehaviour
         }
     }
 
+    //Calculate the amount of damage to be dealt to player from fall
     void CalculateFallDamage()
     {
         Vector3 fallDistance = fallStartPosition - fallEndPosition;

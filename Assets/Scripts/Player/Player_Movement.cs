@@ -82,6 +82,7 @@ public class Player_Movement : MonoBehaviour
         
     }
 
+    //Apply gravity to player
     void ApplyGravity()
     {
         if (!isGrounded)

@@ -9,6 +9,7 @@ public class Inventory_UI : MonoBehaviour
     [SerializeField] ItemSlot itemSlotTemplate;
     [SerializeField] GameObject inventorySlotsParent;
 
+    //Generates an inventory slot for each unique item in the inventory
     public void GenerateInventorySlots()
     {
         ClearSlots();
@@ -22,6 +23,8 @@ public class Inventory_UI : MonoBehaviour
             Instantiate(newItemSlot, transform.position, Quaternion.identity, inventorySlotsParent.transform);
         }
     }
+
+    //Clears all the slots
     void ClearSlots()
     {
         foreach (Transform oldInventorySlot in inventorySlotsParent.transform)
