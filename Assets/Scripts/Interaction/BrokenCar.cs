@@ -10,7 +10,6 @@ public class BrokenCar : Interactable
     [SerializeField] int tiresReplaced;
     [SerializeField] bool hasReplacedBattery;
     [SerializeField] bool hasFilledOil;
-    [SerializeField] bool hasReplacedHeadlights;
     [SerializeField] bool hasObtainedIgnitionKey;
     [SerializeField] GameObject[] tiresToReplace;
     int lastTireReplacedIndex;
@@ -21,6 +20,7 @@ public class BrokenCar : Interactable
         CloseUIIfPlayerFar();
     }
 
+    //Car interaction
     public override void Interact()
     {
         base.Interact();
@@ -38,6 +38,7 @@ public class BrokenCar : Interactable
         UI_Manager.instance.GetCarUI().ToggleCarInteractText();
     }
 
+    //Returning key items to the car
     public void ReturnKeyItem(KeyItem keyItem)
     {
         numPartsFixed++;
@@ -65,6 +66,7 @@ public class BrokenCar : Interactable
         
     }
 
+    //Replacing key items methods
     public void ReplaceTire()
     {
         tiresReplaced++;
@@ -119,6 +121,7 @@ public class BrokenCar : Interactable
         return numPartsFixed;
     }
 
+    //Return all of the car info 
     public string GetCarInfo()
     {
         PlayerQuestHandler questHandler = GameManager.instance.playerQuest;
