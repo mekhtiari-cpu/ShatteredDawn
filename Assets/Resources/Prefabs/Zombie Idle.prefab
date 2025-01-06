@@ -1788,6 +1788,7 @@ MonoBehaviour:
   isDead: 0
   myAudio: {fileID: 2439681674007312967}
   myHurtbox: {fileID: 3881627845877601903}
+  myCollider: {fileID: 376764196411221694}
   hasPlayedChaseAudio: 0
   current_animation: 
   myState: 0

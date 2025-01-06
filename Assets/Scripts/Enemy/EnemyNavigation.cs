@@ -17,6 +17,7 @@ public class EnemyNavigation : MonoBehaviour
     [SerializeField] bool isDead;
     [SerializeField] ZombieAudio myAudio;
     [SerializeField] GameObject myHurtbox;
+    [SerializeField] Collider myCollider;
     bool hasPlayedSeenAudio;
     bool hasPlayedDeathAudio;
     bool hasPlayedIdleAudio;
@@ -96,6 +97,7 @@ public class EnemyNavigation : MonoBehaviour
         animator.SetInteger("rand",Random.Range(1, 3));
         animator.SetBool("IsDead", true);
         myHurtbox.SetActive(false);
+        myCollider.enabled = false;
         isDead = true;
         myNav.speed = movementSpeeds[2];
 
